@@ -1,19 +1,17 @@
 package cs3500.pa05.view;
 
-import cs3500.pa05.controller.JournalController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-public class AbstactView implements View {
+public class AbstractView implements View {
   FXMLLoader loader;
 
-  public AbstactView(JournalController controller) {
+  public AbstractView() {
     // look up and store the layout
     this.loader = new FXMLLoader();
-    this.loader.setLocation(getClass().getClassLoader().getResource("startScreen.fxml"));
-    // initialization and location setting omitted for brevity
-    this.loader.setController(controller);
+    this.loader.setLocation(getClass().getClassLoader().getResource("main_page.fxml"));
+
   }
 
 

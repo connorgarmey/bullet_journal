@@ -1,6 +1,9 @@
 package cs3500.pa05.model;
 
-public class Occasion {
+/**
+ * represents the abstraction of an event or task
+ */
+public abstract class Occasion {
   protected String name;
   protected String description;
   protected Day day;
