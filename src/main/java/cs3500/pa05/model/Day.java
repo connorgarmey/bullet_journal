@@ -1,13 +1,26 @@
 package cs3500.pa05.model;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+/**
+ * represents a single day of the week
+ */
 public class Day {
   String dayOfWeek;
-  List<Occasion> plans;
+  List<Occasion> tasks;
+  List<Occasion> events;
 
+  /**
+   * constructors a new day without any tasks or events
+   *
+   * @param day string rep of the day
+   */
   public Day(String day) {
     this.dayOfWeek = day;
+    this.tasks = new ArrayList<>();
+    this.events = new ArrayList<>();
   }
 
   /**

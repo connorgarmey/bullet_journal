@@ -6,7 +6,6 @@ import java.util.List;
 public record WeekJson(
     @JsonProperty("days")
     List<DayJson> days,
-
     @JsonProperty("theme")
     ThemeJson theme) {
 

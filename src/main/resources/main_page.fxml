@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+  <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0">
+      <children>
+         <HBox layoutX="760.0" layoutY="745.0" prefHeight="50.0" prefWidth="240.0" AnchorPane.leftAnchor="760.0">
+            <children>
+               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Create" />
+               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Save" />
+               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Set Max" />
+            </children>
+         </HBox>
+         <HBox layoutX="52.0" layoutY="110.0" prefHeight="600.0" prefWidth="700.0">
+            <children>
+               <VBox prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Monday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" text="Tasks:&#10;&#10;-Work&#10;-On&#10;-OOD&#10;&#10;Events:&#10;&#10;-OOD&#10;-Depression&#10;-Why do these need to be horizontal?" wrapText="true">
+                        <font>
+                           <Font size="12.0" />
+                        </font>
+                     </TextArea>
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Tuesday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Wednesday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Thursday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Friday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Saturday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                  <children>
+                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Sunday">
+                        <font>
+                           <Font name="Georgia Bold" size="14.0" />
+                        </font>
+                     </TextField>
+                     <TextArea prefHeight="560.0" prefWidth="100.0" />
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <Label fx:id="title" alignment="CENTER" layoutX="306.0" layoutY="48.0" prefHeight="43.0" prefWidth="398.0" text="Finals Week" textAlignment="CENTER" textFill="#162680">
+            <font>
+               <Font name="Georgia Bold Italic" size="33.0" />
+            </font>
+         </Label>
+         <MenuBar layoutX="2.0" prefHeight="28.0" prefWidth="1000.0">
+           <menus>
+             <Menu fx:id="file" mnemonicParsing="false" text="File">
+               <items>
+                 <MenuItem fx:id="open" mnemonicParsing="false" text="Open" />
+                     <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
+               </items>
+             </Menu>
+               <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
+                  <items>
+                     <MenuItem fx:id="setMax" mnemonicParsing="false" text="Set Max" />
+                  </items>
+               </Menu>
+             <Menu fx:id="newMenu" mnemonicParsing="false" text="New">
+               <items>
+                 <MenuItem fx:id="task" mnemonicParsing="false" text="Task" />
+                     <MenuItem fx:id="event" mnemonicParsing="false" text="Event" />
+                     <MenuItem fx:id="week" mnemonicParsing="false" text="Week" />
+               </items>
+             </Menu>
+               <Menu fx:id="theme" mnemonicParsing="false" text="Theme">
+                  <items>
+                     <MenuItem fx:id="light" mnemonicParsing="false" text="Light Theme" />
+                     <MenuItem fx:id="dark" mnemonicParsing="false" text="Dark Theme" />
+                     <MenuItem fx:id="blue" mnemonicParsing="false" text="Blue Theme" />
+                  </items>
+               </Menu>
+           </menus>
+         </MenuBar>
+         <Label layoutX="234.0" layoutY="722.0" prefHeight="43.0" prefWidth="400.0" text="Events: 3,   Tasks: 3   0% completed">
+            <font>
+               <Font name="Georgia Bold Italic" size="20.0" />
+            </font>
+         </Label>
+         <VBox layoutX="789.0" layoutY="110.0" prefHeight="600.0" prefWidth="190.0">
+            <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="190.0" text="Notes">
+                  <font>
+                     <Font name="Georgia Bold Italic" size="20.0" />
+                  </font>
+               </Label>
+               <Label alignment="TOP_LEFT" prefHeight="550.0" prefWidth="190.0" text="Notes go here" />
+            </children>
+         </VBox>
+      </children>
+   </AnchorPane>
+   <fill>
+      <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+         <stops>
+            <Stop>
+               <color>
+                  <Color />
+               </color>
+            </Stop>
+            <Stop offset="1.0">
+               <color>
+                  <Color red="1.0" green="1.0" blue="1.0" />
+               </color>
+            </Stop>
+         </stops>
+      </RadialGradient>
+   </fill>
+  </Scene>

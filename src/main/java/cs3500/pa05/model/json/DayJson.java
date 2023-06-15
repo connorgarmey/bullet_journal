@@ -5,7 +5,10 @@ import cs3500.pa05.model.Occasion;
 import java.util.List;
 
 public record DayJson(
-  @JsonProperty("occasions")
-  List<Occasion> occasions) {
-
+    @JsonProperty("day")
+    String day,
+    @JsonProperty("events")
+    List<EventJson> events,
+    @JsonProperty("tasks")
+    List<TaskJson> tasks) {
 }

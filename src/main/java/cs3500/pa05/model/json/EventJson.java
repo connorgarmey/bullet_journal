@@ -10,4 +10,5 @@ public record EventJson(
     @JsonProperty("start-time") Timestamp startTime,
     @JsonProperty("duration") int duration)
 {
+
 }

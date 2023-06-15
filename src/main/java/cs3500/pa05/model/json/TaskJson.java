@@ -7,4 +7,6 @@ public record TaskJson(
     @JsonProperty("description") String description,
     @JsonProperty("day-of-week") String dayOfWeek,
     @JsonProperty("completed") boolean isCompleted) {
+
+
 }

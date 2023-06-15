@@ -5,9 +5,14 @@
 - Persistence
 
 ## Section 2: Headlining Features
+- Themes
+- Menu Bar & Shortcuts
 
 
 ## Section 3: Power Ups
+- Quotes and Notes
+- Weekly Overview
+- Sort By Name & Duration
 
 
 ## Section 3: Power Ups
