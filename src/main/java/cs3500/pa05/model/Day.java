@@ -23,6 +23,12 @@ public class Day {
     this.events = new ArrayList<>();
   }
 
+  public Day(String day, List<Occasion> tasks, List<Occasion> events) {
+    this.dayOfWeek = day;
+    this.tasks = tasks;
+    this.events = events;
+  }
+
   /**
    * sorts the events list based on given comparator
    *

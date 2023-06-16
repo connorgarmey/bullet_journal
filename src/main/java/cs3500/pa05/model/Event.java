@@ -3,6 +3,7 @@ package cs3500.pa05.model;
 import java.security.Timestamp;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import cs3500.pa05.model.json.EventJson;
 
 
 public class Event extends Occasion {
@@ -13,6 +14,12 @@ public class Event extends Occasion {
     super(n, des, d);
     this.start = time;
     this.duration = dur;
+  }
+
+  public Event(EventJson eventJson) {
+    super(eventJson.name(), eventJson.description(), eventJson.dayOfWeek());
+    this.start = eventJson.startTime();
+    this.duration = eventJson.duration();
   }
 
   public int getDuration() {

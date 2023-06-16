@@ -11,4 +11,6 @@ public record DayJson(
     List<EventJson> events,
     @JsonProperty("tasks")
     List<TaskJson> tasks) {
+
+
 }

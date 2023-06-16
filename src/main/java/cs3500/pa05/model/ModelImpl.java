@@ -1,5 +1,12 @@
 package cs3500.pa05.model;
 
+import cs3500.pa05.model.json.DayJson;
+import cs3500.pa05.model.json.EventJson;
+import cs3500.pa05.model.json.StatsJson;
+import cs3500.pa05.model.json.TaskJson;
+import cs3500.pa05.model.json.ThemeJson;
+import cs3500.pa05.model.json.WeekJson;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelImpl implements Model {
@@ -52,17 +59,17 @@ public class ModelImpl implements Model {
 
 
   @Override
-  public void addTask() {
+  public void addTask(Task task) {
+    this.
+  }
+
+  @Override
+  public void addEvent(Event event) {
 
   }
 
   @Override
-  public void addEvent() {
-
-  }
-
-  @Override
-  public void changeTheme() {
+  public void changeTheme(Theme theme) {
 
   }
 

@@ -16,7 +16,18 @@ public class WriteFile {
 
 
   public void writeToFile(File file, WeekJson week) {
+    try {
 
+
+      BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+      writer.write(week.toString());
+      writer.close();
+      System.out.println("Data successfully written to the file: " + file.getAbsolutePath());
+    } catch (IOException e) {
+      System.out.println("An error occurred while writing the file: " + e.getMessage());
+    }
   }
+
 
 }
