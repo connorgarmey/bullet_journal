@@ -23,6 +23,9 @@ public class Start implements EventHandler<Event> {
   @FXML
   private Button createFile;
 
+  private ModelImpl model;
+  
+
   /**
    * Directs the controller to the correct event handler given the button clicked
    *
@@ -82,10 +85,13 @@ public class Start implements EventHandler<Event> {
       showAlert("Error", "Invalid Input", "File does not exist.");
     }
 
-    // If it succeeds, we need to load the file
+    // Creating Model and Writer objects to create our WeekJson and allow us to write
+    ModelImpl model = new ModelImpl();
+    WriteFile writer = new WriteFile();
 
+    // If all checks pass, load the file
+    writer.writeToFile(fileToLoad, );
   }
-
 
   /**
    * Provides the error alert if a user needs to provide better input
