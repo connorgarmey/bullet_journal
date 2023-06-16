@@ -1,5 +1,6 @@
 package cs3500.pa05.view;
 
+import cs3500.pa05.controller.JournalController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +11,7 @@ public class AbstractView implements View {
   public AbstractView() {
     // look up and store the layout
     this.loader = new FXMLLoader();
-    this.loader.setLocation(getClass().getClassLoader().getResource("main_page.fxml"));
+    loadHome();
 
   }
 
@@ -27,16 +28,21 @@ public class AbstractView implements View {
 
 // Called by controller
   public void loadStart() {
-    this.loader.setLocation(getClass().getClassLoader().getResource("startScreen.fxml"));
+    this.loader.setLocation(getClass().getClassLoader().getResource("welcome.fxml"));
   }
 
   public void loadHome() {
-    this.loader.setLocation(getClass().getClassLoader().getResource("homeScreen.fxml"));
+    this.loader.setLocation(getClass().getClassLoader().getResource("main_page.fxml"));
   }
 
-  public void loadPopup() {
-    this.loader.setLocation(getClass().getClassLoader().getResource("popupScreen.fxml"));
+  public void loadTaskPopup() {
+    this.loader.setLocation(getClass().getClassLoader().getResource("create_task.fxml"));
   }
+
+  public void loadEventPopup() {
+    this.loader.setLocation(getClass().getClassLoader().getResource("create_event.fxml"));
+  }
+
 
 
 

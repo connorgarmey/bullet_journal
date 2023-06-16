@@ -8,9 +8,9 @@ import java.util.List;
  * represents a single day of the week
  */
 public class Day {
-  String dayOfWeek;
-  List<Occasion> tasks;
-  List<Occasion> events;
+  private String dayOfWeek;
+  private List<Occasion> tasks;
+  private List<Occasion> events;
 
   /**
    * constructors a new day without any tasks or events
@@ -62,5 +62,23 @@ public class Day {
       sb.append(o.toString());
       sb.append(System.lineSeparator());
     }
+  }
+
+  /**
+   * Gets the amount of tasks
+   *
+   * @return the number of tasks
+   */
+  public int getNumTasks() {
+    return tasks.size();
+  }
+
+  /**
+   * Gets the amount of events
+   *
+   * @return the number of events
+   */
+  public int getNumEvents() {
+    return events.size();
   }
 }

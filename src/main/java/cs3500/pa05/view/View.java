@@ -6,4 +6,12 @@ public interface View {
 
   Scene load();
 
+  void loadStart();
+
+  void loadHome();
+
+  void loadTaskPopup();
+
+  void loadEventPopup();
+
 }

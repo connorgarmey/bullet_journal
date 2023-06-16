@@ -48,9 +48,10 @@ javafx {
 dependencies {
     // Jackson
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.1'
-
     // JavaFX
     implementation('org.controlsfx:controlsfx:11.1.2')
+
+
 
     // JUnit
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

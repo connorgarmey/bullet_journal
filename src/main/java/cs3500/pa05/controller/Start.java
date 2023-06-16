@@ -1,5 +1,9 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.ModelImpl;
+import cs3500.pa05.model.json.WeekJson;
+import java.io.File;
+import java.nio.file.Path;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -40,17 +44,24 @@ public class Start implements EventHandler<Event> {
   private void handleCreateFile() {
     // Load the name for the user input
     String name =  inputFileLoad.getText();
-    WriteFile fileToCreate = new WriteFile(name);
+    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
+    String file = pathName + name + ".bujo";
+    File fileToCreate = new File(file);
 
     // Check if it is null
-    if (fileToCreate.fileName.isEmpty()) {
+    if (name.isEmpty()) {
       showAlert("Error", "No Input Received", "Please enter a file name.");
-    } else if (fileToCreate.isInvalid()) {
+    } else if (isInvalid(name)) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
     }
 
+    // Creating Model and Writer objects to create our WeekJson and allow us to write
+    ModelImpl model = new ModelImpl();
+    WeekJson newWeek = model.newWeek();
+    WriteFile writer = new WriteFile();
+
     // If it is not null, create the file
-    fileToCreate.createFile(); // replace with whatever we use to create the file
+    writer.writeToFile(fileToCreate, newWeek); // replace with whatever we use to create the file
   }
 
   /**
@@ -60,13 +71,15 @@ public class Start implements EventHandler<Event> {
   private void handleLoadFile() {
     // Load the name for the user input
     String name =  inputFileLoad.getText();
-    WriteFile fileToLoad = new WriteFile(name);
+    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
+    String file = pathName + name + ".bujo";
+    File fileToLoad = new File(file);
 
     // Check if it is null
-    if (fileToLoad.fileName.isEmpty()) {
+    if (name.isEmpty()) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
-    } else if (fileToLoad.isInvalid()) { // does not exist -- not invalid
-
+    } else if (!fileToLoad.exists()) { // does not exist -- not invalid
+      showAlert("Error", "Invalid Input", "File does not exist.");
     }
 
     // If it succeeds, we need to load the file
@@ -89,6 +102,22 @@ public class Start implements EventHandler<Event> {
     alert.showAndWait();
   }
 
+  /**
+   * @return true if the inputted file name is INVALID
+   */
+  private boolean isInvalid(String fileName) {
+    // Check the name only utilizes valid characters
+    if (!fileName.matches("^[a-zA-Z0-9 ._-]+$")) {
+      return true;
+    }
+
+    // Check the name is a valid length
+    if (fileName.length() > 255) {
+      return true;
+    }
+
+    return false;
+  }
 
 
 }

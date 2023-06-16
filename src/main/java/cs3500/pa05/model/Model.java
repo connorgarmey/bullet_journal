@@ -6,5 +6,9 @@ public interface Model {
 
   void addEvent();
 
-  void changeTheme();
+  void changeTheme(Theme theme);
+
+  void updateNumbers();
+
+  WeekJson newWeek();
 }
