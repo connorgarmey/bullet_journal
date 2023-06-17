@@ -52,16 +52,17 @@ public class Start implements EventHandler<Event> {
   private void handleCreateFile() {
     // Load the name for the user input
     String name =  spacesToDashes(inputFileLoad.getText());
-    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
-    String file = pathName + name + ".bujo";
-    File fileToCreate = new File(file);
 
-    // Check if it is null
+    // Check if the name is null
     if (name.isEmpty()) {
       showAlert("Error", "No Input Received", "Please enter a file name.");
     } else if (isInvalid(name)) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
     }
+
+    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
+    String file = pathName + name + ".bujo";
+    File fileToCreate = new File(file);
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
     WeekJson newWeek = model.newWeek();
