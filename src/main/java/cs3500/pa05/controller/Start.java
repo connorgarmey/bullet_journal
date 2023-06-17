@@ -1,5 +1,6 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.Model;
 import cs3500.pa05.model.ModelImpl;
 import cs3500.pa05.model.json.WeekJson;
 import java.io.File;
@@ -23,7 +24,11 @@ public class Start implements EventHandler<Event> {
   @FXML
   private Button createFile;
 
-  private ModelImpl model;
+  private Model model;
+
+  public Start(Model model) {
+    this.model = model;
+  }
   
 
   /**
@@ -46,7 +51,7 @@ public class Start implements EventHandler<Event> {
   @FXML
   private void handleCreateFile() {
     // Load the name for the user input
-    String name =  inputFileLoad.getText();
+    String name =  spacesToDashes(inputFileLoad.getText());
     String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
     String file = pathName + name + ".bujo";
     File fileToCreate = new File(file);
@@ -59,7 +64,6 @@ public class Start implements EventHandler<Event> {
     }
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
-    ModelImpl model = new ModelImpl();
     WeekJson newWeek = model.newWeek();
     WriteFile writer = new WriteFile();
 
@@ -68,12 +72,22 @@ public class Start implements EventHandler<Event> {
   }
 
   /**
+   * changes all the spaces to underscores
+   *
+   * @param original given name
+   * @return name without any spaces
+   */
+  private String spacesToDashes(String original) {
+    return original.replaceAll(" ", "_");
+  }
+
+  /**
    * Handles the loading of a file if the user wants to load a pre-existing file
    */
   @FXML
   private void handleLoadFile() {
     // Load the name for the user input
-    String name =  inputFileLoad.getText();
+    String name =  spacesToDashes(inputFileLoad.getText());
     String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
     String file = pathName + name + ".bujo";
     File fileToLoad = new File(file);
@@ -86,7 +100,6 @@ public class Start implements EventHandler<Event> {
     }
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
-    ModelImpl model = new ModelImpl();
     WriteFile writer = new WriteFile();
 
     // If all checks pass, load the file
