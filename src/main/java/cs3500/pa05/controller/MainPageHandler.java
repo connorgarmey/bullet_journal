@@ -43,29 +43,28 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
 
       } else if (id.equals("light")) {
         //implement later
-      } else if (menuItem.getId().equals("dark")) {
+      } else if (id.equals("dark")) {
         //implement later
-      } else if (menuItem.getId().equals("blue")) {
+      } else if (id.equals("blue")) {
         //implement later
       }
     }
   }
 
-  @FXML
-  private void openPopup() {
-    try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("max_tasks_stage.fxml"));
-      Parent popupContent = fxmlLoader.load();
 
-      Stage popupStage = new Stage();
-      popupStage.setScene(new Scene(popupContent));
+    @FXML
+    private void openPopup(String url) {
+      try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
+        Parent popupContent = fxmlLoader.load();
 
-      // Configure the popup stage properties
+        Stage popupStage = new Stage();
+        popupStage.setScene(new Scene(popupContent));
 
-      popupStage.show();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+        popupStage.show();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
   }
 
 

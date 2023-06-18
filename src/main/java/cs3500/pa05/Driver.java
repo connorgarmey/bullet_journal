@@ -7,6 +7,7 @@ import cs3500.pa05.model.ModelImpl;
 import cs3500.pa05.view.LightTheme;
 import cs3500.pa05.view.View;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
 /**
@@ -21,9 +22,13 @@ public class Driver extends Application {
   @Override
   public void start(Stage primaryStage) {
 
-    View view = new LightTheme();
+    FXMLLoader loader = new FXMLLoader();
     Model model = new ModelImpl();
-    Controller controller = new JournalController(model, view);
+    Controller controller = new JournalController(model);
+    loader.setController(controller);
+    View view = new LightTheme(loader);
+    controller.setView(view);
+
 
     try {
       System.out.println(1);

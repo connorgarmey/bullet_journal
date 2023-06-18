@@ -6,10 +6,8 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -34,11 +32,14 @@ public class StartHandler implements EventHandler<ActionEvent> {
    * @param event the event which occurred
    */
   @Override
-  public void handle(Event event) {
-    if (event.getSource() == createFile) {
-      handleCreateFile();
-    } else if (event.getSource() == loadFile) {
-      handleLoadFile();
+  public void handle(ActionEvent event) {
+    if (event.getSource() instanceof Button) {
+      Button button = (Button) event.getSource();
+      if (button.getId().equals("createFile")) {
+        handleCreateFile();
+      } else if (button.getId().equals("loadFile")) {
+        handleLoadFile();
+      }
     }
   }
 
@@ -48,7 +49,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
   @FXML
   private void handleCreateFile() {
     // Load the name for the user input
-    String name =  spacesToDashes(inputFileLoad.getText());
+    String name =  spacesToDashes(inputFileCreate.getText());
 
     // Check if the name is null
     if (name.isEmpty()) {

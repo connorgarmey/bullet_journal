@@ -1,17 +1,15 @@
 package cs3500.pa05.view;
 
+import cs3500.pa05.controller.Controller;
 import javafx.scene.Scene;
 
 public interface View {
 
   Scene load();
 
-  void loadStart();
+  void loadScene(String url);
 
-  void loadHome();
+  void setControllerHelper(Controller controller);
 
-  void loadTaskPopup();
-
-  void loadEventPopup();
 
 }

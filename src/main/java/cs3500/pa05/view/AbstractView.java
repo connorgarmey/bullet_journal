@@ -1,18 +1,18 @@
 package cs3500.pa05.view;
 
+import cs3500.pa05.controller.Controller;
 import cs3500.pa05.controller.JournalController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-public class AbstractView implements View {
-  FXMLLoader loader;
+public abstract class AbstractView implements View {
+  private FXMLLoader loader;
 
-  public AbstractView() {
+  public AbstractView(FXMLLoader loader) {
     // look up and store the layout
-    this.loader = new FXMLLoader();
-    loadHome();
-
+    this.loader = loader;
+    this.loader.setLocation(getClass().getClassLoader().getResource("welcome.fxml"));
   }
 
 

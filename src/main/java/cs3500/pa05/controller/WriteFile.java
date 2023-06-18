@@ -15,7 +15,7 @@ import java.nio.file.Path;
 public class WriteFile {
 
 
-  public void writeToFile(File file, WeekJson week) {
+  public void writeToFile(Path path, WeekJson week) {
     try {
       File file;
       if (!Files.exists(path)) {
