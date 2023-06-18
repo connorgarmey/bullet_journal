@@ -8,15 +8,27 @@ public enum Theme {
   /**
    * Blue theme
    */
-  BLUE,
+  BLUE("\"BLUE\""),
 
   /**
    * Light theme
    */
-  LIGHT,
+  LIGHT("\"LIGHT\""),
 
   /**
    * Dark theme
    */
-  DARK;
+  DARK("\"LIGHT\"");
+
+
+  private String stringRep;
+
+  Theme(String str) {
+    this.stringRep = str;
+  }
+
+  @Override
+  public String toString() {
+    return stringRep;
+  }
 }

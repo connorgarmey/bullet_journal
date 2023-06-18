@@ -3,6 +3,9 @@ package cs3500.pa05.controller;
 import cs3500.pa05.model.Model;
 import cs3500.pa05.view.View;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 

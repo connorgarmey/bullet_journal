@@ -15,6 +15,11 @@ public class Task extends Occasion {
     isCompleted = false;
   }
 
+  public TaskJson makeJson() {
+    TaskJson json = new TaskJson(this.name, this.description, this.day, this.isCompleted);
+    return json;
+  }
+
   public void updateCompletion() {
     isCompleted = true;
   }

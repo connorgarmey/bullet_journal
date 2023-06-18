@@ -10,4 +10,15 @@ public record StatsJson(
     @JsonProperty("percent")
     int percent) {
 
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\n");
+        sb.append("  \"eventsCount\": ").append(event).append(",\n");
+        sb.append("  \"taskCount\": ").append(task).append(",\n");
+        sb.append("  \"percent\": ").append(percent).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
 }

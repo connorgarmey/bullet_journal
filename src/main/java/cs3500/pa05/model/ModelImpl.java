@@ -1,34 +1,61 @@
 package cs3500.pa05.model;
 
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.model.json.DayJson;
 import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.StatsJson;
 import cs3500.pa05.model.json.TaskJson;
 import cs3500.pa05.model.json.ThemeJson;
 import cs3500.pa05.model.json.WeekJson;
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ModelImpl implements Model {
-  List<Day> week;
-  Theme theme;
-  int numEvents;
-  int numTasks;
+  private List<Day> week;
+  private Theme theme;
+  private int numEvents;
+  private int numTasks;
+  private int completionPercent;
+  private ObjectMapper mapper;
 
   public ModelImpl() {
+    this.week = new ArrayList<>();
     this.numEvents = 0;
     this.numTasks = 0;
+    this.completionPercent = 0;
     this.theme = Theme.LIGHT;
-//    updateNumbers();
+    this.mapper = new ObjectMapper();
   }
 
+  //potentially don't need
   public ModelImpl(WeekJson weekJson) {
     this.week = new ArrayList<>();
     makeDays(weekJson.days());
     this.theme = weekJson.theme().theme();
     this.numEvents = weekJson.stats().event();
     this.numTasks = weekJson.stats().task();
-    
+    this.completionPercent = weekJson.stats().percent();
+    this.mapper = new ObjectMapper();
+  }
+
+  @Override
+  public void makeWeek(String week) {
+    try {
+      System.out.println(week);
+      WeekJson weekJson = mapper.readValue(week, WeekJson.class);
+      makeDays(weekJson.days());
+      this.numEvents = weekJson.stats().event();
+      this.numTasks = weekJson.stats().task();
+      this.completionPercent = weekJson.stats().percent();
+      this.theme = weekJson.theme().theme();
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
   private void makeDays(List<DayJson> dayJsons) {
@@ -59,18 +86,29 @@ public class ModelImpl implements Model {
 
 
   @Override
-  public void addTask(Task task) {
-    this.
+  public void addTask(String n, String des, String d) {
+    Occasion taskToAdd = new Task(n,des,d);
+    for (Day day : this.week) {
+      if (day.isSameDay(d)) {
+        day.addTask(taskToAdd);
+      }
+    }
   }
 
   @Override
-  public void addEvent(Event event) {
-
+  public void addEvent(String n, String des, String d, int hour, int minute, int dur) {
+    Occasion eventToAdd = new Event(n, des, d, hour, minute, dur);
+    for (Day day : this.week) {
+      if (day.isSameDay(d)) {
+        day.addEvent(eventToAdd);
+      }
+    }
   }
+
 
   @Override
   public void changeTheme(Theme theme) {
-
+    this.theme = theme;
   }
 
   @Override

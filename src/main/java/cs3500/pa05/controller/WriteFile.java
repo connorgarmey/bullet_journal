@@ -17,14 +17,21 @@ public class WriteFile {
 
   public void writeToFile(File file, WeekJson week) {
     try {
+      File file;
+      if (!Files.exists(path)) {
+        file = new File(path.toString());//Files.createFile(path).toFile();
+        file.createNewFile();
+      } else {
+        file = path.toFile();
+      }
 
+      FileWriter fileWriter = new FileWriter(file);
+      fileWriter.write(week.toString());
+      fileWriter.close();
 
-      BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-
-      writer.write(week.toString());
-      writer.close();
-      System.out.println("Data successfully written to the file: " + file.getAbsolutePath());
+      System.out.println("Data successfully written to the file: " + path);
     } catch (IOException e) {
+      e.printStackTrace();
       System.out.println("An error occurred while writing the file: " + e.getMessage());
     }
   }

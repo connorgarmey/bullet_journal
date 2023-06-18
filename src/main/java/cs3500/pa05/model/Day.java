@@ -1,5 +1,7 @@
 package cs3500.pa05.model;
 
+import cs3500.pa05.model.json.DayJson;
+import cs3500.pa05.model.json.TaskJson;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -27,6 +29,32 @@ public class Day {
     this.dayOfWeek = day;
     this.tasks = tasks;
     this.events = events;
+  }
+
+  private void addOccasion(Occasion occasion, List<Occasion> occasionList) {
+    occasionList.add(occasion);
+  }
+
+  public void addEvent(Occasion occasion) {
+    addOccasion(occasion, this.events);
+  }
+
+  public void addTask(Occasion occasion) {
+    addOccasion(occasion, this.tasks);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Day) {
+      Day that = (Day) o;
+      return this.dayOfWeek.equals(that.dayOfWeek);
+    } else {
+      return false;
+    }
+  }
+
+  public boolean isSameDay(String day) {
+    return this.dayOfWeek.equals(day);
   }
 
   /**
@@ -87,4 +115,10 @@ public class Day {
   public int getNumEvents() {
     return events.size();
   }
+
+  public DayJson makeDayJson() {
+    //DayJson dayJson = new DayJson(this.dayOfWeek,this.events)
+    return null;
+  }
+
 }

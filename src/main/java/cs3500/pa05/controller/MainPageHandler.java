@@ -1,30 +1,23 @@
 package cs3500.pa05.controller;
 
-import cs3500.pa05.model.Model;
-import cs3500.pa05.view.AbstractView;
-import cs3500.pa05.view.LightTheme;
-import cs3500.pa05.view.View;
 import java.io.IOException;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Week implements EventHandler<ActionEvent> {
-  View view;
-  Model model;
+/**
+ * Controller for the central page of the journal
+ */
+public class MainPageHandler implements EventHandler<ActionEvent> {
+  Controller controller;
 
-  public Week(View view, Model model) {
-    this.view = view;
-    this.model = model;
+  MainPageHandler(Controller controller) {
+    this.controller = controller;
   }
 
   @Override
@@ -36,19 +29,19 @@ public class Week implements EventHandler<ActionEvent> {
   @FXML
   private void handleActionEvent(ActionEvent event) {
     if (event.getSource() instanceof MenuBar menuItem) {
-      if (menuItem.getId().equals("open")) {
-        view.loadStart();
-      } else if (menuItem.getId().equals("save")) {
+      String id = menuItem.getId();
+      if (id.equals("open") || id.equals("week")) {
+        controller.loadScene("welcome.fxml");
+      } else if (id.equals("save")) {
         //implement later
-      } else if (menuItem.getId().equals("setMax")) {
-        openPopup();
-      } else if (menuItem.getId().equals("task")) {
-        view.loadTaskPopup();
-      } else if (menuItem.getId().equals("week")) {
-        view.loadStart();
-      } else if (menuItem.getId().equals("event")) {
-        view.loadEventPopup();
-      } else if (menuItem.getId().equals("light")) {
+      } else if (id.equals("setMax")) {
+        openPopup("max_tasks_stage.fxml");
+      } else if (id.equals("task")) {
+        openPopup("create_task");
+      } else if (id.equals("event")) {
+        openPopup("create_event");
+
+      } else if (id.equals("light")) {
         //implement later
       } else if (menuItem.getId().equals("dark")) {
         //implement later

@@ -7,18 +7,21 @@ import cs3500.pa05.model.json.EventJson;
 
 
 public class Event extends Occasion {
-  private Timestamp start;
+  private int startHour;
+  private int startMinute;
   private int duration;
 
-  public Event(String n, String des, String d, Timestamp time, int dur) {
+  public Event(String n, String des, String d, int hour, int minute, int dur) {
     super(n, des, d);
-    this.start = time;
+    this.startHour = hour;
+    this.startMinute = minute;
     this.duration = dur;
   }
 
   public Event(EventJson eventJson) {
     super(eventJson.name(), eventJson.description(), eventJson.dayOfWeek());
-    this.start = eventJson.startTime();
+    this.startHour = eventJson.hour();
+    this.startMinute = eventJson.minutes();
     this.duration = eventJson.duration();
   }
 
@@ -33,7 +36,9 @@ public class Event extends Occasion {
         + System.lineSeparator()
         + makeDescription()
         + "Start Time: "
-        + start.toString()
+        + startHour
+        + ":"
+        + startMinute
         + System.lineSeparator()
         + "Duration: "
         + makeTime()
@@ -49,6 +54,12 @@ public class Event extends Occasion {
       int hours = (duration - minutes) / 60;
       return "" + hours + " hours" + minutes + " minutes";
     }
+  }
+
+  public EventJson makeJson() {
+    EventJson json = new EventJson(this.name, this.description, this.day,
+        this.startHour, this.startMinute, this.duration);
+    return json;
   }
 
 

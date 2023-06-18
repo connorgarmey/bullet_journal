@@ -1,10 +1,10 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.model.Model;
-import cs3500.pa05.model.ModelImpl;
 import cs3500.pa05.model.json.WeekJson;
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -12,24 +12,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
-public class Start implements EventHandler<Event> {
-  @FXML
-  private TextField inputFileLoad;
-  @FXML
-  private Button loadFile;
-  @FXML
-  private TextField inputFileCreate;
-  @FXML
-  private Button createFile;
+public class StartHandler implements EventHandler<ActionEvent> {
 
   private Model model;
+  private Controller controller;
+  TextField inputFileLoad;
+  TextField inputFileCreate;
 
-  public Start(Model model) {
+  public StartHandler(Model model, Controller controller, TextField inputFileLoad, TextField inputFileCreate) {
     this.model = model;
+    this.controller = controller;
+    this.inputFileLoad = inputFileLoad;
+    this.inputFileCreate = inputFileCreate;
   }
-  
+
 
   /**
    * Directs the controller to the correct event handler given the button clicked
@@ -60,16 +57,18 @@ public class Start implements EventHandler<Event> {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
     }
 
-    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
-    String file = pathName + name + ".bujo";
-    File fileToCreate = new File(file);
+    // If the name is valid, create the file
+    String pathName = "src/main/resources/";
+    Path path = Path.of(pathName + name + ".bujo");
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
     WeekJson newWeek = model.newWeek();
+    System.out.println(newWeek.toString());
     WriteFile writer = new WriteFile();
-
+    System.out.println("after");
     // If it is not null, create the file
-    writer.writeToFile(fileToCreate, newWeek); // replace with whatever we use to create the file
+    writer.writeToFile(path, newWeek); // replace with whatever we use to create the file
+    controller.loadScene("main_page.fxml");
   }
 
   /**
@@ -88,38 +87,40 @@ public class Start implements EventHandler<Event> {
   @FXML
   private void handleLoadFile() {
     // Load the name for the user input
-    String name =  spacesToDashes(inputFileLoad.getText());
-    String pathName = "pa05-dawgpawtrol3-license-to-journal/src/main/resources/";
-    String file = pathName + name + ".bujo";
-    File fileToLoad = new File(file);
+    String name = spacesToDashes(inputFileLoad.getText());
 
     // Check if it is null
     if (name.isEmpty()) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
-    } else if (!fileToLoad.exists()) { // does not exist -- not invalid
-      showAlert("Error", "Invalid Input", "File does not exist.");
     }
 
-    // Creating Model and Writer objects to create our WeekJson and allow us to write
-    WriteFile writer = new WriteFile();
+    // If the name is not null, try to create the loaded file
+    String pathName = "src/main/resources/";
+    String fileName = pathName + name + ".bujo";
 
-    // If all checks pass, load the file
-    writer.writeToFile(fileToLoad, );
-  }
 
-  /**
-   * Provides the error alert if a user needs to provide better input
-   *
-   * @param title The title of the alert -- should always be Error
-   * @param header The reasoning for the error
-   * @param content What the user must do to fix the error
-   */
-  private void showAlert(String title, String header, String content) {
-    Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle(title);
-    alert.setHeaderText(header);
-    alert.setContentText(content);
-    alert.showAndWait();
+
+    try {
+      // Load the file and create a scanner to read the file
+      Path filePath = Path.of(fileName);
+      Scanner scanner = new Scanner(filePath);
+      StringBuilder stringBuilder = new StringBuilder();
+
+      // While the file has more lines, continue to add to string builder
+      while (scanner.hasNextLine()) {
+        stringBuilder.append(scanner.nextLine());
+      }
+
+      // Translate the final string builder to a string
+      String fileString = stringBuilder.toString();
+
+      // If all checks pass, read the file and update the model
+      model.makeWeek(fileString);
+      controller.loadScene("main_page.fxml");
+    } catch (Exception e) {
+      e.printStackTrace();
+      showAlert("Error", "Invalid Input", "File does not exist.");
+    }
   }
 
   /**
