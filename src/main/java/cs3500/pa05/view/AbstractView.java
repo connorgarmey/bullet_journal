@@ -5,12 +5,15 @@ import cs3500.pa05.controller.JournalController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public abstract class AbstractView implements View {
   private FXMLLoader loader;
+  private Stage primaryStage;
 
-  public AbstractView(FXMLLoader loader) {
+  public AbstractView(FXMLLoader loader, Stage primaryStage) {
     // look up and store the layout
+    this.primaryStage = primaryStage;
     this.loader = loader;
     this.loader.setLocation(getClass().getClassLoader().getResource("welcome.fxml"));
   }
@@ -36,6 +39,13 @@ public abstract class AbstractView implements View {
     this.loader = new FXMLLoader();
     this.loader.setController(controller);
   }
+
+  public void changeStage() {
+    primaryStage.setScene(load());
+    primaryStage.show();
+  }
+
+
 
 
 

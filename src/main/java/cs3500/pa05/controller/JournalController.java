@@ -4,6 +4,7 @@ import cs3500.pa05.model.Model;
 import cs3500.pa05.view.View;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -22,9 +23,11 @@ public class JournalController implements Controller {
   private Model model;
   private View view;
 
-  // Field for MainPageHandler
+  // Fields for MainPageHandler
   @FXML
   private MenuBar menuBar;
+  @FXML
+  private HBox notesBox;
 
   // Fields for StartHandler
   @FXML
@@ -74,18 +77,6 @@ public class JournalController implements Controller {
     this.mainPageHandler = new MainPageHandler(this);
   }
 
-  /**
-   *  will need to do this in the view
-   *  need diff initialize methods for each diff page so that its only initialized when we get to that page
-  // todo: all of these need to be moved to the journalcontroller's initialize
-  public void initialize() {
-    inputTaskDay.getItems().addAll("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-    inputEventDay.getItems().addAll("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-    startHours.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 1));
-    startMinutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
-    duration.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0, 15));
-  }
-   **/
 
   @Override
   public void run() {
@@ -104,7 +95,7 @@ public class JournalController implements Controller {
     else if (url.equals("main_page.fxml")) {
       view.setControllerHelper(this);
       view.loadScene(url);
-      view.load();
+      changeStage();
 
       for (Menu menu : menuBar.getMenus()) {
         menu.setOnAction(mainPageHandler);
@@ -112,6 +103,7 @@ public class JournalController implements Controller {
           item.setOnAction(mainPageHandler);
         }
       }
+      refreshData();
 
     }
 
@@ -122,7 +114,48 @@ public class JournalController implements Controller {
     this.view = view;
   }
 
+  @Override
+  public void changeStage() {
+    view.changeStage();
+  }
 
+
+  @Override @FXML
+  public void popupHandler(String url, Stage popupStage) {
+    switch (url) {
+      case "create_event.fxml" -> createEventButton.setOnAction(
+          new CreateEventHandler(model, inputEventName, inputEventDescription, startHours,
+              startMinutes, duration, eventDayDropDown, popupStage, this));
+      case "create_task.fxml" ->
+          createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
+              inputTaskDescription, taskDayDropDown, popupStage));
+    }
+  }
+
+  @Override
+  public void refreshData() {
+    for (Node box : notesBox.getChildren()) {
+      if (box instanceof VBox vbox) {
+        for (Node node : vbox.getChildren()) {
+          if (node instanceof Label label) {
+            String id = label.getId();
+            if (id != null) {
+              switch (id) {
+                case "mondayStuff" -> label.setText(model.getDaysAgenda(0));
+                case "tuesdayStuff" -> label.setText(model.getDaysAgenda(1));
+                case "wednesdayStuff" -> label.setText(model.getDaysAgenda(2));
+                case "thursdayStuff" -> label.setText(model.getDaysAgenda(3));
+                case "fridayStuff" -> label.setText(model.getDaysAgenda(4));
+                case "saturdayStuff" -> label.setText(model.getDaysAgenda(5));
+                case "sundayStuff" -> label.setText(model.getDaysAgenda(6));
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
 
 
 

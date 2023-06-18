@@ -26,7 +26,7 @@ public class Driver extends Application {
     Model model = new ModelImpl();
     Controller controller = new JournalController(model);
     loader.setController(controller);
-    View view = new LightTheme(loader);
+    View view = new LightTheme(loader, primaryStage);
     controller.setView(view);
 
 

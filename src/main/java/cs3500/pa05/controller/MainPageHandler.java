@@ -62,7 +62,11 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
     }
   }
 
-
+  /**
+   * Opens a popup window
+   *
+   * @param url the .fxml file name
+   */
     @FXML
     private void openPopup(String url) {
       try {
@@ -73,13 +77,16 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         Scene popupScene = fxmlLoader.load();
 
         Stage popupStage = new Stage();
-        popupStage.setScene(new Scene(popupContent));
+        popupStage.setScene(popupScene);
 
         popupStage.show();
+        controller.popupHandler(url, popupStage);
       } catch (IOException e) {
         e.printStackTrace();
       }
   }
+
+
 
 
 

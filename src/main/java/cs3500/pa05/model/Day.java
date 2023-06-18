@@ -25,6 +25,13 @@ public class Day {
     this.events = new ArrayList<>();
   }
 
+  /**
+   * Constructor to use when reading from a file
+   *
+   * @param day
+   * @param tasks
+   * @param events
+   */
   public Day(String day, List<Occasion> tasks, List<Occasion> events) {
     this.dayOfWeek = day;
     this.tasks = tasks;
@@ -120,5 +127,10 @@ public class Day {
     //DayJson dayJson = new DayJson(this.dayOfWeek,this.events)
     return null;
   }
+
+  public String getAgenda() {
+    return tasks.toString() + events.toString();
+  }
+
 
 }

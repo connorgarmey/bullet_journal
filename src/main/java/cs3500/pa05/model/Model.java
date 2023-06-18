@@ -18,4 +18,6 @@ public interface Model {
   void makeWeek(String week);
 
   WeekJson currentData();
+
+  String getDaysAgenda(int day);
 }

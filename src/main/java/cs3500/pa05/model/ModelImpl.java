@@ -47,7 +47,6 @@ public class ModelImpl implements Model {
   @Override
   public void makeWeek(String week) {
     try {
-      System.out.println(week);
       WeekJson weekJson = mapper.readValue(week, WeekJson.class);
       makeDays(weekJson.days());
       this.numEvents = weekJson.stats().event();
@@ -157,6 +156,11 @@ public class ModelImpl implements Model {
       DayJson dayJson = new DayJson()
     }
   }*/
+
+  @Override
+  public String getDaysAgenda(int day) {
+    return week.get(day).getAgenda();
+  }
 
 
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Scene?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -16,137 +15,167 @@
 <?import javafx.scene.text.Font?>
 
 <Scene fx:id="mainPage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #fff8ff;">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: #fff8ff;">
       <children>
-         <HBox layoutX="760.0" layoutY="745.0" prefHeight="50.0" prefWidth="240.0" AnchorPane.leftAnchor="760.0">
+         <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0">
             <children>
-               <Button fx:id="createButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Create" />
-               <Button fx:id="saveButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Save" />
-               <Button fx:id="setMaxButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="Set Max" />
-            </children>
-         </HBox>
-         <HBox layoutX="52.0" layoutY="110.0" prefHeight="600.0" prefWidth="700.0">
-            <children>
-               <VBox prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Monday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tasks: &#10;&#10;-Work &#10;-On&#10;-OOD&#10;&#10;Events:&#10;&#10;-OOD&#10;-Depression&#10;-Why do these need to be horizontal?" wrapText="true" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Tuesday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Wednesday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Thursday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Friday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Saturday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-               <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
-                  <children>
-                     <TextField alignment="CENTER" prefHeight="39.0" prefWidth="100.0" text="Sunday">
-                        <font>
-                           <Font name="Georgia Bold" size="14.0" />
-                        </font>
-                     </TextField>
-                     <Label alignment="TOP_LEFT" prefHeight="560.0" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" />
-                  </children>
-               </VBox>
-            </children>
-         </HBox>
-         <Label fx:id="title" alignment="CENTER" layoutX="306.0" layoutY="48.0" prefHeight="43.0" prefWidth="398.0" text="Finals Week" textAlignment="CENTER" textFill="#832183">
-            <font>
-               <Font name="Georgia Bold Italic" size="33.0" />
-            </font>
-         </Label>
-         <MenuBar fx:id="menuBar" layoutX="2.0" prefHeight="28.0" prefWidth="1000.0">
-           <menus>
-             <Menu fx:id="file" mnemonicParsing="false" text="File">
-               <items>
-                 <MenuItem fx:id="open" mnemonicParsing="false" text="Open" />
-                     <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
-               </items>
-             </Menu>
-               <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
-                  <items>
-                     <MenuItem fx:id="setMax" mnemonicParsing="false" text="Set Max" />
-                  </items>
-               </Menu>
-             <Menu fx:id="newMenu" mnemonicParsing="false" text="New">
-               <items>
-                 <MenuItem fx:id="task" mnemonicParsing="false" text="Task" />
-                     <MenuItem fx:id="event" mnemonicParsing="false" text="Event" />
-                     <MenuItem fx:id="week" mnemonicParsing="false" text="Week" />
-                     <MenuItem fx:id="note" mnemonicParsing="false" text="Note" />
-               </items>
-             </Menu>
-               <Menu fx:id="theme" mnemonicParsing="false" text="Theme">
-                  <items>
-                     <MenuItem fx:id="light" mnemonicParsing="false" text="Light Theme" />
-                     <MenuItem fx:id="dark" mnemonicParsing="false" text="Dark Theme" />
-                     <MenuItem fx:id="blue" mnemonicParsing="false" text="Blue Theme" />
-                  </items>
-               </Menu>
-           </menus>
-         </MenuBar>
-         <Label layoutX="234.0" layoutY="722.0" prefHeight="43.0" prefWidth="400.0" text="Events: 3,   Tasks: 3   0% completed">
-            <font>
-               <Font name="Georgia Bold Italic" size="20.0" />
-            </font>
-         </Label>
-         <VBox layoutX="789.0" layoutY="110.0" prefHeight="600.0" prefWidth="190.0">
-            <children>
-               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes">
+               <MenuBar fx:id="menuBar" prefHeight="28.0" prefWidth="1400.0">
+                  <menus>
+                     <Menu fx:id="file" mnemonicParsing="false" text="File">
+                        <items>
+                           <MenuItem fx:id="open" mnemonicParsing="false" text="Open" />
+                           <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
+                        </items>
+                     </Menu>
+                     <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
+                        <items>
+                           <MenuItem fx:id="setMax" mnemonicParsing="false" text="Set Max" />
+                        </items>
+                     </Menu>
+                     <Menu fx:id="newMenu" mnemonicParsing="false" text="New">
+                        <items>
+                           <MenuItem fx:id="task" mnemonicParsing="false" text="Task" />
+                           <MenuItem fx:id="event" mnemonicParsing="false" text="Event" />
+                           <MenuItem fx:id="week" mnemonicParsing="false" text="Week" />
+                           <MenuItem fx:id="note" mnemonicParsing="false" text="Note" />
+                        </items>
+                     </Menu>
+                     <Menu fx:id="theme" mnemonicParsing="false" text="Theme">
+                        <items>
+                           <MenuItem fx:id="light" mnemonicParsing="false" text="Light Theme" />
+                           <MenuItem fx:id="dark" mnemonicParsing="false" text="Dark Theme" />
+                           <MenuItem fx:id="blue" mnemonicParsing="false" text="Blue Theme" />
+                        </items>
+                     </Menu>
+                  </menus>
+               </MenuBar>
+               <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="#832183">
                   <font>
-                     <Font name="Georgia Bold Italic" size="20.0" />
+                     <Font name="Georgia Bold Italic" size="48.0" />
                   </font>
                </Label>
-               <Label alignment="TOP_LEFT" prefHeight="550.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes go here" />
+               <HBox fx:id="notesBox" alignment="CENTER" prefHeight="600.0" prefWidth="700.0">
+                  <children>
+                     <VBox prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Monday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="mondayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tasks: &#10;&#10;-Work &#10;-On&#10;-OOD&#10;&#10;Events:&#10;&#10;-OOD&#10;-Depression&#10;-Why do these need to be horizontal?" wrapText="true">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tuesday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="tuesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Wednesday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="wednesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Thursday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="thursdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Friday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="fridayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Saturday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="saturdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Sunday">
+                              <font>
+                                 <Font name="Georgia Bold" size="25.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="sundayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="30.0" />
+                     <VBox prefHeight="600.0" prefWidth="190.0">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes">
+                              <font>
+                                 <Font name="Georgia Bold" size="24.0" />
+                              </font>
+                           </Label>
+                           <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="620.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes go here">
+                              <font>
+                                 <Font name="Georgia" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="485.0" text="Events: 3,   Tasks: 3   0% completed">
+                  <font>
+                     <Font name="Georgia Bold Italic" size="24.0" />
+                  </font>
+               </Label>
             </children>
          </VBox>
       </children>
@@ -167,4 +196,4 @@
          </stops>
       </RadialGradient>
    </fill>
-  </Scene>
+</Scene>

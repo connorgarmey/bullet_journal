@@ -1,6 +1,7 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.view.View;
+import javafx.stage.Stage;
 
 public interface Controller {
 
