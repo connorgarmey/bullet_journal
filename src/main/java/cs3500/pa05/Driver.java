@@ -31,13 +31,10 @@ public class Driver extends Application {
 
 
     try {
-      System.out.println(1);
       // load and place the view's scene onto the stage
       primaryStage.setScene(view.load());
-      System.out.println(2);
       // run the controller
       controller.run();
-      System.out.println(3);
       // render the stage
       primaryStage.show();
     } catch (IllegalStateException exc) {

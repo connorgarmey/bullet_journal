@@ -11,5 +11,7 @@ public interface View {
 
   void setControllerHelper(Controller controller);
 
+  void changeStage();
+
 
 }

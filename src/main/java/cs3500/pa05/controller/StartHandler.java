@@ -66,9 +66,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
     WeekJson newWeek = model.newWeek();
-    System.out.println(newWeek.toString());
     WriteFile writer = new WriteFile();
-    System.out.println("after");
     // If it is not null, create the file
     writer.writeToFile(path, newWeek); // replace with whatever we use to create the file
     controller.loadScene("main_page.fxml");

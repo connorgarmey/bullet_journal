@@ -9,4 +9,10 @@ public interface Controller {
   void loadScene(String url);
 
   void setView(View view);
+
+  void changeStage();
+
+  void popupHandler(String url, Stage popupStage);
+
+  void refreshData();
 }

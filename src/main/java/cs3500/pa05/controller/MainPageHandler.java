@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 /**
@@ -28,25 +29,35 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
 
   @FXML
   private void handleActionEvent(ActionEvent event) {
-    if (event.getSource() instanceof MenuBar menuItem) {
+    if (event.getSource() instanceof MenuItem menuItem) {
       String id = menuItem.getId();
-      if (id.equals("open") || id.equals("week")) {
-        controller.loadScene("welcome.fxml");
-      } else if (id.equals("save")) {
-        //implement later
-      } else if (id.equals("setMax")) {
-        openPopup("max_tasks_stage.fxml");
-      } else if (id.equals("task")) {
-        openPopup("create_task");
-      } else if (id.equals("event")) {
-        openPopup("create_event");
-
-      } else if (id.equals("light")) {
-        //implement later
-      } else if (id.equals("dark")) {
-        //implement later
-      } else if (id.equals("blue")) {
-        //implement later
+      switch (id) {
+        case "open":
+        case "week":
+          controller.loadScene("welcome.fxml");
+          controller.changeStage();
+          break;
+        case "save":
+          //implement later
+          break;
+        case "setMax":
+          openPopup("max_tasks_stage.fxml");
+          break;
+        case "task":
+          openPopup("create_task.fxml");
+          break;
+        case "event":
+          openPopup("create_event.fxml");
+          break;
+        case "light":
+          //implement later
+          break;
+        case "dark":
+          //implement later
+          break;
+        case "blue":
+          //implement later
+          break;
       }
     }
   }
@@ -55,8 +66,11 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
     @FXML
     private void openPopup(String url) {
       try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(url));
-        Parent popupContent = fxmlLoader.load();
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setController(controller);
+        fxmlLoader.setLocation(getClass().getClassLoader().getResource(url));
+        Scene popupScene = fxmlLoader.load();
 
         Stage popupStage = new Stage();
         popupStage.setScene(new Scene(popupContent));

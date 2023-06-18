@@ -31,7 +31,7 @@ public class Event extends Occasion {
 
   @Override
   public String toString() {
-    String string = "Event: "
+    String string = "Name: "
         + name
         + System.lineSeparator()
         + makeDescription()

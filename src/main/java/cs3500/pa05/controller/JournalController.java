@@ -6,11 +6,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class JournalController implements Controller {
   private Model model;
@@ -36,13 +42,13 @@ public class JournalController implements Controller {
   @FXML
   private TextField inputEventDescription;
   @FXML
-  private ChoiceBox<String> inputEventDay;
+  private ChoiceBox<String> eventDayDropDown;
   @FXML
-  private Spinner<Integer> startHours;
+  private ChoiceBox<String>  startHours;
   @FXML
-  private Spinner<Integer> startMinutes;
+  private ChoiceBox<String>  startMinutes;
   @FXML
-  private Spinner<Integer> duration;
+  private TextField duration;
   @FXML
   private Button createEventButton;
 
@@ -52,7 +58,7 @@ public class JournalController implements Controller {
   @FXML
   private TextField inputTaskDescription;
   @FXML
-  private ChoiceBox<String> inputTaskDay;
+  private ChoiceBox<String> taskDayDropDown;
   @FXML
   private Button createTaskButton;
 
@@ -100,8 +106,11 @@ public class JournalController implements Controller {
       view.loadScene(url);
       view.load();
 
-      for (MenuItem menuItem : menuBar.getMenus()) {
-        menuItem.setOnAction(mainPageHandler);
+      for (Menu menu : menuBar.getMenus()) {
+        menu.setOnAction(mainPageHandler);
+        for (MenuItem item : menu.getItems()) {
+          item.setOnAction(mainPageHandler);
+        }
       }
 
     }

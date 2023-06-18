@@ -21,6 +21,8 @@ public class ModelImpl implements Model {
   private int numTasks;
   private int completionPercent;
   private ObjectMapper mapper;
+  //private String bujoFile;
+  //TODO: keep the path with the model to persist
 
   public ModelImpl() {
     this.week = new ArrayList<>();

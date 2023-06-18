@@ -20,8 +20,6 @@ public abstract class AbstractView implements View {
   public Scene load() throws IllegalStateException {
     // load the layout
     try {
-      System.out.println(loader.getLocation());
-      System.out.println(loader.getController().toString());
       return this.loader.load();
     } catch (IOException exc) {
       exc.printStackTrace();
