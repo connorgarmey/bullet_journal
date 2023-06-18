@@ -1,5 +1,7 @@
 package cs3500.pa05.controller;
 
+import static cs3500.pa05.controller.ShowAlert.showAlert;
+
 import cs3500.pa05.model.Model;
 import cs3500.pa05.model.json.WeekJson;
 import java.io.File;

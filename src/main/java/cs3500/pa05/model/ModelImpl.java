@@ -145,4 +145,16 @@ public class ModelImpl implements Model {
     days.add("Sunday");
     return days;
   }
+
+  public WeekJson currentData(){
+    return null;
+  }
+  /*public WeekJson currentData() {
+    List<DayJson> dayJsons = new ArrayList<>();
+    for (Day day : week) {
+      DayJson dayJson = new DayJson()
+    }
+  }*/
+
+
 }

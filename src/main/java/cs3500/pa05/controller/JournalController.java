@@ -16,6 +16,7 @@ public class JournalController implements Controller {
   private Model model;
   private View view;
 
+  // Field for MainPageHandler
   @FXML
   private MenuBar menuBar;
 
@@ -66,6 +67,19 @@ public class JournalController implements Controller {
     this.model = model;
     this.mainPageHandler = new MainPageHandler(this);
   }
+
+  /**
+   *  will need to do this in the view
+   *  need diff initialize methods for each diff page so that its only initialized when we get to that page
+  // todo: all of these need to be moved to the journalcontroller's initialize
+  public void initialize() {
+    inputTaskDay.getItems().addAll("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    inputEventDay.getItems().addAll("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    startHours.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 1));
+    startMinutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+    duration.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, Integer.MAX_VALUE, 0, 15));
+  }
+   **/
 
   @Override
   public void run() {
