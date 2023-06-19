@@ -77,6 +77,18 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           modifyBackground(nodeBlue, "#6495ED");
           model.changeTheme(Theme.BLUE);
         }
+        case "sortByDuration" -> {
+          model.sortEvents(1);
+          controller.refreshData();
+        }
+        case "sortByEventName" -> {
+          model.sortEvents(2);
+          controller.refreshData();
+        }
+        case "sortByTaskName" -> {
+          model.sortEvents(3);
+          controller.refreshData();
+        }
       }
     }
   }
@@ -105,26 +117,41 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
       }
   }
 
+  /**
+   * Modifies the look of the headers and content
+   *
+   * @param headerFont the header font
+   * @param stuffFont the content font
+   * @param otherFont all other
+   * @param fontColor the color
+   */
   private void modifyLabels(Font headerFont, Font stuffFont, Font otherFont, Color fontColor) {
     List<Label> labels = controller.getAllLabels();
     for (Label label : labels) {
       if (label.getId().endsWith("Header")) {
         label.setFont(headerFont);
         label.setTextFill(fontColor);
-      } else if (label.getId().endsWith("Stuff")) {
         label.setFont(stuffFont);
         label.setTextFill(fontColor);
-      } else {
+      } else if (label.getId().endsWith("Icon")) {
+        //label.set
+      }
+      else {
         label.setFont(otherFont);
         label.setTextFill(fontColor);
       }
     }
   }
 
+  /**
+   * Modifies the background color
+   *
+   * @param node the parent node
+   * @param backgroundColor the color to change to
+   */
   private void modifyBackground(Parent node, String backgroundColor) {
-    if (node instanceof Region) {
-    Region region = (Region) node;
-    region.setStyle("-fx-background-color: " + backgroundColor + ";");
+    if (node instanceof Region region) {
+      region.setStyle("-fx-background-color: " + backgroundColor + ";");
     }
   }
 

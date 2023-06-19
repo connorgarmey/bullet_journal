@@ -50,6 +50,9 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
     } else if (badDuration()) {
       showAlert("Error", "Invalid Duration", "Duration must be a positive integer");
       duration.clear();
+    } else if (!model.canAdd(false, eventDayDropDown.getValue())) {
+      showAlert("Error", "No More Events", "You have hit your maximum number of tasks");
+      popup.close();
     } else {
       String name = inputEventName.getText();
       String description = inputEventDescription.getText();
@@ -65,7 +68,6 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
     }
 
   }
-
 
   private boolean badData() {
     String name = inputEventName.getText();

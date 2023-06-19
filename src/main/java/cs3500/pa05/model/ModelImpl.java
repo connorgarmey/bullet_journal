@@ -12,6 +12,7 @@ import cs3500.pa05.model.json.ThemeJson;
 import cs3500.pa05.model.json.WeekJson;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -243,6 +244,9 @@ public class ModelImpl implements Model {
   }
 
 
+  /**
+   * Updates the number of tasks and events for a week
+   */
   @Override
   public void updateNumbers() {
     numTasks = 0;
@@ -250,6 +254,32 @@ public class ModelImpl implements Model {
     for (Day day : week) {
       numTasks += day.getNumTasks();
       numEvents += day.getNumEvents();
+    }
+  }
+
+  /**
+   * Sorts the events
+   *
+   * @param sortType the type of sorting
+   */
+  @Override
+  public void sortEvents(int sortType) {
+    switch (sortType) {
+      case 1 -> {
+        for (Day day : week) {
+          day.sortListEvents(new SortByDuration());
+        }
+      }
+      case 2 -> {
+        for (Day day : week) {
+          day.sortListEvents(new SortByName());
+        }
+      }
+      case 3 -> {
+        for (Day day : week) {
+          day.sortListTasks(new SortByName());
+        }
+      }
     }
   }
 
