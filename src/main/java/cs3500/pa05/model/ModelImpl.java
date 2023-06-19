@@ -196,20 +196,6 @@ public class ModelImpl implements Model {
     }
   }
 
-  public boolean canAdd(String day, boolean isTask) {
-    boolean good = false;
-    for (Day d : week) {
-      if (d.isSameDay(day)) {
-        if (isTask) {
-          good = d.canAdd(isTask, maxTasks);
-        } else {
-          good = d.canAdd(isTask, maxEvents);
-        }
-      }
-    }
-    return good;
-  }
-
   /**
    * Gets the events and tasks for a day
    *

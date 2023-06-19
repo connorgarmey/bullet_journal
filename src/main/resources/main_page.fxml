@@ -57,11 +57,25 @@
                      </Menu>
                   </menus>
                </MenuBar>
-               <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="DEEPPINK">
-                  <font>
-                     <Font name="Georgia Bold Italic" size="48.0" />
-                  </font>
-               </Label>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Label fx:id="leftIcon" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
+                        <font>
+                           <Font size="51.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="DEEPPINK">
+                        <font>
+                           <Font name="Georgia Bold Italic" size="48.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="rightIcon" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
+                        <font>
+                           <Font size="47.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
                <HBox fx:id="notesBox" alignment="CENTER" prefHeight="600.0" prefWidth="700.0">
                   <children>
                      <VBox prefHeight="600.0" prefWidth="100.0">

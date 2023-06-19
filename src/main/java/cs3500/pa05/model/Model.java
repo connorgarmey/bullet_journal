@@ -23,13 +23,8 @@ public interface Model {
 
   void updateMax(int max, String which);
 
-  boolean canAdd(String day, boolean isTask);
-
   String getCurrentStats();
 
-  void updateNumbers();
-
-  //Day getDay(String dayRep);
   boolean canAdd(Boolean isTask, String dayRep);
 
   void sortEvents(int sortType);

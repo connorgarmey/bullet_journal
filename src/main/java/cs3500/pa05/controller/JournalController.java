@@ -260,6 +260,8 @@ public class JournalController implements Controller {
     labels.add(notesHeader);
     labels.add(notesStuff);
     labels.add(stats);
+    labels.add(leftIcon);
+    labels.add(rightIcon);
     return labels;
   }
 
