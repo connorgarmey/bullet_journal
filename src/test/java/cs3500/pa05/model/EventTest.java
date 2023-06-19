@@ -3,6 +3,8 @@ package cs3500.pa05.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import cs3500.pa05.model.json.EventJson;
+import cs3500.pa05.model.json.TaskJson;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -14,41 +16,47 @@ class EventTest {
   static Event event5;
   static EventJson eventJson1;
 
-
   @BeforeAll
-  public void setup() {
+  public static void setup() {
     event1 = new Event("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
     event2 = new Event("Meditation", "Hour long meditation session", "Tuesday", 8, 0, 60);
     event3 = new Event("Basketball game", "Club basketball game", "Wednesday", 12, 15, 120);
     event4 = new Event("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
     event5 = new Event("Godfather marathon", "Watch all Godfather movies", "Saturday", 10, 0, 599);
-
     eventJson1 = new EventJson("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
-
   }
 
   @Test
-  private void testJsonToEvent() {
+  public void testJsonToEvent() {
     // Create the expected event utilizing eventJson1 and the Event constructor
-    Event expected = new Event(eventJson1);
+    Event jsonEvent = new Event(eventJson1);
 
     // Check that each of the fields is created as expected
-    assertEquals("OOD Exam", expected.getName());
-    assertEquals("Exam 2 for OOD Summer 1", expected.getDescription());
-    assertEquals("Thursday", expected.getDay());
-    assertEquals(11, expected.getHours());
-    assertEquals(40, expected.getMinutes());
-    assertEquals(100, expected.getDuration());
+    String outputString = jsonEvent.toString();
+    String expected = "What: "
+        + "OOD Exam"
+        + System.lineSeparator()
+        + "Exam 2 for OOD Summer 1"
+        + "Start Time: "
+        + 11
+        + ":"
+        + 40
+        + System.lineSeparator()
+        + "Duration: "
+        + "1 hour " + 40 + " minutes"
+        + System.lineSeparator();
   }
 
   @Test
   // Tests toString() and private method makeTime()
-  private void testToString() {
+  public void testToString() {
     // Duration < 60
     String expected1 = "What: "
         + "Haircut"
         + System.lineSeparator()
+        + "Description: "
         + "Pre-scheduled haircut"
+        + System.lineSeparator()
         + "Start Time: "
         + 10
         + ":"
@@ -59,11 +67,14 @@ class EventTest {
         + System.lineSeparator();
     assertEquals(expected1, event1.toString());
 
+
     // Duration = 60
     String expected2 = "What: "
         + "Meditation"
         + System.lineSeparator()
+        + "Description: "
         + "Hour long meditation session"
+        + System.lineSeparator()
         + "Start Time: "
         + 8
         + ":"
@@ -78,7 +89,9 @@ class EventTest {
     String expected3 = "What: "
         + "Basketball game"
         + System.lineSeparator()
+        + "Description: "
         + "Club basketball game"
+        + System.lineSeparator()
         + "Start Time: "
         + 12
         + ":"
@@ -93,7 +106,9 @@ class EventTest {
     String expected4 = "What: "
         + "OOD Exam"
         + System.lineSeparator()
+        + "Description: "
         + "Exam 2 for OOD Summer 1"
+        + System.lineSeparator()
         + "Start Time: "
         + 11
         + ":"
@@ -108,7 +123,9 @@ class EventTest {
     String expected5 = "What: "
         + "Godfather marathon"
         + System.lineSeparator()
+        + "Description: "
         + "Watch all Godfather movies"
+        + System.lineSeparator()
         + "Start Time: "
         + 10
         + ":"
@@ -121,8 +138,20 @@ class EventTest {
   }
 
   @Test
-  private void testMakeJson() {
+  public void testMakeJson() {
     EventJson expected = event4.makeJson();
     assertEquals(expected, eventJson1);
+  }
+
+  @Test
+  public void testGetDuration() {
+    int duration = event1.getDuration();
+    assertEquals(30, duration);
+  }
+
+  @Test
+  public void testGetName() {
+    String name = event1.getName();
+    assertEquals("Haircut", name);
   }
 }
