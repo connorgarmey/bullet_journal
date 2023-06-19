@@ -17,6 +17,8 @@ import javafx.scene.control.Labeled;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -46,6 +48,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
   private void handleActionEvent(ActionEvent event) {
     if (event.getSource() instanceof MenuItem menuItem) {
       String id = menuItem.getId();
+      ClassLoader classLoader = getClass().getClassLoader();
       switch (id) {
         case "open", "week" -> {
           controller.loadScene("welcome.fxml");
@@ -60,7 +63,8 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           Parent nodeLight = scene.getRoot();
           Image image = new Image(classLoader.getResource("png-miss-piggy.png").toExternalForm());
           modifyLabels(new Font("Georgia Bold", 25), new Font("Georgia", 18),
-              new Font("Georgia Bold Italic", 48), Color.DEEPPINK);
+              new Font("Georgia Bold Italic", 48), Color.DEEPPINK,
+              image);
           modifyBackground(nodeLight, "#fff8ff");
           model.changeTheme(Theme.LIGHT);
         }
@@ -68,14 +72,17 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           Parent nodeDark = scene.getRoot();
           Image image = new Image(classLoader.getResource("png-bust.png").toExternalForm());
           modifyLabels(new Font("Times New Roman Bold", 25), new Font("Times New Roman", 18),
-              new Font("Times New Roman Bold Italic", 48), Color.BLACK);
+              new Font("Times New Roman Bold Italic", 48), Color.BLACK,
+              image);
           modifyBackground(nodeDark, "#A9A9A9");
           model.changeTheme(Theme.DARK);
         }
         case "blue" -> {
           Parent nodeBlue = scene.getRoot();
+          Image image = new Image(classLoader.getResource("png-bust.png").toExternalForm());
           modifyLabels(new Font("Arial Bold", 25), new Font("Arial", 18),
-              new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE);
+              new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE,
+              image);
           modifyBackground(nodeBlue, "#6495ED");
           model.changeTheme(Theme.BLUE);
         }
@@ -127,7 +134,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
    * @param otherFont all other
    * @param fontColor the color
    */
-  private void modifyLabels(Font headerFont, Font stuffFont, Font otherFont, Color fontColor) {
+  private void modifyLabels(Font headerFont, Font stuffFont, Font otherFont, Color fontColor, Image image) {
     List<Label> labels = controller.getAllLabels();
     for (Label label : labels) {
       if (label.getId().endsWith("Header")) {
@@ -137,7 +144,11 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         label.setFont(stuffFont);
         label.setTextFill(fontColor);
       } else if (label.getId().endsWith("Icon")) {
-        //label.set
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);  // Adjust the width as needed
+        imageView.setFitHeight(70); // Adjust the height as needed
+        imageView.setPreserveRatio(true);
+        label.setGraphic(imageView);
       }
       else {
         label.setFont(otherFont);

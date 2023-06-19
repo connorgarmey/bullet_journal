@@ -27,6 +27,11 @@ public class JournalController implements Controller {
   private MenuBar menuBar;
   @FXML
   private HBox notesBox;
+  // Icons
+  @FXML
+  private Label leftIcon;
+  @FXML
+  private Label rightIcon;
 
   // Fields for StartHandler
   @FXML
@@ -204,7 +209,6 @@ public class JournalController implements Controller {
   @Override
   public void refreshData() {
     updateCalendar();
-    model.updateNumbers();
     stats.setText(model.getCurrentStats());
   }
 

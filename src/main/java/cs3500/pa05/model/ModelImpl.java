@@ -216,6 +216,7 @@ public class ModelImpl implements Model {
    */
   @Override
   public String getCurrentStats() {
+    updateNumbers();
     int total = 0;
     int completed = 0;
     for (Day day : week) {
@@ -233,8 +234,7 @@ public class ModelImpl implements Model {
   /**
    * Updates the number of tasks and events for a week
    */
-  @Override
-  public void updateNumbers() {
+  private void updateNumbers() {
     numTasks = 0;
     numEvents = 0;
     for (Day day : week) {
