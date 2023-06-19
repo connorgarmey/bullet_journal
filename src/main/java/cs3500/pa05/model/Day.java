@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.json.DayJson;
+import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.TaskJson;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -124,13 +125,26 @@ public class Day {
   }
 
   public DayJson makeDayJson() {
-    //DayJson dayJson = new DayJson(this.dayOfWeek,this.events)
-    return null;
+    List<EventJson> eventsJson = new ArrayList<>();
+    for (Occasion o : events) {
+      Event event = (Event) o;
+      EventJson json = event.makeJson();
+      eventsJson.add(json);
+    }
+    List<TaskJson> tasksJson = new ArrayList<>();
+    for (Occasion o : tasks) {
+      Task task = (Task) o;
+      TaskJson json = task.makeJson();
+      tasksJson.add(json);
+    }
+    DayJson dayJson = new DayJson(this.dayOfWeek, eventsJson, tasksJson);
+    return dayJson;
   }
 
   public String getAgenda() {
     return tasks.toString() + events.toString();
   }
+
 
 
 }

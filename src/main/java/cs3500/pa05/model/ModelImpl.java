@@ -9,7 +9,7 @@ import cs3500.pa05.model.json.StatsJson;
 import cs3500.pa05.model.json.TaskJson;
 import cs3500.pa05.model.json.ThemeJson;
 import cs3500.pa05.model.json.WeekJson;
-import java.security.Timestamp;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +21,7 @@ public class ModelImpl implements Model {
   private int numTasks;
   private int completionPercent;
   private ObjectMapper mapper;
-  //private String bujoFile;
-  //TODO: keep the path with the model to persist
+  private Path bujoFile;
 
   public ModelImpl() {
     this.week = new ArrayList<>();
@@ -30,17 +29,6 @@ public class ModelImpl implements Model {
     this.numTasks = 0;
     this.completionPercent = 0;
     this.theme = Theme.LIGHT;
-    this.mapper = new ObjectMapper();
-  }
-
-  //potentially don't need
-  public ModelImpl(WeekJson weekJson) {
-    this.week = new ArrayList<>();
-    makeDays(weekJson.days());
-    this.theme = weekJson.theme().theme();
-    this.numEvents = weekJson.stats().event();
-    this.numTasks = weekJson.stats().task();
-    this.completionPercent = weekJson.stats().percent();
     this.mapper = new ObjectMapper();
   }
 
@@ -85,7 +73,6 @@ public class ModelImpl implements Model {
   }
 
 
-
   @Override
   public void addTask(String n, String des, String d) {
     Occasion taskToAdd = new Task(n,des,d);
@@ -112,15 +99,6 @@ public class ModelImpl implements Model {
     this.theme = theme;
   }
 
-  @Override
-  public void updateNumbers() {
-    numTasks = 0;
-    numEvents = 0;
-    for (Day day : week) {
-      numTasks += day.getNumTasks();
-      numEvents += day.getNumEvents();
-    }
-  }
 
   @Override
   public WeekJson newWeek() {
@@ -147,20 +125,23 @@ public class ModelImpl implements Model {
     return days;
   }
 
-  public WeekJson currentData(){
-    return null;
-  }
-  /*public WeekJson currentData() {
+  public WeekJson currentData() {
     List<DayJson> dayJsons = new ArrayList<>();
     for (Day day : week) {
-      DayJson dayJson = new DayJson()
+      DayJson dayJson = day.makeDayJson();
+      dayJsons.add(dayJson);
     }
-  }*/
+    StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.completionPercent);
+    ThemeJson themeJson = new ThemeJson(this.theme);
+    return new WeekJson(dayJsons, themeJson, statsJson);
+  }
 
   @Override
   public String getDaysAgenda(int day) {
     return week.get(day).getAgenda();
   }
 
-
+  public void updateBujoFile(Path path) {
+    this.bujoFile = path;
+  }
 }

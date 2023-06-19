@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.json.WeekJson;
+import java.nio.file.Path;
 import java.security.Timestamp;
 
 public interface Model {
@@ -11,8 +12,6 @@ public interface Model {
 
   void changeTheme(Theme theme);
 
-  void updateNumbers();
-
   WeekJson newWeek();
 
   void makeWeek(String week);
@@ -20,4 +19,6 @@ public interface Model {
   WeekJson currentData();
 
   String getDaysAgenda(int day);
+
+  void updateBujoFile(Path path);
 }

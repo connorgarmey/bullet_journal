@@ -66,6 +66,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
 
     // Creating Model and Writer objects to create our WeekJson and allow us to write
     WeekJson newWeek = model.newWeek();
+    model.updateBujoFile(path);
     WriteFile writer = new WriteFile();
     // If it is not null, create the file
     writer.writeToFile(path, newWeek); // replace with whatever we use to create the file
@@ -117,6 +118,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
 
       // If all checks pass, read the file and update the model
       model.makeWeek(fileString);
+      model.updateBujoFile(filePath);
       controller.loadScene("main_page.fxml");
     } catch (Exception e) {
       e.printStackTrace();

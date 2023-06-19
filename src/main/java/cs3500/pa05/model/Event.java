@@ -49,6 +49,14 @@ public class Event extends Occasion {
   private String makeTime() {
     if (duration < 60) {
       return "" + duration + " minutes";
+    } else if (duration == 60) {
+      return "1 hour";
+    } else if (duration % 60 == 0) {
+      int hours = duration / 60;
+      return "" + hours + "hours";
+    } else if (duration > 60 && duration < 120){
+      int minutes = duration - 60;
+      return "1 hour" + minutes + " minutes";
     } else {
       int minutes = duration % 60;
       int hours = (duration - minutes) / 60;

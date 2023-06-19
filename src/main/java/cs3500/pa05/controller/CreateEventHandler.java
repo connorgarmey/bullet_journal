@@ -50,13 +50,9 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
   public void handle(ActionEvent event) {
     if (badData()) {
       showAlert("Error", "Null Values", "Event and Day cannot be null");
-    }
-
-    if (badTime()) {
+    } else if (badTime()) {
       showAlert("Error", "Null Values", "Hour and Minutes cannot be null");
-    }
-
-    if (badDuration()) {
+    } else if (badDuration()) {
       showAlert("Error", "Invalid Duration", "Duration must be a positive integer");
       duration.clear();
     } else {

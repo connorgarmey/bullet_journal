@@ -40,12 +40,11 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
 
     if (task.isBlank() || day.isEmpty()) {
       showAlert("Error", "Null Values", "Task and Day cannot be null");
+    } else {
+      model.addTask(task, description, day);
+      popup.close();
+      controller.refreshData();
     }
-
-    model.addTask(task, description, day);
-    popup.close();
-    controller.refreshData();
-
 
     // after adding task need to move back to main journal screen
 
