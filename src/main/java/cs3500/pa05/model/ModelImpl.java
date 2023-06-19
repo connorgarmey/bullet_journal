@@ -20,7 +20,7 @@ public class ModelImpl implements Model {
   private Theme theme;
   private int numEvents;
   private int numTasks;
-  private int completionPercent;
+  private double completionPercent;
   private ObjectMapper mapper;
   private Path bujoFile;
   private int maxTasks;
@@ -31,7 +31,7 @@ public class ModelImpl implements Model {
     this.week = makeEmptyDays();
     this.numEvents = 0;
     this.numTasks = 0;
-    this.completionPercent = 0;
+    this.completionPercent = 0.00;
     this.theme = Theme.LIGHT;
     this.mapper = new ObjectMapper();
     this.notes = "";
@@ -55,8 +55,9 @@ public class ModelImpl implements Model {
 
   private void updateDays(List<DayJson> dayJsons) {
     for (DayJson dayJson : dayJsons) {
-      Day day = new Day( dayJson.day(), makeTasks(dayJson.tasks()), makeEvents(dayJson.events()));
-      this.week.add(day);
+      for (Day day : week) {
+        day.update(dayJson);
+      }
     }
   }
 
@@ -150,11 +151,6 @@ public class ModelImpl implements Model {
     StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents, this.maxTasks, this.notes, this.completionPercent);
     ThemeJson themeJson = new ThemeJson(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);
-  }
-
-  @Override
-  public String getDaysAgenda(int day) {
-    return week.get(day).getAgenda();
   }
 
   public void updateBujoFile(Path path) {

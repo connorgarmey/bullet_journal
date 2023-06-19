@@ -47,47 +47,36 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
     if (event.getSource() instanceof MenuItem menuItem) {
       String id = menuItem.getId();
       switch (id) {
-        case "open":
-        case "week":
+        case "open", "week" -> {
           controller.loadScene("welcome.fxml");
           controller.changeStage();
-          break;
-        case "save":
-          model.saveData();
-          break;
-        case "setMaxTasks":
-          openPopup("max_tasks_stage.fxml");
-          break;
-        case "setMaxEvents":
-          openPopup("max_events_stage.fxml");
-          break;
-        case "task":
-          openPopup("create_task.fxml");
-          break;
-        case "event":
-          openPopup("create_event.fxml");
-          break;
-        case "light":
+        }
+        case "save" -> model.saveData();
+        case "setMaxTasks" -> openPopup("max_tasks_stage.fxml");
+        case "setMaxEvents" -> openPopup("max_events_stage.fxml");
+        case "task" -> openPopup("create_task.fxml");
+        case "event" -> openPopup("create_event.fxml");
+        case "light" -> {
           Parent nodeLight = scene.getRoot();
           modifyLabels(new Font("Georgia Bold", 25), new Font("Georgia", 18),
               new Font("Georgia Bold Italic", 48), Color.DEEPPINK);
           modifyBackground(nodeLight, "#fff8ff");
           model.changeTheme(Theme.LIGHT);
-          break;
-        case "dark":
+        }
+        case "dark" -> {
           Parent nodeDark = scene.getRoot();
           modifyLabels(new Font("Times New Roman Bold", 25), new Font("Times New Roman", 18),
               new Font("Times New Roman Bold Italic", 48), Color.BLACK);
           modifyBackground(nodeDark, "#A9A9A9");
           model.changeTheme(Theme.DARK);
-          break;
-        case "blue":
+        }
+        case "blue" -> {
           Parent nodeBlue = scene.getRoot();
           modifyLabels(new Font("Arial Bold", 25), new Font("Arial", 18),
               new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE);
           modifyBackground(nodeBlue, "#6495ED");
           model.changeTheme(Theme.BLUE);
-          break;
+        }
       }
     }
   }

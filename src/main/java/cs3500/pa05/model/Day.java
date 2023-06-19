@@ -53,8 +53,7 @@ public class Day {
 
   @Override
   public boolean equals(Object o) {
-    if (o instanceof Day) {
-      Day that = (Day) o;
+    if (o instanceof Day that) {
       return this.dayOfWeek.equals(that.dayOfWeek);
     } else {
       return false;
@@ -113,6 +112,19 @@ public class Day {
    */
   public int getNumTasks() {
     return tasks.size();
+  }
+
+
+  public int getNumCompletedTasks() {
+    int completedTasks = 0;
+    for (Occasion occ : tasks) {
+      if (occ instanceof Task task) {
+        if (task.getCompletionStatus()) {
+          completedTasks++;
+        }
+      }
+    }
+    return completedTasks;
   }
 
   /**

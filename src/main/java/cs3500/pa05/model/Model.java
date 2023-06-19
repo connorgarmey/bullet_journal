@@ -2,7 +2,6 @@ package cs3500.pa05.model;
 
 import cs3500.pa05.model.json.WeekJson;
 import java.nio.file.Path;
-import java.security.Timestamp;
 
 public interface Model {
 

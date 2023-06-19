@@ -198,8 +198,20 @@ public class JournalController implements Controller {
     }
   }
 
+  /**
+   * Refreshes the week page to contain updated data
+   */
   @Override
   public void refreshData() {
+    updateCalendar();
+    model.updateNumbers();
+    stats.setText(model.getCurrentStats());
+  }
+
+  /**
+   * Updates the tasks and events for each day
+   */
+  private void updateCalendar() {
     for (Node box : notesBox.getChildren()) {
       if (box instanceof VBox vbox) {
         for (Node node : vbox.getChildren()) {

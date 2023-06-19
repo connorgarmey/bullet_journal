@@ -43,4 +43,14 @@ public class Task extends Occasion {
       return "No";
     }
   }
+
+  /**
+   * Gets the completion status
+   *
+   * @return whether a task is complete
+   */
+  public boolean getCompletionStatus() {
+    return isCompleted;
+  }
+
 }
