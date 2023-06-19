@@ -25,6 +25,7 @@ public class ModelImpl implements Model {
   private Path bujoFile;
   private int maxTasks;
   private int maxEvents;
+  private String notes;
 
   public ModelImpl() {
     this.week = makeEmptyDays();
@@ -33,24 +34,26 @@ public class ModelImpl implements Model {
     this.completionPercent = 0;
     this.theme = Theme.LIGHT;
     this.mapper = new ObjectMapper();
+    this.notes = "";
   }
 
   @Override
   public void makeWeek(String week) {
     try {
       WeekJson weekJson = mapper.readValue(week, WeekJson.class);
-      makeDays(weekJson.days());
+      updateDays(weekJson.days());
       this.numEvents = weekJson.stats().event();
       this.numTasks = weekJson.stats().task();
       this.completionPercent = weekJson.stats().percent();
       this.theme = weekJson.theme().theme();
+      this.notes = weekJson.stats().notes();
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
 
   }
 
-  private void makeDays(List<DayJson> dayJsons) {
+  private void updateDays(List<DayJson> dayJsons) {
     for (DayJson dayJson : dayJsons) {
       Day day = new Day( dayJson.day(), makeTasks(dayJson.tasks()), makeEvents(dayJson.events()));
       this.week.add(day);
@@ -122,9 +125,8 @@ public class ModelImpl implements Model {
       days.add(day);
     }
     ThemeJson theme = new ThemeJson(Theme.LIGHT);
-    StatsJson stats = new StatsJson(0, 0, 100);
-    WeekJson week = new WeekJson(days, theme, stats);
-    return week;
+    StatsJson stats = new StatsJson(0, 0, 5, 5, "", 100);
+    return new WeekJson(days, theme, stats);
   }
 
   private List<String> makeDaysOfWeek(List<String> days) {
@@ -145,7 +147,7 @@ public class ModelImpl implements Model {
       DayJson dayJson = day.makeDayJson();
       dayJsons.add(dayJson);
     }
-    StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.completionPercent);
+    StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents, this.maxTasks, this.notes, this.completionPercent);
     ThemeJson themeJson = new ThemeJson(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);
   }
@@ -169,6 +171,64 @@ public class ModelImpl implements Model {
       this.maxTasks = max;
     } else {
       this.maxEvents = max;
+    }
+  }
+
+  public boolean canAdd(String day, boolean isTask) {
+    boolean good = false;
+    for (Day d : week) {
+      if (d.isSameDay(day)) {
+        if (isTask) {
+          good = d.canAdd(isTask, maxTasks);
+        } else {
+          good = d.canAdd(isTask, maxEvents);
+        }
+      }
+    }
+    return good;
+  }
+
+  /**
+   * Gets the events and tasks for a day
+   *
+   * @param day the day of the week
+   *
+   * @return a String representation of the day's agenda
+   */
+  @Override
+  public String getDaysAgenda(int day) {
+    return week.get(day).getAgenda();
+  }
+
+
+  /**
+   * Gets updated statistics for the week
+   *
+   * @return a String representation of statistics
+   */
+  @Override
+  public String getCurrentStats() {
+    int total = 0;
+    int completed = 0;
+    for (Day day : week) {
+      total += day.getNumTasks();
+      completed += day.getNumCompletedTasks();
+
+    }
+    completionPercent = (double) completed / total * 100;
+
+    return "Events: " + numEvents + ",   Tasks: " + numTasks
+        + "   " + completionPercent +"% completed";
+  }
+
+
+  @Override
+  public void updateNumbers() {
+    numTasks = 0;
+    numEvents = 0;
+    for (Day day : week) {
+      numTasks += day.getNumTasks();
+      numEvents += day.getNumEvents();
     }
   }
 

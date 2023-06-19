@@ -158,6 +158,30 @@ public class Day {
     }
   }
 
+  public boolean canAdd(boolean isTask, int max) {
+    if (isTask) {
+      return this.tasks.size() < max;
+    } else {
+      return this.events.size() < max;
+    }
+  }
+
+  /**
+   * Updates the dya
+   *
+   * @param json the Day JSON
+   */
+  public void update(DayJson json) {
+    List<EventJson> eventJsons = json.events();
+    for (EventJson theEvent : eventJsons) {
+      this.events.add(theEvent.makeEvent());
+    }
+    List<TaskJson> taskJsons = json.tasks();
+    for (TaskJson theTask : taskJsons) {
+      this.tasks.add(theTask.makeTask());
+    }
+  }
+
 
 
 }

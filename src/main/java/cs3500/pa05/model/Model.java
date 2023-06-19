@@ -23,4 +23,10 @@ public interface Model {
   void updateBujoFile(Path path);
 
   void updateMax(int max, String which);
+
+  boolean canAdd(String day, boolean isTask);
+
+  String getCurrentStats();
+
+  void updateNumbers();
 }

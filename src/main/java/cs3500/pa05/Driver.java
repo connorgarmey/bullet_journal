@@ -4,7 +4,7 @@ import cs3500.pa05.controller.Controller;
 import cs3500.pa05.controller.JournalController;
 import cs3500.pa05.model.Model;
 import cs3500.pa05.model.ModelImpl;
-import cs3500.pa05.view.LightTheme;
+import cs3500.pa05.view.ViewImpl;
 import cs3500.pa05.view.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,7 @@ public class Driver extends Application {
     Model model = new ModelImpl();
     Controller controller = new JournalController(model);
     loader.setController(controller);
-    View view = new LightTheme(loader, primaryStage);
+    View view = new ViewImpl(loader, primaryStage);
     controller.setView(view);
 
 

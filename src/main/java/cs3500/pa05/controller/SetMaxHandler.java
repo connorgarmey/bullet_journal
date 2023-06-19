@@ -8,13 +8,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class SetMaxTaskHandler implements EventHandler<ActionEvent> {
+public class SetMaxHandler implements EventHandler<ActionEvent> {
   Controller controller;
   Model model;
   TextField textField;
   Label theLabel;
 
-  public SetMaxTaskHandler(Controller control, Model model, TextField field, Label label) {
+  public SetMaxHandler(Controller control, Model model, TextField field, Label label) {
     this.controller = control;
     this.model = model;
     this.textField = field;

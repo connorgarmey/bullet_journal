@@ -110,6 +110,15 @@ public class JournalController implements Controller {
   @FXML
   private Label maxTasks;
 
+  //Fields for Setting Max tasks
+  @FXML
+  private TextField numMaxEvents;
+  @FXML
+  private Button buttonMaxEvents;
+  @FXML
+  private Label maxEvents;
+
+
 
 
 
@@ -183,7 +192,9 @@ public class JournalController implements Controller {
           createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
               inputTaskDescription, taskDayDropDown, popupStage));
       case "max_tasks_stage.fxml" ->
-          buttonMaxTasks.setOnAction(new SetMaxTaskHandler(this, model, this.numMaxTasks, this.maxTasks));
+          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, this.numMaxTasks, this.maxTasks));
+      case "max_events_stage.fxml" ->
+          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, this.numMaxEvents, this.maxEvents));
     }
   }
 
