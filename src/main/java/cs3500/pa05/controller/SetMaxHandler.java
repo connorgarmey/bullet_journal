@@ -7,18 +7,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class SetMaxHandler implements EventHandler<ActionEvent> {
   Controller controller;
   Model model;
   TextField textField;
   Label theLabel;
+  Stage popup;
 
-  public SetMaxHandler(Controller control, Model model, TextField field, Label label) {
+  public SetMaxHandler(Controller control, Model model, TextField field, Label label, Stage popup) {
     this.controller = control;
     this.model = model;
     this.textField = field;
     this.theLabel = label;
+    this.popup = popup;
   }
 
   @Override
@@ -31,6 +34,7 @@ public class SetMaxHandler implements EventHandler<ActionEvent> {
       try {
         int i = Integer.parseInt(max);
         model.updateMax(i, whichMax());
+        popup.close();
       } catch (NumberFormatException e) {
         textField.clear();
       }

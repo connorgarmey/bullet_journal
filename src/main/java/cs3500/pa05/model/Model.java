@@ -28,4 +28,9 @@ public interface Model {
   String getCurrentStats();
 
   void updateNumbers();
+
+  //Day getDay(String dayRep);
+  boolean canAdd(Boolean isTask, String dayRep);
+
+  void sortEvents(int sortType);
 }

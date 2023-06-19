@@ -48,6 +48,13 @@
                            <MenuItem fx:id="blue" mnemonicParsing="false" text="Blue Theme" />
                         </items>
                      </Menu>
+                     <Menu fx:id="sort" mnemonicParsing="false" text="Sort">
+                        <items>
+                           <MenuItem fx:id="sortByDuration" mnemonicParsing="false" text="Sort By Event Duration" />
+                           <MenuItem fx:id="sortByEventName" mnemonicParsing="false" text="Sort By Event Name" />
+                           <MenuItem fx:id="sortByTaskName" mnemonicParsing="false" text="Sort By Task Name" />
+                        </items>
+                     </Menu>
                   </menus>
                </MenuBar>
                <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="DEEPPINK">

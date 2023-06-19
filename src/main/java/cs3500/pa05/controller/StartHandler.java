@@ -69,8 +69,9 @@ public class StartHandler implements EventHandler<ActionEvent> {
     model.updateBujoFile(path);
     WriteFile writer = new WriteFile();
     // If it is not null, create the file
-    writer.writeToFile(path, newWeek); // replace with whatever we use to create the file
+    writer.writeToFile(path, newWeek);
     controller.loadScene("main_page.fxml");
+
   }
 
   /**

@@ -35,6 +35,9 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
 
     if (task.isBlank() || day.isEmpty()) {
       showAlert("Error", "Null Values", "Task and Day cannot be null");
+    } else if (!model.canAdd(true, taskDayDropDown.getValue())) {
+      showAlert("Error", "No More Tasks", "You have hit your maximum number of events");
+      popup.close();
     } else {
       model.addTask(task, description, day);
       popup.close();

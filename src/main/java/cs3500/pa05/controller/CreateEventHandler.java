@@ -42,6 +42,7 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
 
   @Override
   public void handle(ActionEvent event) {
+
     if (badData()) {
       showAlert("Error", "Null Values", "Event and Day cannot be null");
     } else if (badTime()) {

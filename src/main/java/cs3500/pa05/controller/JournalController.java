@@ -192,9 +192,9 @@ public class JournalController implements Controller {
           createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
               inputTaskDescription, taskDayDropDown, popupStage));
       case "max_tasks_stage.fxml" ->
-          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, this.numMaxTasks, this.maxTasks));
+          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, this.numMaxTasks, this.maxTasks, popupStage));
       case "max_events_stage.fxml" ->
-          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, this.numMaxEvents, this.maxEvents));
+          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, this.numMaxEvents, this.maxEvents, popupStage));
     }
   }
 
@@ -233,6 +233,10 @@ public class JournalController implements Controller {
       }
     }
 
+  }
+
+  private void createName(String name) {
+    this.title.setText(name + " Week");
   }
 
   @Override

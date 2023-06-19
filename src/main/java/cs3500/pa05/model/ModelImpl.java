@@ -35,6 +35,8 @@ public class ModelImpl implements Model {
     this.theme = Theme.LIGHT;
     this.mapper = new ObjectMapper();
     this.notes = "";
+    this.maxTasks = 5;
+    this.maxEvents = 5;
   }
 
   @Override
@@ -47,10 +49,33 @@ public class ModelImpl implements Model {
       this.completionPercent = weekJson.stats().percent();
       this.theme = weekJson.theme().theme();
       this.notes = weekJson.stats().notes();
+      this.maxTasks = weekJson.stats().maxTasks();
+      this.maxEvents = weekJson.stats().maxEvents();
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
 
+  }
+  
+  
+
+  private Day getDayFromRep(String dayRep) {
+    Day dayToReturn = null;
+    for (Day day : week) {
+      if (day.isSameDay(dayRep)) {
+        dayToReturn = day;
+      }
+    }
+    return dayToReturn;
+  }
+
+  public boolean canAdd(Boolean isTask, String dayRep) {
+    Day day = getDayFromRep(dayRep);
+    if (isTask) {
+      return day.canAdd(isTask, maxTasks);
+    } else {
+      return day.canAdd(isTask, maxEvents);
+    }
   }
 
   private void updateDays(List<DayJson> dayJsons) {
