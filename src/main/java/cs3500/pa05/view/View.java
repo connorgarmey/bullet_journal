@@ -1,6 +1,7 @@
 package cs3500.pa05.view;
 
 import cs3500.pa05.controller.Controller;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 public interface View {
@@ -11,7 +12,6 @@ public interface View {
 
   void setControllerHelper(Controller controller);
 
-  void changeStage();
-
+  Scene changeStage();
 
 }

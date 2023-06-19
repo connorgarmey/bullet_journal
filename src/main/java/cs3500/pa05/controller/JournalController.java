@@ -2,18 +2,17 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.model.Model;
 import cs3500.pa05.view.View;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -65,6 +64,56 @@ public class JournalController implements Controller {
   @FXML
   private Button createTaskButton;
 
+  //Main Page Fields
+  @FXML
+  private Label title;
+  @FXML
+  private Label mondayStuff;
+  @FXML
+  private Label tuesdayStuff;
+  @FXML
+  private Label wednesdayStuff;
+  @FXML
+  private Label thursdayStuff;
+  @FXML
+  private Label fridayStuff;
+  @FXML
+  private Label saturdayStuff;
+  @FXML
+  private Label sundayStuff;
+  @FXML
+  private Label mondayHeader;
+  @FXML
+  private Label tuesdayHeader;
+  @FXML
+  private Label wednesdayHeader;
+  @FXML
+  private Label thursdayHeader;
+  @FXML
+  private Label fridayHeader;
+  @FXML
+  private Label saturdayHeader;
+  @FXML
+  private Label sundayHeader;
+  @FXML
+  private Label notesHeader;
+  @FXML
+  private Label notesStuff;
+  @FXML
+  private Label stats;
+
+  //Fields for Setting Max tasks
+  @FXML
+  private TextField numMaxTasks;
+  @FXML
+  private Button buttonMaxTasks;
+  @FXML
+  private Label maxTasks;
+
+
+
+
+
   private MainPageHandler mainPageHandler;
 
   /**
@@ -74,7 +123,6 @@ public class JournalController implements Controller {
    */
   public JournalController(Model model) {
     this.model = model;
-    this.mainPageHandler = new MainPageHandler(this);
   }
 
 
@@ -82,6 +130,10 @@ public class JournalController implements Controller {
   public void run() {
     loadScene("welcome.fxml");
 
+  }
+
+  public void setMainPageHandler(Scene scene) {
+    this.mainPageHandler = new MainPageHandler(this, scene, model);
   }
 
   @Override
@@ -95,7 +147,8 @@ public class JournalController implements Controller {
     else if (url.equals("main_page.fxml")) {
       view.setControllerHelper(this);
       view.loadScene(url);
-      changeStage();
+      Scene scene = changeStage();
+      this.setMainPageHandler(scene);
 
       for (Menu menu : menuBar.getMenus()) {
         menu.setOnAction(mainPageHandler);
@@ -115,8 +168,8 @@ public class JournalController implements Controller {
   }
 
   @Override
-  public void changeStage() {
-    view.changeStage();
+  public Scene changeStage() {
+    return view.changeStage();
   }
 
 
@@ -129,6 +182,8 @@ public class JournalController implements Controller {
       case "create_task.fxml" ->
           createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
               inputTaskDescription, taskDayDropDown, popupStage));
+      case "max_tasks_stage.fxml" ->
+          buttonMaxTasks.setOnAction(new SetMaxTaskHandler(this, model, this.numMaxTasks, this.maxTasks));
     }
   }
 
@@ -155,6 +210,30 @@ public class JournalController implements Controller {
       }
     }
 
+  }
+
+  @Override
+  public List<Label> getAllLabels() {
+    List<Label> labels = new ArrayList<>();
+    labels.add(title);
+    labels.add(mondayStuff);
+    labels.add(mondayHeader);
+    labels.add(tuesdayStuff);
+    labels.add(tuesdayHeader);
+    labels.add(wednesdayStuff);
+    labels.add(wednesdayHeader);
+    labels.add(thursdayStuff);
+    labels.add(thursdayHeader);
+    labels.add(fridayStuff);
+    labels.add(fridayHeader);
+    labels.add(saturdayStuff);
+    labels.add(saturdayHeader);
+    labels.add(sundayStuff);
+    labels.add(sundayHeader);
+    labels.add(notesHeader);
+    labels.add(notesStuff);
+    labels.add(stats);
+    return labels;
   }
 
 

@@ -3,6 +3,7 @@ package cs3500.pa05.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cs3500.pa05.controller.WriteFile;
 import cs3500.pa05.model.json.DayJson;
 import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.StatsJson;
@@ -22,9 +23,11 @@ public class ModelImpl implements Model {
   private int completionPercent;
   private ObjectMapper mapper;
   private Path bujoFile;
+  private int maxTasks;
+  private int maxEvents;
 
   public ModelImpl() {
-    this.week = new ArrayList<>();
+    this.week = makeEmptyDays();
     this.numEvents = 0;
     this.numTasks = 0;
     this.completionPercent = 0;
@@ -52,6 +55,16 @@ public class ModelImpl implements Model {
       Day day = new Day( dayJson.day(), makeTasks(dayJson.tasks()), makeEvents(dayJson.events()));
       this.week.add(day);
     }
+  }
+
+  private List<Day> makeEmptyDays() {
+    List<String> stringRep = makeDaysOfWeek(new ArrayList<>());
+    List<Day> days = new ArrayList<>();
+    for (String s : stringRep) {
+      Day day = new Day(s);
+      days.add(day);
+    }
+    return days;
   }
 
   private List<Occasion> makeTasks(List<TaskJson> taskJsons) {
@@ -125,8 +138,9 @@ public class ModelImpl implements Model {
     return days;
   }
 
-  public WeekJson currentData() {
+  private WeekJson currentData() {
     List<DayJson> dayJsons = new ArrayList<>();
+    System.out.println(week);
     for (Day day : week) {
       DayJson dayJson = day.makeDayJson();
       dayJsons.add(dayJson);
@@ -144,4 +158,18 @@ public class ModelImpl implements Model {
   public void updateBujoFile(Path path) {
     this.bujoFile = path;
   }
+
+  public void saveData() {
+    WriteFile writer = new WriteFile();
+    writer.writeToFile(this.bujoFile, currentData());
+  }
+
+  public void updateMax(int max, String which) {
+    if (which.equals("tasks")) {
+      this.maxTasks = max;
+    } else {
+      this.maxEvents = max;
+    }
+  }
+
 }

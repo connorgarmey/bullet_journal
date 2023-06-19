@@ -1,6 +1,10 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.view.View;
+import java.util.List;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public interface Controller {
@@ -11,9 +15,13 @@ public interface Controller {
 
   void setView(View view);
 
-  void changeStage();
+  Scene changeStage();
 
   void popupHandler(String url, Stage popupStage);
 
   void refreshData();
+
+  void setMainPageHandler(Scene scene);
+
+  List<Label> getAllLabels();
 }

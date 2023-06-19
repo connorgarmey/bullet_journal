@@ -31,7 +31,7 @@ public class Event extends Occasion {
 
   @Override
   public String toString() {
-    String string = "Name: "
+    String string = "What: "
         + name
         + System.lineSeparator()
         + makeDescription()
@@ -53,14 +53,14 @@ public class Event extends Occasion {
       return "1 hour";
     } else if (duration % 60 == 0) {
       int hours = duration / 60;
-      return "" + hours + "hours";
+      return "" + hours + " hours";
     } else if (duration > 60 && duration < 120){
       int minutes = duration - 60;
-      return "1 hour" + minutes + " minutes";
+      return "1 hour " + minutes + " minutes";
     } else {
       int minutes = duration % 60;
       int hours = (duration - minutes) / 60;
-      return "" + hours + " hours" + minutes + " minutes";
+      return "" + hours + " hours " + minutes + " minutes";
     }
   }
 

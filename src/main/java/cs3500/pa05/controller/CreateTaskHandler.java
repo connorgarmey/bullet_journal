@@ -4,15 +4,10 @@ import static cs3500.pa05.controller.ShowAlert.showAlert;
 
 import cs3500.pa05.model.Model;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
 
 public class CreateTaskHandler implements EventHandler<ActionEvent> {
   private Controller controller;

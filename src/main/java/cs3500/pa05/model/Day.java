@@ -142,7 +142,20 @@ public class Day {
   }
 
   public String getAgenda() {
-    return tasks.toString() + events.toString();
+    StringBuilder sb = new StringBuilder();
+    stringRep(sb, "Tasks: ", tasks);
+    stringRep(sb, "Events: ", events);
+    return sb.toString();
+  }
+
+  private void stringRep(StringBuilder sb, String header, List<Occasion> list) {
+    sb.append(header);
+    sb.append(System.lineSeparator());
+    sb.append(System.lineSeparator());
+    for (Occasion o : list) {
+      sb.append(o.toString());
+      sb.append(System.lineSeparator());
+    }
   }
 
 

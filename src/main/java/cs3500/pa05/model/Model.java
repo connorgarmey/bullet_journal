@@ -16,9 +16,11 @@ public interface Model {
 
   void makeWeek(String week);
 
-  WeekJson currentData();
+  void saveData();
 
   String getDaysAgenda(int day);
 
   void updateBujoFile(Path path);
+
+  void updateMax(int max, String which);
 }

@@ -29,7 +29,8 @@
                      </Menu>
                      <Menu fx:id="edit" mnemonicParsing="false" text="Edit">
                         <items>
-                           <MenuItem fx:id="setMax" mnemonicParsing="false" text="Set Max" />
+                           <MenuItem fx:id="setMaxTasks" mnemonicParsing="false" text=" Set Max. Tasks" />
+                           <MenuItem fx:id="setMaxEvents" mnemonicParsing="false" text=" Set Max Events" />
                         </items>
                      </Menu>
                      <Menu fx:id="newMenu" mnemonicParsing="false" text="New">
@@ -49,7 +50,7 @@
                      </Menu>
                   </menus>
                </MenuBar>
-               <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="#832183">
+               <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="DEEPPINK">
                   <font>
                      <Font name="Georgia Bold Italic" size="48.0" />
                   </font>
@@ -58,12 +59,12 @@
                   <children>
                      <VBox prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Monday">
+                           <Label fx:id="mondayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Monday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="mondayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tasks: &#10;&#10;-Work &#10;-On&#10;-OOD&#10;&#10;Events:&#10;&#10;-OOD&#10;-Depression&#10;-Why do these need to be horizontal?" wrapText="true">
+                           <Label fx:id="mondayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -72,12 +73,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tuesday">
+                           <Label fx:id="tuesdayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Tuesday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="tuesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="tuesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -86,12 +87,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Wednesday">
+                           <Label fx:id="wednesdayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Wednesday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="wednesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="wednesdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -100,12 +101,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Thursday">
+                           <Label fx:id="thursdayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Thursday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="thursdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="thursdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -114,12 +115,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Friday">
+                           <Label fx:id="fridayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Friday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="fridayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="fridayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -128,12 +129,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Saturday">
+                           <Label fx:id="saturdayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Saturday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="saturdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="saturdayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -142,12 +143,12 @@
                      </VBox>
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="100.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Sunday">
+                           <Label fx:id="sundayHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Sunday" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="25.0" />
                               </font>
                            </Label>
-                           <Label fx:id="sundayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label">
+                           <Label fx:id="sundayStuff" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="160.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Label" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -157,12 +158,12 @@
                      <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="30.0" />
                      <VBox prefHeight="600.0" prefWidth="190.0">
                         <children>
-                           <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes">
+                           <Label fx:id="notesHeader" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes" textFill="DEEPPINK">
                               <font>
                                  <Font name="Georgia Bold" size="24.0" />
                               </font>
                            </Label>
-                           <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="620.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes go here">
+                           <Label fx:id="notesStuff" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="620.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c9c9c9;" text="Notes go here" textFill="DEEPPINK" wrapText="true">
                               <font>
                                  <Font name="Georgia" size="18.0" />
                               </font>
@@ -171,7 +172,7 @@
                      </VBox>
                   </children>
                </HBox>
-               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="485.0" text="Events: 3,   Tasks: 3   0% completed">
+               <Label fx:id="stats" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="485.0" text="Events: 3,   Tasks: 3   0% completed" textFill="DEEPPINK">
                   <font>
                      <Font name="Georgia Bold Italic" size="24.0" />
                   </font>

@@ -1,14 +1,25 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.Model;
+import cs3500.pa05.model.Theme;
+import cs3500.pa05.view.View;
 import java.io.IOException;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -16,9 +27,13 @@ import javafx.stage.Stage;
  */
 public class MainPageHandler implements EventHandler<ActionEvent> {
   Controller controller;
+  Scene scene;
+  Model model;
 
-  MainPageHandler(Controller controller) {
+  MainPageHandler(Controller controller, Scene scene, Model model) {
     this.controller = controller;
+    this.scene = scene;
+    this.model = model;
   }
 
   @Override
@@ -38,10 +53,13 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           controller.changeStage();
           break;
         case "save":
-          //implement later
+          model.saveData();
           break;
-        case "setMax":
+        case "setMaxTasks":
           openPopup("max_tasks_stage.fxml");
+          break;
+        case "setMaxEvents":
+          openPopup("max_events_stage.fxml");
           break;
         case "task":
           openPopup("create_task.fxml");
@@ -50,13 +68,25 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           openPopup("create_event.fxml");
           break;
         case "light":
-          //implement later
+          Parent nodeLight = scene.getRoot();
+          modifyLabels(new Font("Georgia Bold", 25), new Font("Georgia", 18),
+              new Font("Georgia Bold Italic", 48), Color.DEEPPINK);
+          modifyBackground(nodeLight, "#fff8ff");
+          model.changeTheme(Theme.LIGHT);
           break;
         case "dark":
-          //implement later
+          Parent nodeDark = scene.getRoot();
+          modifyLabels(new Font("Times New Roman Bold", 25), new Font("Times New Roman", 18),
+              new Font("Times New Roman Bold Italic", 48), Color.BLACK);
+          modifyBackground(nodeDark, "#A9A9A9");
+          model.changeTheme(Theme.DARK);
           break;
         case "blue":
-          //implement later
+          Parent nodeBlue = scene.getRoot();
+          modifyLabels(new Font("Arial Bold", 25), new Font("Arial", 18),
+              new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE);
+          modifyBackground(nodeBlue, "#6495ED");
+          model.changeTheme(Theme.BLUE);
           break;
       }
     }
@@ -85,6 +115,31 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         e.printStackTrace();
       }
   }
+
+  private void modifyLabels(Font headerFont, Font stuffFont, Font otherFont, Color fontColor) {
+    List<Label> labels = controller.getAllLabels();
+    for (Label label : labels) {
+      if (label.getId().endsWith("Header")) {
+        label.setFont(headerFont);
+        label.setTextFill(fontColor);
+      } else if (label.getId().endsWith("Stuff")) {
+        label.setFont(stuffFont);
+        label.setTextFill(fontColor);
+      } else {
+        label.setFont(otherFont);
+        label.setTextFill(fontColor);
+      }
+    }
+  }
+
+  private void modifyBackground(Parent node, String backgroundColor) {
+    if (node instanceof Region) {
+    Region region = (Region) node;
+    region.setStyle("-fx-background-color: " + backgroundColor + ";");
+    }
+  }
+
+
 
 
 

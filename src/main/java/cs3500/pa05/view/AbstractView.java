@@ -4,6 +4,7 @@ import cs3500.pa05.controller.Controller;
 import cs3500.pa05.controller.JournalController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -40,9 +41,11 @@ public abstract class AbstractView implements View {
     this.loader.setController(controller);
   }
 
-  public void changeStage() {
-    primaryStage.setScene(load());
+  public Scene changeStage() {
+    Scene scene = load();
+    primaryStage.setScene(scene);
     primaryStage.show();
+    return scene;
   }
 
 

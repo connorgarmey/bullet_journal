@@ -26,7 +26,7 @@ public class Task extends Occasion {
 
   @Override
   public String toString() {
-    String string = "Event: "
+    String string = "What: "
         + name
         + System.lineSeparator()
         + makeDescription()
