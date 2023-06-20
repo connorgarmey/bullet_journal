@@ -38,7 +38,7 @@ public record DayJson(
             sb.deleteCharAt(sb.length() - 1);
         }
         sb.append("\n  ]\n");
-        sb.append("}");
+        sb.append("}"); //hey
         return sb.toString();
     }
 
