@@ -58,6 +58,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
       showAlert("Error", "No Input Received", "Please enter a file name.");
     } else if (isInvalid(name)) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
+      inputFileCreate.clear();
     }
 
     // If the name is valid, create the file
@@ -95,6 +96,7 @@ public class StartHandler implements EventHandler<ActionEvent> {
     // Check if it is null
     if (name.isEmpty()) {
       showAlert("Error", "Invalid Input", "Please enter a valid file name.");
+      inputFileLoad.clear();
     }
 
     // If the name is not null, try to create the loaded file

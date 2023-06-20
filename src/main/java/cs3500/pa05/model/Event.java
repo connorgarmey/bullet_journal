@@ -38,12 +38,20 @@ public class Event extends Occasion {
         + "Start Time: "
         + startHour
         + ":"
-        + startMinute
+        + makeMiutes()
         + System.lineSeparator()
         + "Duration: "
         + makeTime()
         + System.lineSeparator();
     return string;
+  }
+
+  private String makeMiutes() {
+    if (startMinute < 10) {
+      return "0" + startMinute;
+    } else {
+      return String.valueOf(startMinute);
+    }
   }
 
   private String makeTime() {

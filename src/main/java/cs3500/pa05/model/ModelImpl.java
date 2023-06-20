@@ -176,6 +176,7 @@ public class ModelImpl implements Model {
     }
     StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents, this.maxTasks, this.notes, this.completionPercent);
     ThemeJson themeJson = new ThemeJson(this.theme);
+    System.out.println(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);
   }
 

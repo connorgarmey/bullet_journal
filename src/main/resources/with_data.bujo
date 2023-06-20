@@ -1,0 +1,116 @@
+{
+  "days": [
+    {
+      "day": "Monday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "events": [
+        {
+      "name": "Watch TV",
+      "description": "",
+      "day-of-week": "Tuesday",
+      "start-hour": 8,
+      "start-minute": 35,
+      "duration": 60
+    }
+      ],
+      "tasks": [
+        {
+      "name": "Apple Picking",
+      "description": "",
+      "day-of-week": "Tuesday",
+      "completed": false
+    },
+        {
+      "name": "Zebra Watching",
+      "description": "i love this",
+      "day-of-week": "Tuesday",
+      "completed": false
+    }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Thursday",
+      "events": [
+        {
+      "name": "Party",
+      "description": "OOD is over!",
+      "day-of-week": "Thursday",
+      "start-hour": 13,
+      "start-minute": 30,
+      "duration": 120
+    },
+        {
+      "name": "After Party",
+      "description": "",
+      "day-of-week": "Thursday",
+      "start-hour": 17,
+      "start-minute": 20,
+      "duration": 120
+    },
+        {
+      "name": "Banana Spliting",
+      "description": "for my ice cream",
+      "day-of-week": "Thursday",
+      "start-hour": 12,
+      "start-minute": 20,
+      "duration": 30
+    },
+        {
+      "name": "Zoo Keeping",
+      "description": "",
+      "day-of-week": "Thursday",
+      "start-hour": 18,
+      "start-minute": 30,
+      "duration": 60
+    }
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Friday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Saturday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Sunday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    }
+  ],
+  "theme": {
+    "theme": "DARK"
+  },
+  "stats": {
+    "eventsCount": 5,
+    "taskCount": 2,
+    "maxEvents": 5,
+    "maxTasks": 5,
+    "notes": "",
+    "percent": 0.0
+  }
+}

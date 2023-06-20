@@ -14,6 +14,8 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <Scene fx:id="mainPage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: #fff8ff;">
       <children>
@@ -60,16 +62,31 @@
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                   <children>
                      <Label fx:id="leftIcon" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
+                        <graphic>
+                           <ImageView fx:id="imageViewLeft" fitWidth="100" fitHeight="70" preserveRatio="true">
+                              <image>
+                                 <Image url="@/1.png"/>
+                              </image>
+                           </ImageView>
+                        </graphic>
                         <font>
                            <Font size="51.0" />
                         </font>
                      </Label>
+
                      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="104.0" prefWidth="785.0" text="Finals Week" textAlignment="CENTER" textFill="DEEPPINK">
                         <font>
                            <Font name="Georgia Bold Italic" size="48.0" />
                         </font>
                      </Label>
                      <Label fx:id="rightIcon" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
+                        <graphic>
+                           <ImageView fx:id="imageViewRight" fitWidth="100" fitHeight="70" preserveRatio="true">
+                              <image>
+                                 <Image url="@/1.png"/>
+                              </image>
+                           </ImageView>
+                        </graphic>
                         <font>
                            <Font size="47.0" />
                         </font>

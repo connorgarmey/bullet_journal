@@ -27,26 +27,25 @@ public record DayJson(
         sb.append("{\n");
         sb.append("  \"day\": \"").append(day).append("\",\n");
         sb.append("  \"events\": [");
-        if (events.size() == 0) {
-            sb.append("],\n");
-        } else {
+        if (!events.isEmpty()) {
             for (EventJson event : events) {
-                sb.append("\n    ").append(event.toString()).append(",\n");
+                sb.append("\n    ").append(event.toString()).append(",");
             }
-            sb.append("  ],\n");
+            sb.deleteCharAt(sb.length() - 1);
         }
+        sb.append("\n  ],\n");
         sb.append("  \"tasks\": [");
-        if (tasks.size() == 0) {
-            sb.append("]\n");
-        } else {
+        if (!tasks.isEmpty()) {
             for (TaskJson task : tasks) {
-                sb.append("\n    ").append(task.toString()).append(",\n");
+                sb.append("\n    ").append(task.toString()).append(",");
             }
-            sb.append("  ]\n");
+            sb.deleteCharAt(sb.length() - 1);
         }
+        sb.append("\n  ]\n");
         sb.append("}");
         return sb.toString();
     }
+
 
 
     private List<Occasion> makeTask() {

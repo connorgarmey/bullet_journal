@@ -61,7 +61,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         case "event" -> openPopup("create_event.fxml");
         case "light" -> {
           Parent nodeLight = scene.getRoot();
-          Image image = new Image(classLoader.getResource("png-miss-piggy.png").toExternalForm());
+          Image image = new Image(classLoader.getResource("1.png").toExternalForm());
           modifyLabels(new Font("Georgia Bold", 25), new Font("Georgia", 18),
               new Font("Georgia Bold Italic", 48), Color.DEEPPINK,
               image);
@@ -70,7 +70,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         }
         case "dark" -> {
           Parent nodeDark = scene.getRoot();
-          Image image = new Image(classLoader.getResource("png-bust.png").toExternalForm());
+          Image image = new Image(classLoader.getResource("2.png").toExternalForm());
           modifyLabels(new Font("Times New Roman Bold", 25), new Font("Times New Roman", 18),
               new Font("Times New Roman Bold Italic", 48), Color.BLACK,
               image);
@@ -79,7 +79,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         }
         case "blue" -> {
           Parent nodeBlue = scene.getRoot();
-          Image image = new Image(classLoader.getResource("png-bust.png").toExternalForm());
+          Image image = new Image(classLoader.getResource("3.png").toExternalForm());
           modifyLabels(new Font("Arial Bold", 25), new Font("Arial", 18),
               new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE,
               image);
