@@ -136,21 +136,27 @@ public class Day {
     return events.size();
   }
 
+  /**
+   * Makes the JSON representation of a day
+   *
+   * @return a DayJson
+   */
   public DayJson makeDayJson() {
     List<EventJson> eventsJson = new ArrayList<>();
     for (Occasion o : events) {
-      Event event = (Event) o;
-      EventJson json = event.makeJson();
-      eventsJson.add(json);
+      if (o instanceof Event event) {
+        EventJson json = event.makeJson();
+        eventsJson.add(json);
+      }
     }
     List<TaskJson> tasksJson = new ArrayList<>();
     for (Occasion o : tasks) {
-      Task task = (Task) o;
-      TaskJson json = task.makeJson();
-      tasksJson.add(json);
+      if (o instanceof Task task) {
+        TaskJson json = task.makeJson();
+        tasksJson.add(json);
+      }
     }
-    DayJson dayJson = new DayJson(this.dayOfWeek, eventsJson, tasksJson);
-    return dayJson;
+    return new DayJson(this.dayOfWeek, eventsJson, tasksJson);
   }
 
   public String getAgenda() {

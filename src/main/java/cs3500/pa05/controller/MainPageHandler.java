@@ -60,6 +60,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         case "setMaxEvents" -> openPopup("max_events_stage.fxml");
         case "task" -> openPopup("create_task.fxml");
         case "event" -> openPopup("create_event.fxml");
+        case "note" -> openPopup("add_note.fxml");
         case "light" -> {
           Parent nodeLight = scene.getRoot();
           Image image = new Image(Objects.requireNonNull(classLoader.getResource("1.png")).toExternalForm());

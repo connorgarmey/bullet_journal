@@ -29,5 +29,9 @@ public interface Model {
 
   void sortEvents(int sortType);
 
+  String getTitle();
+
+  Theme getTheme();
+
   //everything above is good
 }

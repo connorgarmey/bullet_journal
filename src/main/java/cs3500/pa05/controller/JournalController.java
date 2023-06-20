@@ -22,16 +22,6 @@ public class JournalController implements Controller {
   private Model model;
   private View view;
 
-  // Fields for MainPageHandler
-  @FXML
-  private MenuBar menuBar;
-  @FXML
-  private HBox notesBox;
-  // Icons
-  @FXML
-  private Label leftIcon;
-  @FXML
-  private Label rightIcon;
 
   // Fields for StartHandler
   @FXML
@@ -71,6 +61,15 @@ public class JournalController implements Controller {
 
   //Main Page Fields
   @FXML
+  private MenuBar menuBar;
+  @FXML
+  private HBox notesBox;
+  // Icons
+  @FXML
+  private Label leftIcon;
+  @FXML
+  private Label rightIcon;
+  @FXML
   private Label title;
   @FXML
   private Label mondayStuff;
@@ -107,6 +106,7 @@ public class JournalController implements Controller {
   @FXML
   private Label stats;
 
+
   //Fields for Setting Max tasks
   @FXML
   private TextField numMaxTasks;
@@ -123,6 +123,11 @@ public class JournalController implements Controller {
   @FXML
   private Label maxEvents;
 
+  // Fields for Adding Note
+  @FXML
+  private Button buttonNotes;
+  @FXML
+  private TextField notesText;
 
 
 
@@ -150,6 +155,11 @@ public class JournalController implements Controller {
     this.mainPageHandler = new MainPageHandler(this, scene, model);
   }
 
+  /**
+   * Loads a scene
+   *
+   * @param url the type of scene to load
+   */
   @Override
   public void loadScene(String url) {
     if (url.equals("welcome.fxml")) {
@@ -164,16 +174,19 @@ public class JournalController implements Controller {
       Scene scene = changeStage();
       this.setMainPageHandler(scene);
 
+      // Set title
+      title.setText(model.getTitle());
+      // Set actions for menu bar items
       for (Menu menu : menuBar.getMenus()) {
         menu.setOnAction(mainPageHandler);
         for (MenuItem item : menu.getItems()) {
           item.setOnAction(mainPageHandler);
         }
       }
+      // Refresh the data
       refreshData();
-
+      updateTheme(scene);
     }
-
   }
 
   @Override
@@ -187,6 +200,12 @@ public class JournalController implements Controller {
   }
 
 
+  /**
+   * Delegates diff
+   *
+   * @param url the popup's url
+   * @param popupStage the new Stage object
+   */
   @Override @FXML
   public void popupHandler(String url, Stage popupStage) {
     switch (url) {
@@ -197,9 +216,12 @@ public class JournalController implements Controller {
           createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
               inputTaskDescription, taskDayDropDown, popupStage));
       case "max_tasks_stage.fxml" ->
-          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, this.numMaxTasks, this.maxTasks, popupStage));
+          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, numMaxTasks, maxTasks, popupStage));
       case "max_events_stage.fxml" ->
-          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, this.numMaxEvents, this.maxEvents, popupStage));
+          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents, maxEvents, popupStage));
+      case "add_note.fxml" ->
+          buttonNotes.setOnAction(new CreateNoteHandler(model, notesText, popupStage));
+      //case "main_page.fxml" ->
     }
   }
 
@@ -210,6 +232,7 @@ public class JournalController implements Controller {
   public void refreshData() {
     updateCalendar();
     stats.setText(model.getCurrentStats());
+
   }
 
   /**
@@ -239,10 +262,12 @@ public class JournalController implements Controller {
 
   }
 
-  private void createName(String name) {
-    this.title.setText(name + " Week");
-  }
 
+  /**
+   * Gets all labels in the main screen
+   *
+   * @return a list of Label
+   */
   @Override
   public List<Label> getAllLabels() {
     List<Label> labels = new ArrayList<>();

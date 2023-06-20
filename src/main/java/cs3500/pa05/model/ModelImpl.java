@@ -268,4 +268,15 @@ public class ModelImpl implements Model {
     }
   }
 
+  /**
+   * Gets the title of the file
+   *
+   * @return the .bujo file path name to String
+   */
+  @Override
+  public String getTitle() {
+    return bujoFile.getFileName().toString().replaceAll("_", " ").
+        replaceAll(".bujo", "");
+  }
+
 }

@@ -6,6 +6,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,8 +16,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <Scene fx:id="mainPage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: #fff8ff;">
       <children>
@@ -63,9 +63,9 @@
                   <children>
                      <Label fx:id="leftIcon" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
                         <graphic>
-                           <ImageView fx:id="imageViewLeft" fitWidth="100" fitHeight="70" preserveRatio="true">
+                           <ImageView fx:id="imageViewLeft" fitHeight="70" fitWidth="100" preserveRatio="true">
                               <image>
-                                 <Image url="@/1.png"/>
+                                 <Image url="@/1.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -81,9 +81,9 @@
                      </Label>
                      <Label fx:id="rightIcon" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="100.0" text="" textFill="#e85959">
                         <graphic>
-                           <ImageView fx:id="imageViewRight" fitWidth="100" fitHeight="70" preserveRatio="true">
+                           <ImageView fx:id="imageViewRight" fitHeight="70" fitWidth="100" preserveRatio="true">
                               <image>
-                                 <Image url="@/1.png"/>
+                                 <Image url="@/1.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -210,9 +210,9 @@
                      </VBox>
                   </children>
                </HBox>
-               <Label fx:id="stats" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="485.0" text="Events: 3,   Tasks: 3   0% completed" textFill="DEEPPINK">
+               <Label fx:id="stats" alignment="CENTER" contentDisplay="CENTER" prefHeight="115.0" prefWidth="1200.0" text="Events: 3,   Tasks: 3   0% completed" textFill="DEEPPINK">
                   <font>
-                     <Font name="Georgia Bold Italic" size="24.0" />
+                     <Font name="Georgia Bold Italic" size="48.0" />
                   </font>
                </Label>
             </children>

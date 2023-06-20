@@ -16,10 +16,6 @@ public record DayJson(
     @JsonProperty("tasks")
     List<TaskJson> tasks) {
 
-    public Day makeDay() {
-        Day day = new Day(this.day, makeTask(), makeEvent());
-        return day;
-    }
 
     @Override
     public String toString() {

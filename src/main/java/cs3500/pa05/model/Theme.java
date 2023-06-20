@@ -31,4 +31,28 @@ public enum Theme {
   public String toString() {
     return stringRep;
   }
+
+  public Font getHeaderFont() {
+    return headerFont;
+  }
+
+  public Font getStuffFont() {
+    return stuffFont;
+  }
+
+  public Font getOtherFont() {
+    return otherFont;
+  }
+
+  public Color getFontColor() {
+    return fontColor;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public String getBackgroundColor() {
+    return backgroundColor;
+  }
 }

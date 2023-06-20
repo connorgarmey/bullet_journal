@@ -11,8 +11,7 @@ public record TaskJson(
 
 
   public Task makeTask() {
-    Task task = new Task(name, description, dayOfWeek);
-    return task;
+    return new Task(name, description, dayOfWeek);
   }
 
 
