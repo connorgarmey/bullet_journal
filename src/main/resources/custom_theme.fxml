@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0">
+      <children>
+         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
+            <children>
+               <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" text="Make Your Own Theme!">
+                  <font>
+                     <Font size="30.0" />
+                  </font>
+               </Label>
+               <HBox prefHeight="125.0" prefWidth="200.0">
+                  <children>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                           <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="Choose a Font:" />
+                           <ChoiceBox fx:id="chooseFont" prefHeight="50.0" prefWidth="175.0">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Arial" />
+                                    <String fx:value="Times New Roman" />
+                                    <String fx:value="Georgia" />
+                                    <String fx:value="Verdana" />
+                                 </FXCollections>
+                              </items>
+                           </ChoiceBox>
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                           <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="Choose a Font Color:" />
+                           <ChoiceBox fx:id="chooseFontColor" prefHeight="50.0" prefWidth="175.0">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Black" />
+                                    <String fx:value="Blue" />
+                                    <String fx:value="Pink" />
+                                    <String fx:value="Green" />
+                                 </FXCollections>
+                              </items>
+                           </ChoiceBox>
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               <HBox prefHeight="125.0" prefWidth="200.0">
+                  <children>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                           <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="Choose a Background Color:" />
+                           <ChoiceBox fx:id="chooseBackground" prefHeight="50.0" prefWidth="175.0">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Light Pink" />
+                                    <String fx:value="Dark Grey" />
+                                    <String fx:value="Blue" />
+                                    <String fx:value="White" />
+                                 </FXCollections>
+                              </items>
+                           </ChoiceBox>
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                        <children>
+                           <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" text="Choose an Icon:" />
+                           <ChoiceBox fx:id="chooseIcon" prefHeight="50.0" prefWidth="175.0">
+                              <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Book" />
+                                    <String fx:value="Chocolate" />
+                                    <String fx:value="Checkers Board" />
+                                    <String fx:value="Flower Painting" />
+                                 </FXCollections>
+                              </items>
+                           </ChoiceBox>
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               <TextField fx:id="customThemeName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Please Name Your Field">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </TextField>
+               <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" />
+               <Button fx:id="createCustomTheme" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Create!" />
+               <Separator maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" />
+            </children>
+         </VBox>
+      </children></AnchorPane>
+</Scene>

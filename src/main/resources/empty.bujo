@@ -1,0 +1,68 @@
+{
+  "days": [
+    {
+      "day": "Monday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Thursday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Friday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Saturday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    },
+    {
+      "day": "Sunday",
+      "events": [
+      ],
+      "tasks": [
+      ]
+    }
+  ],
+  "theme": {
+    "font": "Georgia",
+    "fontColor": "Pink",
+    "background": "Light Pink",
+    "icon": "Light",
+    "name": "LIGHT"
+  },
+  "stats": {
+    "eventsCount": 0,
+    "taskCount": 0,
+    "maxEvents": 5,
+    "maxTasks": 5,
+    "notes": "",
+    "percent": 100.0
+  }
+}
