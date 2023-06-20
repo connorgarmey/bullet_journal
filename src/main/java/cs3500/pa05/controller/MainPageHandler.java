@@ -63,29 +63,23 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         case "note" -> openPopup("add_note.fxml");
         case "light" -> {
           Parent nodeLight = scene.getRoot();
-          Image image = new Image(Objects.requireNonNull(classLoader.getResource("1.png")).toExternalForm());
-          modifyLabels(new Font("Georgia Bold", 25), new Font("Georgia", 18),
-              new Font("Georgia Bold Italic", 48), Color.DEEPPINK,
-              image);
-          modifyBackground(nodeLight, "#fff8ff");
+          ChangeTheme change = new ChangeTheme(Theme.LIGHT, nodeLight, controller);
+          change.modifyLabels();
+          change.modifyBackground();
           model.changeTheme(Theme.LIGHT);
         }
         case "dark" -> {
           Parent nodeDark = scene.getRoot();
-          Image image = new Image(Objects.requireNonNull(classLoader.getResource("2.png")).toExternalForm());
-          modifyLabels(new Font("Times New Roman Bold", 25), new Font("Times New Roman", 18),
-              new Font("Times New Roman Bold Italic", 48), Color.BLACK,
-              image);
-          modifyBackground(nodeDark, "#A9A9A9");
+          ChangeTheme change = new ChangeTheme(Theme.DARK, nodeDark, controller);
+          change.modifyLabels();
+          change.modifyBackground();
           model.changeTheme(Theme.DARK);
         }
         case "blue" -> {
           Parent nodeBlue = scene.getRoot();
-          Image image = new Image(Objects.requireNonNull(classLoader.getResource("3.png")).toExternalForm());
-          modifyLabels(new Font("Arial Bold", 25), new Font("Arial", 18),
-              new Font("Arial Bold Italic", 48), Color.DARKSLATEBLUE,
-              image);
-          modifyBackground(nodeBlue, "#6495ED");
+          ChangeTheme change = new ChangeTheme(Theme.BLUE, nodeBlue, controller);
+          change.modifyLabels();
+          change.modifyBackground();
           model.changeTheme(Theme.BLUE);
         }
         case "sortByDuration" -> {
@@ -127,58 +121,5 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         e.printStackTrace();
       }
   }
-
-  /**
-   * Modifies the look of the headers and content
-   *
-   * @param headerFont the header font
-   * @param stuffFont the content font
-   * @param otherFont all other
-   * @param fontColor the color
-   */
-  private void modifyLabels(Font headerFont, Font stuffFont, Font otherFont, Color fontColor, Image image) {
-    List<Label> labels = controller.getAllLabels();
-    for (Label label : labels) {
-      if (label.getId().endsWith("Header")) {
-        label.setFont(headerFont);
-        label.setTextFill(fontColor);
-      } else if (label.getId().endsWith("Stuff")) {
-        label.setFont(stuffFont);
-        label.setTextFill(fontColor);
-      } else if (label.getId().endsWith("Icon")) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(100);  // Adjust the width as needed
-        imageView.setFitHeight(70); // Adjust the height as needed
-        imageView.setPreserveRatio(true);
-        label.setGraphic(imageView);
-      }
-      else {
-        label.setFont(otherFont);
-        label.setTextFill(fontColor);
-      }
-    }
-  }
-
-  /**
-   * Modifies the background color
-   *
-   * @param node the parent node
-   * @param backgroundColor the color to change to
-   */
-  private void modifyBackground(Parent node, String backgroundColor) {
-    if (node instanceof Region region) {
-      region.setStyle("-fx-background-color: " + backgroundColor + ";");
-    }
-  }
-
-
-
-
-
-
-
-
-
-
 
 }

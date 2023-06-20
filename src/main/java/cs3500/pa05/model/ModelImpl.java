@@ -57,6 +57,11 @@ public class ModelImpl implements Model {
     }
 
   }
+
+  @Override
+  public Theme getTheme() {
+    return this.theme;
+  }
   
   
 

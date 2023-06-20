@@ -189,6 +189,12 @@ public class JournalController implements Controller {
     }
   }
 
+  private void updateTheme(Scene theScene) {
+    ChangeTheme change = new ChangeTheme(model.getTheme(), theScene.getRoot(), this);
+    change.modifyLabels();
+    change.modifyBackground();
+  }
+
   @Override
   public void setView(View view) {
     this.view = view;
@@ -234,6 +240,7 @@ public class JournalController implements Controller {
     stats.setText(model.getCurrentStats());
 
   }
+
 
   /**
    * Updates the tasks and events for each day
