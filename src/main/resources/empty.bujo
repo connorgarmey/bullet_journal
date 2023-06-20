@@ -2,38 +2,52 @@
   "days": [
     {
       "day": "Monday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Tuesday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Wednesday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Thursday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Friday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Saturday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     },
     {
       "day": "Sunday",
-      "events": [],
-      "tasks": []
+      "events": [
+      ],
+      "tasks": [
+      ]
     }
   ],
   "theme": {
@@ -45,6 +59,6 @@
     "maxEvents": 5,
     "maxTasks": 5,
     "notes": "",
-    "percent": 100.0
+    "percent": 100
   }
 }

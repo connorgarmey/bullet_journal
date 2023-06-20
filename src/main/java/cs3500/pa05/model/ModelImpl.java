@@ -138,8 +138,8 @@ public class ModelImpl implements Model {
 
 
   @Override
-  public void changeTheme(Theme theme) {
-    this.theme = theme;
+  public void changeTheme(Theme newTheme) {
+    this.theme = newTheme;
   }
 
 
@@ -225,7 +225,11 @@ public class ModelImpl implements Model {
       completed += day.getNumCompletedTasks();
 
     }
-    completionPercent = (double) completed / total * 100;
+    if (completed == 0 && total == 0) {
+      completionPercent = 100;
+    } else {
+      completionPercent = (double) completed / total * 100;
+    }
 
     return "Events: " + numEvents + ",   Tasks: " + numTasks
         + "   " + completionPercent +"% completed";
