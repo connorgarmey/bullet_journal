@@ -56,26 +56,25 @@ public class Event extends Occasion {
 
   private String makeTime() {
     if (duration < 60) {
-      return "" + duration + " minutes";
+      return duration + " minutes";
     } else if (duration == 60) {
       return "1 hour";
     } else if (duration % 60 == 0) {
       int hours = duration / 60;
-      return "" + hours + " hours";
+      return hours + " hours";
     } else if (duration > 60 && duration < 120){
       int minutes = duration - 60;
       return "1 hour " + minutes + " minutes";
     } else {
       int minutes = duration % 60;
       int hours = (duration - minutes) / 60;
-      return "" + hours + " hours " + minutes + " minutes";
+      return hours + " hours " + minutes + " minutes";
     }
   }
 
   public EventJson makeJson() {
-    EventJson json = new EventJson(this.name, this.description, this.day,
+    return new EventJson(this.name, this.description, this.day,
         this.startHour, this.startMinute, this.duration);
-    return json;
   }
 
 

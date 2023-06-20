@@ -70,6 +70,14 @@ public class ModelImpl implements Model {
     return dayToReturn;
   }
 
+  /**
+   * Given the max, can the user add another task or event to a day?
+   *
+   * @param isTask is the occasion a task
+   * @param dayRep the day of the week
+   *
+   * @return whether it can be add
+   */
   public boolean canAdd(Boolean isTask, String dayRep) {
     Day day = getDayFromRep(dayRep);
     if (isTask) {
@@ -82,7 +90,9 @@ public class ModelImpl implements Model {
   private void updateDays(List<DayJson> dayJsons) {
     for (DayJson dayJson : dayJsons) {
       for (Day day : week) {
-        day.update(dayJson);
+        if (day.isSameDay(dayJson.day())) {
+          day.update(dayJson);
+        }
       }
     }
   }
@@ -97,23 +107,6 @@ public class ModelImpl implements Model {
     return days;
   }
 
-  private List<Occasion> makeTasks(List<TaskJson> taskJsons) {
-    List<Occasion> tasks = new ArrayList<>();
-    for (TaskJson taskJson : taskJsons) {
-      Task task = new Task(taskJson);
-      tasks.add(task);
-    }
-    return tasks;
-  }
-
-  private List<Occasion> makeEvents(List<EventJson> taskJsons) {
-    List<Occasion> events = new ArrayList<>();
-    for (EventJson eventJson : taskJsons) {
-      Event event = new Event(eventJson);
-      events.add(event);
-    }
-    return events;
-  }
 
 
   @Override
@@ -174,7 +167,8 @@ public class ModelImpl implements Model {
       DayJson dayJson = day.makeDayJson();
       dayJsons.add(dayJson);
     }
-    StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents, this.maxTasks, this.notes, this.completionPercent);
+    StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents,
+        this.maxTasks, this.notes, this.completionPercent);
     ThemeJson themeJson = new ThemeJson(this.theme);
     System.out.println(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);

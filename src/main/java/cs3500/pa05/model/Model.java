@@ -28,4 +28,6 @@ public interface Model {
   boolean canAdd(Boolean isTask, String dayRep);
 
   void sortEvents(int sortType);
+
+  //everything above is good
 }

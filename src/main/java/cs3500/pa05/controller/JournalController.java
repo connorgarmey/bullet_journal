@@ -221,7 +221,7 @@ public class JournalController implements Controller {
         for (Node node : vbox.getChildren()) {
           if (node instanceof Label label) {
             String id = label.getId();
-            if (id != null) {
+             if (id != null) {
               switch (id) {
                 case "mondayStuff" -> label.setText(model.getDaysAgenda(0));
                 case "tuesdayStuff" -> label.setText(model.getDaysAgenda(1));
