@@ -42,23 +42,4 @@ public record DayJson(
         return sb.toString();
     }
 
-
-
-    private List<Occasion> makeTask() {
-        List<Occasion> theTasks = new ArrayList<>();
-        for (TaskJson taskJson : tasks) {
-            Task task = taskJson.makeTask();
-            theTasks.add(task);
-        }
-        return theTasks;
-    }
-
-    private List<Occasion> makeEvent() {
-        List<Occasion> theEvents = new ArrayList<>();
-        for (EventJson eventJson : events) {
-            Event event = eventJson.makeEvent();
-            theEvents.add(event);
-        }
-        return theEvents;
-    }
 }

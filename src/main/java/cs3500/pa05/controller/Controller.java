@@ -17,7 +17,7 @@ public interface Controller {
 
   Scene changeStage();
 
-  void popupHandler(String url, Stage popupStage);
+  void popupHandler(String url, Stage popupStage, Scene scene);
 
   void refreshData();
 

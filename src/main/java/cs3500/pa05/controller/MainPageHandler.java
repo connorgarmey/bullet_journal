@@ -119,7 +119,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         popupStage.setScene(popupScene);
 
         popupStage.show();
-        controller.popupHandler(url, popupStage);
+        controller.popupHandler(url, popupStage, scene);
       } catch (IOException e) {
         e.printStackTrace();
       }

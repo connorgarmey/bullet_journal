@@ -7,8 +7,12 @@ import cs3500.pa05.model.Model;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 public class CreateCustomTheme implements EventHandler<ActionEvent> {
   Model model;
@@ -18,16 +22,23 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
   private ChoiceBox<String> chooseBackground;
   private ChoiceBox<String> chooseIcon;
   private TextField customFieldName;
+  private Stage popup;
+  private Controller controller;
+  private Scene scene;
 
   public CreateCustomTheme(ChoiceBox<String> font, ChoiceBox<String> fontColor,
                            ChoiceBox<String> background, ChoiceBox<String> icon,
-                           TextField name, Model model) {
+                           TextField name, Model model, Stage popup, Controller controller,
+                           Scene scene) {
     this.chooseFont = font;
     this.chooseFontColor = fontColor;
     this.chooseBackground = background;
     this.chooseIcon = icon;
     this.customFieldName = name;
     this.model = model;
+    this.popup = popup;
+    this.controller = controller;
+    this.scene = scene;
   }
 
   @Override
@@ -43,7 +54,14 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
       String icon = chooseIcon.getValue();
       String name = customFieldName.getText();
       CustomTheme theme = new CustomTheme(font, fontColor, background, icon, name);
+
       model.changeTheme(theme);
+      popup.close();
+      Parent node = scene.getRoot();
+      ChangeTheme change = new ChangeTheme(model.getTheme(), node, controller);
+      change.modifyLabels();
+      change.modifyBackground();
+      controller.refreshData();
     }
   }
 

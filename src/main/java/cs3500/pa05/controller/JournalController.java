@@ -141,7 +141,8 @@ public class JournalController implements Controller {
   @FXML
   private ChoiceBox<String> chooseIcon;
   @FXML
-  private TextField customFieldName;
+  private TextField customThemeName;
+
 
 
 
@@ -227,7 +228,7 @@ public class JournalController implements Controller {
    * @param popupStage the new Stage object
    */
   @Override @FXML
-  public void popupHandler(String url, Stage popupStage) {
+  public void popupHandler(String url, Stage popupStage, Scene scene) {
     switch (url) {
       case "create_event.fxml" -> createEventButton.setOnAction(
           new CreateEventHandler(model, inputEventName, inputEventDescription, startHours,
@@ -241,10 +242,11 @@ public class JournalController implements Controller {
           buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents, maxEvents, popupStage));
       case "add_note.fxml" ->
           buttonNotes.setOnAction(new CreateNoteHandler(model, notesText, popupStage));
-      case "custom_theme.fxml" ->
+      case "custom_theme.fxml" -> {
+
         createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
-            chooseIcon, customFieldName, model));
-      //case "main_page.fxml" ->
+            chooseIcon, customThemeName, model, popupStage, this, scene));
+      }
     }
   }
 
