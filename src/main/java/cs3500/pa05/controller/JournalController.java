@@ -129,6 +129,20 @@ public class JournalController implements Controller {
   @FXML
   private TextField notesText;
 
+  //fields for custom theme
+  @FXML
+  private Button createCustomTheme;
+  @FXML
+  private ChoiceBox<String> chooseFont;
+  @FXML
+  private ChoiceBox<String> chooseFontColor;
+  @FXML
+  private ChoiceBox<String> chooseBackground;
+  @FXML
+  private ChoiceBox<String> chooseIcon;
+  @FXML
+  private TextField customFieldName;
+
 
 
 
@@ -227,6 +241,9 @@ public class JournalController implements Controller {
           buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents, maxEvents, popupStage));
       case "add_note.fxml" ->
           buttonNotes.setOnAction(new CreateNoteHandler(model, notesText, popupStage));
+      case "custom_theme.fxml" ->
+        createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
+            chooseIcon, customFieldName, model));
       //case "main_page.fxml" ->
     }
   }

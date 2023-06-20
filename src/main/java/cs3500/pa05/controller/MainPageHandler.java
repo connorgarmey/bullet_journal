@@ -66,21 +66,24 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           ChangeTheme change = new ChangeTheme(Theme.LIGHT, nodeLight, controller);
           change.modifyLabels();
           change.modifyBackground();
-          model.changeTheme(Theme.LIGHT);
+          model.changeTheme(Theme.LIGHT.getTheTheme());
         }
         case "dark" -> {
           Parent nodeDark = scene.getRoot();
           ChangeTheme change = new ChangeTheme(Theme.DARK, nodeDark, controller);
           change.modifyLabels();
           change.modifyBackground();
-          model.changeTheme(Theme.DARK);
+          model.changeTheme(Theme.DARK.getTheTheme());
         }
         case "blue" -> {
           Parent nodeBlue = scene.getRoot();
           ChangeTheme change = new ChangeTheme(Theme.BLUE, nodeBlue, controller);
           change.modifyLabels();
           change.modifyBackground();
-          model.changeTheme(Theme.BLUE);
+          model.changeTheme(Theme.BLUE.getTheTheme());
+        }
+        case "custom" -> {
+          openPopup("custom_theme.fxml");
         }
         case "sortByDuration" -> {
           model.sortEvents(1);

@@ -48,6 +48,7 @@
                            <MenuItem fx:id="light" mnemonicParsing="false" text="Light Theme" />
                            <MenuItem fx:id="dark" mnemonicParsing="false" text="Dark Theme" />
                            <MenuItem fx:id="blue" mnemonicParsing="false" text="Blue Theme" />
+                           <MenuItem fx:id="custom" mnemonicParsing="false" text="Custom Theme" />
                         </items>
                      </Menu>
                      <Menu fx:id="sort" mnemonicParsing="false" text="Sort">

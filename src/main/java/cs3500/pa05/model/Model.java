@@ -9,7 +9,7 @@ public interface Model {
 
   void addEvent(String n, String des, String d, int hour, int minute, int dur);
 
-  void changeTheme(Theme theme);
+  void changeTheme(CustomTheme theme);
 
   WeekJson newWeek();
 
@@ -31,7 +31,7 @@ public interface Model {
 
   String getTitle();
 
-  Theme getTheme();
+  CustomTheme getTheme();
 
   //everything above is good
 }

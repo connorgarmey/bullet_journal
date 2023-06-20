@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ModelImpl implements Model {
   private List<Day> week;
-  private Theme theme;
+  private CustomTheme theme;
   private int numEvents;
   private int numTasks;
   private double completionPercent;
@@ -33,7 +33,7 @@ public class ModelImpl implements Model {
     this.numEvents = 0;
     this.numTasks = 0;
     this.completionPercent = 0.00;
-    this.theme = Theme.LIGHT;
+    this.theme = Theme.LIGHT.getTheTheme();
     this.mapper = new ObjectMapper();
     this.notes = "";
     this.maxTasks = 5;
@@ -48,7 +48,7 @@ public class ModelImpl implements Model {
       this.numEvents = weekJson.stats().event();
       this.numTasks = weekJson.stats().task();
       this.completionPercent = weekJson.stats().percent();
-      this.theme = weekJson.theme().theme();
+      this.theme = CustomTheme.createCustomTheme(weekJson.theme());
       this.notes = weekJson.stats().notes();
       this.maxTasks = weekJson.stats().maxTasks();
       this.maxEvents = weekJson.stats().maxEvents();
@@ -59,7 +59,7 @@ public class ModelImpl implements Model {
   }
 
   @Override
-  public Theme getTheme() {
+  public CustomTheme getTheme() {
     return this.theme;
   }
   
@@ -136,7 +136,7 @@ public class ModelImpl implements Model {
 
 
   @Override
-  public void changeTheme(Theme newTheme) {
+  public void changeTheme(CustomTheme newTheme) {
     this.theme = newTheme;
   }
 
@@ -149,7 +149,7 @@ public class ModelImpl implements Model {
       DayJson day = new DayJson(s,new ArrayList<>(),new ArrayList<>());
       days.add(day);
     }
-    ThemeJson theme = new ThemeJson(Theme.LIGHT);
+    ThemeJson theme = new ThemeJson("Georgia", "Pink", "Light Pink", "Light", "LIGHT");
     StatsJson stats = new StatsJson(0, 0, 5, 5, "", 100);
     return new WeekJson(days, theme, stats);
   }
@@ -174,7 +174,7 @@ public class ModelImpl implements Model {
     }
     StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents,
         this.maxTasks, this.notes, this.completionPercent);
-    ThemeJson themeJson = new ThemeJson(this.theme);
+    ThemeJson themeJson = this.theme.createJson();
     System.out.println(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);
   }

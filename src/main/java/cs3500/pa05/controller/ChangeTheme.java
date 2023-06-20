@@ -1,5 +1,6 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.CustomTheme;
 import cs3500.pa05.model.Theme;
 import java.util.List;
 import java.util.Objects;
@@ -10,13 +11,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
 public class ChangeTheme {
-  private Theme theme;
+  private CustomTheme theme;
   private Parent node;
   //private Controller controller;
   private List<Label> labels;
 
-  public ChangeTheme(Theme theme, Parent node, Controller controller) {
+  public ChangeTheme(CustomTheme theme, Parent node, Controller controller) {
     this.theme = theme;
+    this.node = node;
+    this.labels = controller.getAllLabels();
+  }
+
+  public ChangeTheme(Theme theme, Parent node, Controller controller) {
+    this.theme = theme.getTheTheme();
     this.node = node;
     this.labels = controller.getAllLabels();
   }
