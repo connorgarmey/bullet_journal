@@ -1,4 +1,4 @@
-package cs3500.pa05.model;
+package cs3500.pa05.view;
 
 import cs3500.pa05.model.json.ThemeJson;
 import javafx.scene.paint.Color;
@@ -33,7 +33,7 @@ public class CustomTheme {
   private void makeFontHeader() {
     String boldFont = font + " Bold";
     String boldItalicFont = font + " Bold Italic";
-    this.headerFont = new Font(boldFont, 25);
+    this.headerFont = new Font(boldFont, 20);
     this.stuffFont = new Font(font, 18);
     this.otherFont = new Font(boldItalicFont, 48);
   }
@@ -69,10 +69,12 @@ public class CustomTheme {
   }
 
 
-  public String getName() {
-    return name;
-  }
-
+  /**
+   * creates a new CustomTheme object using a json
+   *
+   * @param themeJson json representation
+   * @return customTheme object with the fields
+   */
   public static CustomTheme createCustomTheme(ThemeJson themeJson) {
     return new CustomTheme(themeJson.font(), themeJson.fontColor(), themeJson.background(),
         themeJson.icon(), themeJson.name());

@@ -2,16 +2,14 @@ package cs3500.pa05.controller;
 
 import static cs3500.pa05.controller.ShowAlert.showAlert;
 
-import cs3500.pa05.model.CustomTheme;
+import cs3500.pa05.view.CustomTheme;
 import cs3500.pa05.model.Model;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class CreateCustomTheme implements EventHandler<ActionEvent> {

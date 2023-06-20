@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -127,7 +128,7 @@ public class JournalController implements Controller {
   @FXML
   private Button buttonNotes;
   @FXML
-  private TextField notesText;
+  private TextArea notesText;
 
   //fields for custom theme
   @FXML
@@ -241,12 +242,10 @@ public class JournalController implements Controller {
       case "max_events_stage.fxml" ->
           buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents, maxEvents, popupStage));
       case "add_note.fxml" ->
-          buttonNotes.setOnAction(new CreateNoteHandler(model, notesText, popupStage));
-      case "custom_theme.fxml" -> {
-
+          buttonNotes.setOnAction(new CreateNoteHandler(this, model, notesText, popupStage));
+      case "custom_theme.fxml" ->
         createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
             chooseIcon, customThemeName, model, popupStage, this, scene));
-      }
     }
   }
 
@@ -257,7 +256,7 @@ public class JournalController implements Controller {
   public void refreshData() {
     updateCalendar();
     stats.setText(model.getCurrentStats());
-
+    notesStuff.setText(model.getNotes());
   }
 
 

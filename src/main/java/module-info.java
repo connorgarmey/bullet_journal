@@ -14,4 +14,5 @@ module cs3500.pa05 {
     opens cs3500.pa05.controller to javafx.fxml;
     opens cs3500.pa05.model to javafx.fxml;
     opens cs3500.pa05.model.json to com.fasterxml.jackson.databind;
+  opens cs3500.pa05.view to javafx.fxml;
 }

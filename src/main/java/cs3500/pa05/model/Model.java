@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.json.WeekJson;
+import cs3500.pa05.view.CustomTheme;
 import java.nio.file.Path;
 
 public interface Model {
@@ -32,6 +33,10 @@ public interface Model {
   String getTitle();
 
   CustomTheme getTheme();
+
+  void addNote(String text);
+
+  String getNotes();
 
   //everything above is good
 }

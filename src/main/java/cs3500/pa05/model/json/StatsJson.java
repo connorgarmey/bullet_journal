@@ -28,7 +28,8 @@ public record StatsJson(
         if (notes.isEmpty()) {
             sb.append("  \"notes\": \"\",\n");
         } else {
-            sb.append("  \"notes\": ").append(notes).append(",\n");
+            sb.append("  \"notes\": ");
+            sb.append("\"").append(notes).append("\"").append(",\n");
         }
         sb.append("  \"percent\": ").append(percent).append("\n");
         sb.append("}");

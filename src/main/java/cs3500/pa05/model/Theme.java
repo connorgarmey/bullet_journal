@@ -1,8 +1,6 @@
 package cs3500.pa05.model;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+import cs3500.pa05.view.CustomTheme;
 
 /**
  * The 3 possible 3 available to a user

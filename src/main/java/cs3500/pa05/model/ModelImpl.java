@@ -5,14 +5,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.controller.WriteFile;
 import cs3500.pa05.model.json.DayJson;
-import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.StatsJson;
-import cs3500.pa05.model.json.TaskJson;
 import cs3500.pa05.model.json.ThemeJson;
 import cs3500.pa05.model.json.WeekJson;
+import cs3500.pa05.view.CustomTheme;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -284,4 +282,21 @@ public class ModelImpl implements Model {
         replaceAll(".bujo", "");
   }
 
+  @Override
+  public void addNote(String text) {
+    notes = notes + "- " + text;
+  }
+
+  @Override
+  public String getNotes() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < notes.length(); i++) {
+      if (notes.charAt(i) == '-') {
+        sb.append("\n-");
+      } else {
+        sb.append(notes.charAt(i));
+      }
+    }
+    return sb.toString();
+  }
 }

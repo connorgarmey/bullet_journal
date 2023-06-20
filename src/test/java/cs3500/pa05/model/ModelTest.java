@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cs3500.pa05.model.json.ThemeJson;
 import cs3500.pa05.model.json.WeekJson;
+import cs3500.pa05.view.CustomTheme;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

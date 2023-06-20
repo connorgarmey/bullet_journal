@@ -1,8 +1,6 @@
 package cs3500.pa05.model.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import cs3500.pa05.model.CustomTheme;
-import cs3500.pa05.model.Theme;
 
 public record ThemeJson(
     @JsonProperty("font") String font,

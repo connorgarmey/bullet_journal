@@ -1,6 +1,6 @@
 package cs3500.pa05.controller;
 
-import cs3500.pa05.model.CustomTheme;
+import cs3500.pa05.view.CustomTheme;
 import cs3500.pa05.model.Theme;
 import java.util.List;
 import java.util.Objects;
