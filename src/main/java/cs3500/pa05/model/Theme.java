@@ -10,7 +10,7 @@ public enum Theme {
   /**
    * Blue theme
    */
-  BLUE( new CustomTheme("Arial", "Blue", "BLUE", "Blue", "BLUE")),
+  BLUE( new CustomTheme("Arial", "Blue", "Blue", "Blue", "BLUE")),
 
   /**
    * Light theme
@@ -23,10 +23,21 @@ public enum Theme {
   DARK( new CustomTheme("Times New Roman", "Black", "Dark Grey", "Dark", "DARK"));
 
   private CustomTheme theTheme;
+
+  /**
+   * constructors a new theme enum with the corresponding custom theme rep
+   *
+   * @param theme custom theme rep
+   */
   Theme(CustomTheme theme) {
     this.theTheme = theme;
   }
 
+  /**
+   * getter for the custom theme
+   *
+   * @return custom theme
+   */
   public CustomTheme getTheTheme() {
     return theTheme;
   }
