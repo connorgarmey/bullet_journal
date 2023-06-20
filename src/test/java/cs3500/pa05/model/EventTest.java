@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.TaskJson;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,17 @@ class EventTest {
     event5 = new Event("Godfather marathon", "Watch all Godfather movies", "Saturday", 10, 0, 599);
     eventJson1 = new EventJson("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
   }
+
+  @AfterAll
+  public static void restoreInitialValues() {
+    event1 = new Event("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
+    event2 = new Event("Meditation", "Hour long meditation session", "Tuesday", 8, 0, 60);
+    event3 = new Event("Basketball game", "Club basketball game", "Wednesday", 12, 15, 120);
+    event4 = new Event("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
+    event5 = new Event("Godfather marathon", "Watch all Godfather movies", "Saturday", 10, 0, 599);
+    eventJson1 = new EventJson("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
+  }
+
 
   @Test
   public void testJsonToEvent() {
@@ -78,7 +90,7 @@ class EventTest {
         + "Start Time: "
         + 8
         + ":"
-        + 0
+        + "00"
         + System.lineSeparator()
         + "Duration: "
         + "1 hour"
@@ -129,7 +141,7 @@ class EventTest {
         + "Start Time: "
         + 10
         + ":"
-        + 0
+        + "00"
         + System.lineSeparator()
         + "Duration: "
         + "" + 9 + " hours " + 59 + " minutes"
