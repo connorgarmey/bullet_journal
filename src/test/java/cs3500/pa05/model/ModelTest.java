@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.text.Font;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +22,7 @@ import org.junit.jupiter.api.Test;
  * Testing for the Model
  */
 class ModelTest {
-  ModelImpl modelWithData;
+  Model modelWithData;
   Model emptyModel;
   String jsonString;
 
@@ -158,6 +161,9 @@ class ModelTest {
 
   @Test
   public void testMakeWeek() {
+    System.out.println(Font.getFontNames());
+    assertEquals(new ArrayList<>() {
+    }, Font.getFontNames());
     // Check agenda before
     String initOutput = emptyModel.getCurrentStats();
     String expectedInitStats = "Events: 0,   Tasks: 0   100.0% completed";
