@@ -39,18 +39,40 @@ public class Day {
     this.events = events;
   }
 
+  /**
+   * Adds the occasion to the proper list
+   *
+   * @param occasion the occasion to add
+   * @param occasionList the list of the given occasion
+   */
   private void addOccasion(Occasion occasion, List<Occasion> occasionList) {
     occasionList.add(occasion);
   }
 
+  /**
+   * Adds event to the event list
+   *
+   * @param occasion event to add
+   */
   public void addEvent(Occasion occasion) {
     addOccasion(occasion, this.events);
   }
 
+  /**
+   * Adds task to the task list
+   *
+   * @param occasion task to add
+   */
   public void addTask(Occasion occasion) {
     addOccasion(occasion, this.tasks);
   }
 
+  /**
+   * Overrides the equals method to compare if the days are equal
+   *
+   * @param o
+   * @return
+   */
   @Override
   public boolean equals(Object o) {
     if (o instanceof Day that) {
@@ -60,6 +82,12 @@ public class Day {
     }
   }
 
+  /**
+   * Returns whether or not the days are the same
+   *
+   * @param day The day to compare with
+   * @return true if this day equals the day to compare
+   */
   public boolean isSameDay(String day) {
     return this.dayOfWeek.equals(day);
   }
@@ -82,6 +110,11 @@ public class Day {
     this.tasks.sort(comparator);
   }
 
+  /**
+   * Overriding the toString method to write out the daily occasions as String
+   *
+   * @return
+   */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -115,6 +148,11 @@ public class Day {
   }
 
 
+  /**
+   * Gets the number of completed tasks for the day
+   *
+   * @return the number of completed tasks
+   */
   public int getNumCompletedTasks() {
     int completedTasks = 0;
     for (Occasion occ : tasks) {
@@ -159,6 +197,11 @@ public class Day {
     return new DayJson(this.dayOfWeek, eventsJson, tasksJson);
   }
 
+  /**
+   * Returns the days agenda as a string
+   *
+   * @return the string representation of the daily agenda
+   */
   public String getAgenda() {
     StringBuilder sb = new StringBuilder();
     stringRep(sb, "Tasks: ", tasks);
@@ -166,6 +209,13 @@ public class Day {
     return sb.toString();
   }
 
+  /**
+   * Writes out each list of Tasks or Events with the header
+   *
+   * @param sb instance of a string builder
+   * @param header the header ("Task" or "Event")
+   * @param list List of tasks or events
+   */
   private void stringRep(StringBuilder sb, String header, List<Occasion> list) {
     sb.append(header);
     sb.append(System.lineSeparator());
@@ -176,6 +226,13 @@ public class Day {
     }
   }
 
+  /**
+   * Returns whether or not the user can add another occasion, or if it is already at the max
+   *
+   * @param isTask whether or not the occasion is a task
+   * @param max the max allowed occasions of that type allowable
+   * @return true if they can still add
+   */
   public boolean canAdd(boolean isTask, int max) {
     if (isTask) {
       return this.tasks.size() < max;
@@ -185,7 +242,7 @@ public class Day {
   }
 
   /**
-   * Updates the dya
+   * Updates the day
    *
    * @param json the Day JSON
    */
@@ -200,6 +257,12 @@ public class Day {
     }
   }
 
+  /**
+   * Returns whether the task already exists
+   *
+   * @param task name of the task
+   * @return true if the task already exists
+   */
   public boolean taskExists(String task) {
     boolean exists = false;
     for (Occasion occ : tasks) {
@@ -210,6 +273,12 @@ public class Day {
     return exists;
   }
 
+  /**
+   * Returns if the inputted task is complete
+   *
+   * @param task name of the task
+   * @return true if the task is complete
+   */
   public boolean taskComplete(String task) {
     boolean complete = false;
     for (Occasion occ : tasks) {
@@ -223,6 +292,11 @@ public class Day {
     return complete;
   }
 
+  /**
+   * Updates the completion of the task
+   *
+   * @param task name of the task
+   */
   public void updateCompletion(String task) {
     for (Occasion occ : tasks) {
       if (occ.sameOccasion(task)) {

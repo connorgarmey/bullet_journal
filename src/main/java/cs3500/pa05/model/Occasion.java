@@ -40,6 +40,12 @@ public abstract class Occasion {
     }
   }
 
+  /**
+   * Returns whether or not two occasions are the same
+   *
+   * @param otherName the name of the other occasion being compared
+   * @return boolean true or false
+   */
   public boolean sameOccasion(String otherName) {
     return this.name.equalsIgnoreCase(otherName);
   }

@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Represents the Implementation of the Model, extending the Model interface
+ */
 public class ModelImpl implements Model {
   private List<Day> week;
   private CustomTheme theme;
@@ -26,6 +29,9 @@ public class ModelImpl implements Model {
   private int maxEvents;
   private String notes;
 
+  /**
+   * Instantiates an initial, default Model
+   */
   public ModelImpl() {
     this.week = makeEmptyDays();
     this.numEvents = 0;
@@ -38,6 +44,11 @@ public class ModelImpl implements Model {
     this.maxEvents = 5;
   }
 
+  /**
+   * Makes the default week given the default Model fields
+   *
+   * @param week an entire week written out as a String
+   */
   @Override
   public void makeWeek(String week) {
     try {
@@ -56,13 +67,23 @@ public class ModelImpl implements Model {
 
   }
 
+  /**
+   * Gets the current theme
+   *
+   * @return the current theme
+   */
   @Override
   public CustomTheme getTheme() {
     return this.theme;
   }
-  
-  
 
+
+  /**
+   * Returns the Day given the name of the Day
+   *
+   * @param dayRep name of the day as a string
+   * @return the Day object
+   */
   private Day getDayFromRep(String dayRep) {
     Day dayToReturn = null;
     for (Day day : week) {
@@ -90,6 +111,11 @@ public class ModelImpl implements Model {
     }
   }
 
+  /**
+   * Goes through each Day in the week and updates their DayJson
+   *
+   * @param dayJsons JSON representation of each Day
+   */
   private void updateDays(List<DayJson> dayJsons) {
     for (DayJson dayJson : dayJsons) {
       for (Day day : week) {
@@ -100,6 +126,11 @@ public class ModelImpl implements Model {
     }
   }
 
+  /**
+   * Constructs a list of empty Days
+   *
+   * @return a list of Empty Days
+   */
   private List<Day> makeEmptyDays() {
     List<String> stringRep = makeDaysOfWeek(new ArrayList<>());
     List<Day> days = new ArrayList<>();
@@ -111,10 +142,16 @@ public class ModelImpl implements Model {
   }
 
 
-
+  /**
+   * Creates a new task given inputted task details
+   *
+   * @param n name of the task
+   * @param des description of the task
+   * @param d day the task takes place
+   */
   @Override
   public void addTask(String n, String des, String d) {
-    Occasion taskToAdd = new Task(n,des,d);
+    Occasion taskToAdd = new Task(n, des, d);
     for (Day day : this.week) {
       if (day.isSameDay(d)) {
         day.addTask(taskToAdd);
@@ -122,6 +159,17 @@ public class ModelImpl implements Model {
     }
   }
 
+
+  /**
+   * Adds an event given inputted event details
+   *
+   * @param n name of the event
+   * @param des description of the event
+   * @param d day the event takes place
+   * @param hour hour of the day the event starts
+   * @param minute minute of the hour that it starts
+   * @param dur duration of the event
+   */
   @Override
   public void addEvent(String n, String des, String d, int hour, int minute, int dur) {
     Occasion eventToAdd = new Event(n, des, d, hour, minute, dur);
@@ -133,12 +181,22 @@ public class ModelImpl implements Model {
   }
 
 
+  /**
+   * Sets a new theme
+   *
+   * @param newTheme the theme to switch it to
+   */
   @Override
   public void changeTheme(CustomTheme newTheme) {
     this.theme = newTheme;
   }
 
 
+  /**
+   * Creates a new, default WeekJson
+   *
+   * @return
+   */
   @Override
   public WeekJson newWeek() {
     List<String> dayString = makeDaysOfWeek(new ArrayList<>());
@@ -152,6 +210,12 @@ public class ModelImpl implements Model {
     return new WeekJson(days, theme, stats);
   }
 
+  /**
+   * Constructs a list of Days of the week as String
+   *
+   * @param days empty list of strings to add the day names to
+   * @return the list with each day string added
+   */
   private List<String> makeDaysOfWeek(List<String> days) {
     days.add("Monday");
     days.add("Tuesday");
@@ -163,6 +227,11 @@ public class ModelImpl implements Model {
     return days;
   }
 
+  /**
+   * Constructs a WeekJson with the current data
+   *
+   * @return an updated WeekJson
+   */
   private WeekJson currentData() {
     List<DayJson> dayJsons = new ArrayList<>();
     System.out.println(week);
@@ -177,15 +246,29 @@ public class ModelImpl implements Model {
     return new WeekJson(dayJsons, themeJson, statsJson);
   }
 
+  /**
+   * Updates the path to the Bujo file
+   *
+   * @param path desired path for the file
+   */
   public void updateBujoFile(Path path) {
     this.bujoFile = path;
   }
 
+  /**
+   * Saves the data by writing the current data to the Bujo file
+   */
   public void saveData() {
     WriteFile writer = new WriteFile();
     writer.writeToFile(this.bujoFile, currentData());
   }
 
+  /**
+   * Updates the max allowed number of events or tasks
+   *
+   * @param max the new max to set
+   * @param which which occasion to set the max for (event or task)
+   */
   public void updateMax(int max, String which) {
     if (which.equals("tasks")) {
       this.maxTasks = max;
@@ -282,11 +365,21 @@ public class ModelImpl implements Model {
         replaceAll(".bujo", "");
   }
 
+  /**
+   * Adds a note to the notes section
+   *
+   * @param text text to be added
+   */
   @Override
   public void addNote(String text) {
     notes = notes + "- " + text;
   }
 
+  /**
+   * Gets the notes and returns it properly formatted
+   *
+   * @return string representation of all notes
+   */
   @Override
   public String getNotes() {
     StringBuilder sb = new StringBuilder();
@@ -300,6 +393,13 @@ public class ModelImpl implements Model {
     return sb.toString();
   }
 
+  /**
+   * Returns whether or not a given task exists
+   *
+   * @param day Day of the week to check
+   * @param task Name of the task to check
+   * @return true if exists, false if it doesn't exist
+   */
   public boolean taskExists(String day, String task) {
     for (Day curDay : week) {
       if (curDay.isSameDay(day) && curDay.taskExists(task)) {
@@ -309,6 +409,13 @@ public class ModelImpl implements Model {
     return false;
   }
 
+  /**
+   * Returns whether or not the task is completed
+   *
+   * @param day day of the week
+   * @param task name of the task
+   * @return true if the task is not complete
+   */
   public boolean taskAlreadyComplete(String day, String task) {
     for (Day theDay : week) {
       if (theDay.isSameDay(day) && !theDay.taskComplete(task)) {
@@ -319,6 +426,12 @@ public class ModelImpl implements Model {
   }
 
 
+  /**
+   * Updates the completion of the task
+   *
+   * @param day Day the task takes place
+   * @param task Name of the task
+   */
   public void updateCompletion(String day, String task) {
     for (Day theDay : week) {
       if (theDay.isSameDay(day)) {

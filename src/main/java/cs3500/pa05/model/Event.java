@@ -6,11 +6,24 @@ import java.util.concurrent.TimeUnit;
 import cs3500.pa05.model.json.EventJson;
 
 
+/**
+ * Represents a single event
+ */
 public class Event extends Occasion {
   private int startHour;
   private int startMinute;
   private int duration;
 
+  /**
+   * Instantiates a new Event with the user inputted details
+   *
+   * @param n name of the event
+   * @param des description of the event
+   * @param d day the event takes place
+   * @param hour hour of the day the event starts
+   * @param minute minute of the hour the event starts
+   * @param dur duration of the event
+   */
   public Event(String n, String des, String d, int hour, int minute, int dur) {
     super(n, des, d);
     this.startHour = hour;
@@ -18,6 +31,11 @@ public class Event extends Occasion {
     this.duration = dur;
   }
 
+  /**
+   *
+   *
+   * @param eventJson
+   */
   public Event(EventJson eventJson) {
     super(eventJson.name(), eventJson.description(), eventJson.dayOfWeek());
     this.startHour = eventJson.hour();
