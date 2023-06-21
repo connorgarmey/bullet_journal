@@ -15,13 +15,9 @@ public interface Controller {
 
   void setView(View view);
 
-  Scene changeStage();
-
   void popupHandler(String url, Stage popupStage, Scene scene);
 
   void refreshData();
-
-  void setMainPageHandler(Scene scene);
 
   List<Label> getAllLabels();
 }

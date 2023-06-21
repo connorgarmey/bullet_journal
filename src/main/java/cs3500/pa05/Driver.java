@@ -15,20 +15,31 @@ import javafx.stage.Stage;
  */
 public class Driver extends Application {
 
+  /**
+   * Main method
+   *
+   * @param args the arguments
+   */
   public static void main(String[] args) {
     launch();
   }
 
+  /**
+   * Starts the JavaFX application
+   *
+   * @param primaryStage the primary stage for this application, onto which
+   * the application scene can be set.
+   * Applications may create other stages, if needed, but they will not be
+   * primary stages.
+   */
   @Override
   public void start(Stage primaryStage) {
-
     FXMLLoader loader = new FXMLLoader();
     Model model = new ModelImpl();
     Controller controller = new JournalController(model);
     loader.setController(controller);
     View view = new ViewImpl(loader, primaryStage);
     controller.setView(view);
-
 
     try {
       // load and place the view's scene onto the stage
@@ -37,9 +48,10 @@ public class Driver extends Application {
       controller.run();
       // render the stage
       primaryStage.show();
+
     } catch (IllegalStateException exc) {
       System.err.println("Unable to load GUI.");
     }
-
   }
+
 }

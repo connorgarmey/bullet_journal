@@ -2,27 +2,14 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.model.Model;
 import cs3500.pa05.model.Theme;
-import cs3500.pa05.view.View;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -49,16 +36,12 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
   private void handleActionEvent(ActionEvent event) {
     if (event.getSource() instanceof MenuItem menuItem) {
       String id = menuItem.getId();
-      ClassLoader classLoader = getClass().getClassLoader();
       switch (id) {
-        case "open", "week" -> {
-          controller.loadScene("welcome.fxml");
-          controller.changeStage();
-        }
+        case "open", "week" -> openPopup("welcome.fxml");
         case "save" -> model.saveData();
         case "setMaxTasks" -> openPopup("max_tasks_stage.fxml");
         case "setMaxEvents" -> openPopup("max_events_stage.fxml");
-        case "changeCompletionMenu" -> openPopup("task_completion.fxml");
+        case "changeCompletionMenu" -> openPopup("edit_task.fxml");
         case "task" -> openPopup("create_task.fxml");
         case "event" -> openPopup("create_event.fxml");
         case "note" -> openPopup("add_note.fxml");

@@ -152,11 +152,6 @@ public class JournalController implements Controller {
   @FXML
   private ChoiceBox<String> dayOfTheTask;
 
-
-
-
-
-
   private MainPageHandler mainPageHandler;
 
   /**
@@ -169,15 +164,15 @@ public class JournalController implements Controller {
   }
 
 
+  /**
+   * Runs the controller for the application
+   */
   @Override
   public void run() {
     loadScene("welcome.fxml");
 
   }
 
-  public void setMainPageHandler(Scene scene) {
-    this.mainPageHandler = new MainPageHandler(this, scene, model);
-  }
 
   /**
    * Loads a scene
@@ -195,8 +190,8 @@ public class JournalController implements Controller {
     else if (url.equals("main_page.fxml")) {
       view.setControllerHelper(this);
       view.loadScene(url);
-      Scene scene = changeStage();
-      this.setMainPageHandler(scene);
+      Scene scene = view.changeStage();
+      this.mainPageHandler = new MainPageHandler(this, scene, model);
 
       // Set title
       title.setText(model.getTitle());
@@ -213,20 +208,25 @@ public class JournalController implements Controller {
     }
   }
 
+  /**
+   * Updates the theme of the scene
+   *
+   * @param theScene the scene to modify
+   */
   private void updateTheme(Scene theScene) {
     ChangeTheme change = new ChangeTheme(model.getTheme(), theScene.getRoot(), this);
     change.modifyLabels();
     change.modifyBackground();
   }
 
+  /**
+   * Sets the view of this controller
+   *
+   * @param view the given view
+   */
   @Override
   public void setView(View view) {
     this.view = view;
-  }
-
-  @Override
-  public Scene changeStage() {
-    return view.changeStage();
   }
 
 
@@ -252,11 +252,13 @@ public class JournalController implements Controller {
       case "add_note.fxml" ->
           buttonNotes.setOnAction(new CreateNoteHandler(this, model, notesText, popupStage));
       case "custom_theme.fxml" ->
-        createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
-            chooseIcon, customThemeName, model, popupStage, this, scene));
-      case "task_completion.fxml" ->
-        changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
-            this, model, popupStage));
+          createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
+              chooseIcon, customThemeName, model, popupStage, this, scene));
+      case "edit_task.fxml" ->
+          changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
+              this, model, popupStage));
+      case "welcome.fxml" ->
+          loadScene("welcome.fxml");
     }
   }
 
@@ -280,7 +282,7 @@ public class JournalController implements Controller {
         for (Node node : vbox.getChildren()) {
           if (node instanceof Label label) {
             String id = label.getId();
-             if (id != null) {
+            if (id != null) {
               switch (id) {
                 case "mondayStuff" -> label.setText(model.getDaysAgenda(0));
                 case "tuesdayStuff" -> label.setText(model.getDaysAgenda(1));
