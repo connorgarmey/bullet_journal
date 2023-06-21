@@ -14,24 +14,42 @@ import javafx.stage.Stage;
 
 /**
  * Controller for the central page of the journal
+ *
  */
 public class MainPageHandler implements EventHandler<ActionEvent> {
   Controller controller;
   Scene scene;
   Model model;
 
+  /**
+   * Instantiates a new MainPageHandler
+   *
+   * @param controller the controller to be used
+   * @param scene the Scene to load
+   * @param model the Model being used
+   */
   MainPageHandler(Controller controller, Scene scene, Model model) {
     this.controller = controller;
     this.scene = scene;
     this.model = model;
   }
 
+  /**
+   * Overrides the handle method to handle the action event from the main page
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     handleActionEvent(event);
 
   }
 
+  /**
+   * Assigns the correct popup or action given the action event taken by the user
+   *
+   * @param event the action event taken by the user that requires action
+   */
   @FXML
   private void handleActionEvent(ActionEvent event) {
     if (event.getSource() instanceof MenuItem menuItem) {

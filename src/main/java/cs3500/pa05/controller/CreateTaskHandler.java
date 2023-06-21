@@ -21,8 +21,19 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
   private ChoiceBox<String> taskDayDropDown;
   private Stage popup;
 
+
+  /**
+   * Instantiates a new CreateTaskHandler
+   *
+   * @param controller the controller
+   * @param model the model
+   * @param name the name of the task
+   * @param des description of the taslo
+   * @param days the day of the week
+   * @param popupStage the popup stage
+   */
   public CreateTaskHandler(Controller controller, Model model, TextField name,
-                           TextField des, ChoiceBox<String > days, Stage popupStage) {
+                           TextField des, ChoiceBox<String> days, Stage popupStage) {
     this.controller = controller;
     this.model = model;
     this.inputTaskName = name;
@@ -31,6 +42,11 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
     this.popup = popupStage;
   }
 
+  /**
+   * Overrides the handle method to handle user interactions when creating a new task
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     String task = inputTaskName.getText();
@@ -47,10 +63,6 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
       popup.close();
       controller.refreshData();
     }
-
-    // after adding task need to move back to main journal screen
-
-    // check if we should clear input fields after or not necessary
   }
 
 

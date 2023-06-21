@@ -2,6 +2,16 @@ package cs3500.pa05.model.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * JSON record for the week's statistics
+ *
+ * @param event number of events that week
+ * @param task number of tasks that week
+ * @param maxEvents max allowed events
+ * @param maxTasks max allowed tasks
+ * @param notes user inputted notes
+ * @param percent percent completed
+ */
 public record StatsJson(
     @JsonProperty("eventsCount")
     int event,

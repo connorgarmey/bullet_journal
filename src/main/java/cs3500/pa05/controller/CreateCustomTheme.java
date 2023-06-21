@@ -28,6 +28,19 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
   private Controller controller;
   private Scene scene;
 
+  /**
+   * Instantiates a new custom theme
+   *
+   * @param font selected font
+   * @param fontColor selected font color
+   * @param background selected background
+   * @param icon selected icon
+   * @param name name of the theme
+   * @param model the model implementation
+   * @param popup the popup stage
+   * @param controller the controller
+   * @param scene the scene
+   */
   public CreateCustomTheme(ChoiceBox<String> font, ChoiceBox<String> fontColor,
                            ChoiceBox<String> background, ChoiceBox<String> icon,
                            TextField name, Model model, Stage popup, Controller controller,
@@ -43,6 +56,11 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
     this.scene = scene;
   }
 
+  /**
+   * Overriding the handle method to handle user actions when creating a custom theme
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     if (anyBlank()) {
@@ -67,6 +85,11 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
     }
   }
 
+  /**
+   * Checks that none of the theme fields were left blank
+   *
+   * @return true if any of the necessary fields were left blank
+   */
   private boolean anyBlank() {
     String font = chooseFont.getValue();
     String fontColor = chooseFontColor.getValue();
@@ -76,6 +99,11 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
         || background == null || icon == null;
   }
 
+  /**
+   * Checks the user provided a name for the theme
+   *
+   * @return true if the name field is empty
+   */
   private boolean isNameEmpty() {
     String name = customFieldName.getText();
     return name.isBlank();

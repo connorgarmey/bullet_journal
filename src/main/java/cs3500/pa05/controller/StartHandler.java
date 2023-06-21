@@ -13,6 +13,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * The handler for the Start screen
+ *
+ */
 public class StartHandler implements EventHandler<ActionEvent> {
 
   private Model model;
@@ -20,6 +24,14 @@ public class StartHandler implements EventHandler<ActionEvent> {
   TextField inputFileLoad;
   TextField inputFileCreate;
 
+  /**
+   * Instantiates a StartHandler
+   *
+   * @param model the model implementation
+   * @param controller the controller
+   * @param inputFileLoad the text field user types to if they want to load a file
+   * @param inputFileCreate the text field user types to if they want to create a file
+   */
   public StartHandler(Model model, Controller controller, TextField inputFileLoad, TextField inputFileCreate) {
     this.model = model;
     this.controller = controller;
@@ -103,8 +115,6 @@ public class StartHandler implements EventHandler<ActionEvent> {
     String pathName = "src/main/resources/";
     String fileName = pathName + name + ".bujo";
 
-
-
     try {
       // Load the file and create a scanner to read the file
       Path filePath = Path.of(fileName);
@@ -130,6 +140,8 @@ public class StartHandler implements EventHandler<ActionEvent> {
   }
 
   /**
+   * Ensures the user only types characters allowed in a file name
+   *
    * @return true if the inputted file name is INVALID
    */
   private boolean isInvalid(String fileName) {

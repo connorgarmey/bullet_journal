@@ -3,6 +3,14 @@ package cs3500.pa05.model.json;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa05.model.Task;
 
+/**
+ * JSON record for a Task
+ *
+ * @param name name of the task
+ * @param description description of the task
+ * @param dayOfWeek the day of the week the task must be completed
+ * @param isCompleted if it is completed
+ */
 public record TaskJson(
     @JsonProperty("name") String name,
     @JsonProperty("description") String description,
@@ -10,11 +18,21 @@ public record TaskJson(
     @JsonProperty("completed") boolean isCompleted) {
 
 
+  /**
+   * Constructs a task from this TaskJson
+   *
+   * @return the constructed Task
+   */
   public Task makeTask() {
     return new Task(name, description, dayOfWeek);
   }
 
 
+  /**
+   * Overrides toString to write the TaskJson as a string
+   *
+   * @return the TaskJson as a string
+   */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

@@ -260,7 +260,7 @@ public class Day {
   /**
    * Returns whether the task already exists
    *
-   * @param task name of the task
+   * @param occasion name of the occasion
    * @return true if the task already exists
    */
   public boolean occasionExists(String occasion, boolean isTask) {

@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 
 /**
  * Class for an alert
+ *
  */
 public class ShowAlert {
 

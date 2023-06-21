@@ -10,12 +10,27 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * The handler for changing the completion of tasks
+ *
+ */
 public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
   private TextField taskToChange;
   private ChoiceBox<String> dayOfTheTask;
   private Controller controller;
   private Model model;
   private Stage popup;
+
+
+  /**
+   * Instantiates a new ChangeCompletionHandler
+   *
+   * @param task the text field to input the task in
+   * @param day the choicebox containing the day of the week
+   * @param controller the controller
+   * @param model the model
+   * @param popup the popup stage
+   */
   public ChangeCompletionHandler(TextField task, ChoiceBox<String> day, Controller controller, Model model, Stage popup) {
     this.taskToChange = task;
     this.dayOfTheTask = day;
@@ -23,6 +38,13 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
     this.model = model;
     this.popup = popup;
   }
+
+
+  /**
+   * Overrides the handle method to handle user interactions when changing the completion of tasks
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     String task = taskToChange.getText();
@@ -41,14 +63,37 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
     }
   }
 
+  /**
+   * Checks if the day is null or the task name is blank
+   *
+   * @param task the name of the task
+   * @param day the day of the week the task takes place
+   * @return true if the task name or day of the week is invalid
+   */
   private boolean badData(String task, String day) {
     return day == null || task.isBlank();
   }
 
+
+  /**
+   * Checks if a task already exists
+   *
+   * @param task the name of the task
+   * @param day the day of the week for the task
+   * @return true if the task already exists
+   */
   private boolean taskExists(String task, String day) {
     return model.occasionExists(day, task, true);
   }
 
+
+  /**
+   * Checks if the task is already completed
+   *
+   * @param task the name of the task
+   * @param day the day of the week for the task
+   * @return true if the task is already complete
+   */
   private boolean alreadyComplete(String task, String day) {
     return model.taskAlreadyComplete(day, task);
   }

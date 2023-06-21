@@ -9,6 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Handles changing of the maximum allowed occasions
+ *
+ */
 public class SetMaxHandler implements EventHandler<ActionEvent> {
   Controller controller;
   Model model;
@@ -16,6 +20,15 @@ public class SetMaxHandler implements EventHandler<ActionEvent> {
   Label theLabel;
   Stage popup;
 
+  /**
+   * Instantiates a new SetMaxHandler
+   *
+   * @param control the controller
+   * @param model the model implementation
+   * @param field text field to input new max
+   * @param label the label
+   * @param popup the stage to popup
+   */
   public SetMaxHandler(Controller control, Model model, TextField field, Label label, Stage popup) {
     this.controller = control;
     this.model = model;
@@ -24,6 +37,11 @@ public class SetMaxHandler implements EventHandler<ActionEvent> {
     this.popup = popup;
   }
 
+  /**
+   * Overriding handle to handle when user interacts with setting max occasions
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     String max = textField.getText();
@@ -41,6 +59,11 @@ public class SetMaxHandler implements EventHandler<ActionEvent> {
     }
   }
 
+  /**
+   * Returns whether they are trying to set the max for tasks or events
+   *
+   * @return string of either "tasks" or "events"
+   */
   private String whichMax() {
     if (theLabel.getId().equals("maxTasks")) {
       return "tasks";

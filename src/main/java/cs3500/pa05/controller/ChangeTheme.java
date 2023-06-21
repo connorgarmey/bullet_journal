@@ -20,12 +20,27 @@ public class ChangeTheme {
   //private Controller controller;
   private List<Label> labels;
 
+  /**
+   * Instantiates a new ChangeTheme
+   *
+   * @param theme a CustomTheme
+   * @param node the parent node
+   * @param controller the controller
+   */
   public ChangeTheme(CustomTheme theme, Parent node, Controller controller) {
     this.theme = theme;
     this.node = node;
     this.labels = controller.getAllLabels();
   }
 
+
+  /**
+   * Instantiates a new ChangeTheme
+   *
+   * @param theme a base theme
+   * @param node parent node
+   * @param controller the controller
+   */
   public ChangeTheme(Theme theme, Parent node, Controller controller) {
     this.theme = theme.getTheTheme();
     this.node = node;

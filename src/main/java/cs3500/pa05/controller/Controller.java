@@ -19,10 +19,26 @@ public interface Controller {
    */
   void run();
 
+  /**
+   * Loads a scene
+   *
+   * @param url the type of scene to load
+   */
   void loadScene(String url);
 
+  /**
+   * Sets the view of this controller
+   *
+   * @param view the given view
+   */
   void setView(View view);
 
+  /**
+   * Delegates diff popups when needed
+   *
+   * @param url the popup's url
+   * @param popupStage the new Stage object
+   */
   void popupHandler(String url, Stage popupStage, Scene scene);
 
   /**
@@ -31,5 +47,10 @@ public interface Controller {
    */
   void refreshData();
 
+  /**
+   * Gets all labels in the main screen
+   *
+   * @return a list of Label
+   */
   List<Label> getAllLabels();
 }

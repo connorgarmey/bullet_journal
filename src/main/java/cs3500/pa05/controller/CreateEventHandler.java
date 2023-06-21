@@ -30,6 +30,19 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
   private Stage popup;
   private Controller controller;
 
+  /**
+   * Instantiates a new CreateEventHandler
+   *
+   * @param model the model object
+   * @param name the name of the event
+   * @param des description of the event
+   * @param hours start hour of the event
+   * @param minutes start minute of the hour
+   * @param dur duration of the event
+   * @param day day of the week the event is
+   * @param popup the popup
+   * @param controller the controller user
+   */
   public CreateEventHandler(Model model, TextField name, TextField des, ChoiceBox<String>  hours,
                             ChoiceBox<String>  minutes, TextField dur, ChoiceBox<String> day,
                             Stage popup, Controller controller) {
@@ -44,6 +57,11 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
     this.controller = controller;
   }
 
+  /**
+   * Overrides the handle method to handle user interactions when creating the event
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
 
@@ -73,18 +91,33 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
 
   }
 
+  /**
+   * Checks if the name and day fields are invalid
+   *
+   * @return true if the name is blank or the day is null
+   */
   private boolean badData() {
     String name = inputEventName.getText();
     String day = eventDayDropDown.getValue();
     return name.isBlank() || day == null;
   }
 
+  /**
+   * Checks that the start time is valid
+   *
+   * @return true if the hour or minutes field is null
+   */
   private boolean badTime() {
     String hour = startHours.getValue();
     String minute = startMinutes.getValue();
     return hour == null || minute == null;
   }
 
+  /**
+   * Checks that the inputted duration is a valid length
+   *
+   * @return true if the duration is invalid
+   */
   private boolean badDuration() {
     String dur = duration.getText();
     try {

@@ -397,7 +397,7 @@ public class ModelImpl implements Model {
    * Returns whether or not a given task exists
    *
    * @param day Day of the week to check
-   * @param task Name of the task to check
+   * @param occ Name of the occasion to check
    * @return true if exists, false if it doesn't exist
    */
   public boolean occasionExists(String day, String occ, boolean isTask) {

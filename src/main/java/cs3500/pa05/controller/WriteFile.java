@@ -12,9 +12,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 
+/**
+ * Writer class to write to output file
+ *
+ */
 public class WriteFile {
 
 
+  /**
+   * Writes the output to the Bujo file
+   *
+   * @param path path of the bujo file
+   * @param week WeekJson to write to the file
+   */
   public void writeToFile(Path path, WeekJson week) {
     try {
       File file;

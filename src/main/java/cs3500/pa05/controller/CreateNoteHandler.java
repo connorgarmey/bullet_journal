@@ -18,6 +18,16 @@ public class CreateNoteHandler implements EventHandler<ActionEvent> {
   private Model model;
   private Stage popup;
   private TextArea text;
+
+
+  /**
+   * Instantiates a new CreateNoteHandler
+   *
+   * @param c the controller
+   * @param model the model
+   * @param notesText the TextArea to input the note in
+   * @param popupStage the stage it exists on
+   */
   public CreateNoteHandler(Controller c, Model model, TextArea notesText, Stage popupStage) {
     this.controller = c;
     this.model = model;

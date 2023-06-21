@@ -32,7 +32,7 @@ public class Event extends Occasion {
   }
 
   /**
-   *
+   * Instantiates a new Event given the EventJson representation
    *
    * @param eventJson
    */
@@ -43,10 +43,20 @@ public class Event extends Occasion {
     this.duration = eventJson.duration();
   }
 
+  /**
+   * Returns the duration of the event
+   *
+   * @return the duration
+   */
   public int getDuration() {
     return this.duration;
   }
 
+  /**
+   * Overrides toString to write the event information as a string
+   *
+   * @return the string representation of the event
+   */
   @Override
   public String toString() {
     String string = "What: "
@@ -64,6 +74,11 @@ public class Event extends Occasion {
     return string;
   }
 
+  /**
+   * Formats the start minute
+   *
+   * @return formatted minutes
+   */
   private String makeMiutes() {
     if (startMinute < 10) {
       return "0" + startMinute;
@@ -72,6 +87,11 @@ public class Event extends Occasion {
     }
   }
 
+  /**
+   * Formats the start time
+   *
+   * @return formatted time
+   */
   private String makeTime() {
     if (duration < 60) {
       return duration + " minutes";
@@ -90,6 +110,11 @@ public class Event extends Occasion {
     }
   }
 
+  /**
+   * Constructs an EventJson using this event
+   *
+   * @return the constructed EventJson
+   */
   public EventJson makeJson() {
     return new EventJson(this.name, this.description, this.day,
         this.startHour, this.startMinute, this.duration);

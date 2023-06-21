@@ -19,6 +19,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Overarching controller class that creates the FXML fields and assigns handlers
+ *
+ */
 public class JournalController implements Controller {
   private Model model;
   private View view;
@@ -179,6 +183,7 @@ public class JournalController implements Controller {
 
   /**
    * Runs the controller for the application
+   *
    */
   @Override
   public void run() {
@@ -244,7 +249,7 @@ public class JournalController implements Controller {
 
 
   /**
-   * Delegates diff
+   * Delegates diff popups when needed
    *
    * @param url the popup's url
    * @param popupStage the new Stage object
@@ -283,6 +288,7 @@ public class JournalController implements Controller {
 
   /**
    * Refreshes the week page to contain updated data
+   *
    */
   @Override
   public void refreshData() {
@@ -294,6 +300,7 @@ public class JournalController implements Controller {
 
   /**
    * Updates the tasks and events for each day
+   *
    */
   private void updateCalendar() {
     for (Node box : notesBox.getChildren()) {

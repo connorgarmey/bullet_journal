@@ -3,6 +3,13 @@ package cs3500.pa05.model.json;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
+/**
+ * JSON record for a Week
+ *
+ * @param days list of DayJson
+ * @param theme seelcted ThemeJson
+ * @param stats StatsJson
+ */
 public record WeekJson(
     @JsonProperty("days")
     List<DayJson> days,
