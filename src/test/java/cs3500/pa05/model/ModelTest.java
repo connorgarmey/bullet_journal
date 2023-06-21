@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * Testing for the Model
  */
 class ModelTest {
-  Model modelWithData;
+  ModelImpl modelWithData;
   Model emptyModel;
   String jsonString;
 
@@ -418,4 +418,5 @@ class ModelTest {
     // Assert they are equal
     assertEquals(expectedTheme.getBackgroundColor(), currentTheme.getBackgroundColor());
   }
+
 }
