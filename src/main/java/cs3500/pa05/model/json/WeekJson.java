@@ -12,6 +12,11 @@ public record WeekJson(
     StatsJson stats)
 {
 
+    /**
+     * Overriding the toString method to write out the week as a String
+     *
+     * @return the String representation of the Week
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

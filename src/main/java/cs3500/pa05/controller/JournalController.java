@@ -144,16 +144,29 @@ public class JournalController implements Controller {
   @FXML
   private TextField customThemeName;
 
-  //fields for changing task completion
+  //fields for changing task completion and editing
   @FXML
   private Button changeCompletion;
   @FXML
   private TextField taskToChange;
   @FXML
   private ChoiceBox<String> dayOfTheTask;
+  @FXML
+  private Button editTaskDetails;
+  @FXML
+  private MenuItem task;
+
+  //fields for changing event
+  @FXML
+  private TextField eventToChange;
+  @FXML
+  private ChoiceBox<String> dayOfTheEvent;
+  @FXML
+  private Button editEventDetails;
+  @FXML
+  private MenuItem event;
 
   private MainPageHandler mainPageHandler;
-
   /**
    * Controller constructor
    *
@@ -254,9 +267,15 @@ public class JournalController implements Controller {
       case "custom_theme.fxml" ->
           createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
               chooseIcon, customThemeName, model, popupStage, this, scene));
-      case "edit_task.fxml" ->
-          changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
-              this, model, popupStage));
+      case "edit_task.fxml" -> {
+        changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
+            this, model, popupStage));
+        editTaskDetails.setOnAction(new EditOccasionHandler(taskToChange, dayOfTheTask, this,
+            model, true, popupStage, task));
+      }
+      case "edit_event.fxml" ->
+        editEventDetails.setOnAction(new EditOccasionHandler(eventToChange, dayOfTheEvent, this,
+            model, false, popupStage, event));
       case "welcome.fxml" ->
           loadScene("welcome.fxml");
     }

@@ -263,10 +263,18 @@ public class Day {
    * @param task name of the task
    * @return true if the task already exists
    */
-  public boolean taskExists(String task) {
+  public boolean occasionExists(String occasion, boolean isTask) {
+    if (isTask) {
+      return occasionExistsHelper(occasion, tasks);
+    } else {
+      return occasionExistsHelper(occasion, events);
+    }
+  }
+
+  private boolean occasionExistsHelper(String occasion, List<Occasion> occasions) {
     boolean exists = false;
-    for (Occasion occ : tasks) {
-      if (occ.sameOccasion(task)) {
+    for (Occasion occ : occasions) {
+      if (occ.sameOccasion(occasion)) {
         exists = true;
       }
     }
@@ -304,6 +312,23 @@ public class Day {
           Task theTask = (Task) occ;
           theTask.updateCompletion();
         }
+      }
+    }
+  }
+
+  public void deleteOccasionFromList(String name, boolean isTask) {
+    if (isTask) {
+      deleteOccasion(name, tasks);
+    } else {
+      deleteOccasion(name, events);
+    }
+  }
+
+  private void deleteOccasion(String name, List<Occasion> occasions) {
+    for (int i = 0; i < occasions.size(); i++) {
+      Occasion curOcc = occasions.get(i);
+      if (curOcc.sameOccasion(name)) {
+        occasions.remove(curOcc);
       }
     }
   }

@@ -46,7 +46,7 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
   }
 
   private boolean taskExists(String task, String day) {
-    return model.taskExists(day, task);
+    return model.occasionExists(day, task, true);
   }
 
   private boolean alreadyComplete(String task, String day) {

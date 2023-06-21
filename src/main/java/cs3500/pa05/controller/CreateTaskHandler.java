@@ -9,6 +9,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Handler for creating a new task
+ *
+ */
 public class CreateTaskHandler implements EventHandler<ActionEvent> {
   private Controller controller;
   private Model model;

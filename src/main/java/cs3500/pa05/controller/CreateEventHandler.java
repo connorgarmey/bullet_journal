@@ -9,6 +9,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * The handler class for creating a new event
+ *
+ */
 public class CreateEventHandler implements EventHandler<ActionEvent> {
   private Model model;
 

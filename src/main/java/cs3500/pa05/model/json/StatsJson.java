@@ -17,6 +17,11 @@ public record StatsJson(
     double percent) {
 
 
+    /**
+     * Overriding toString to write the StatsJson as a string
+     *
+     * @return the StatsJson as string
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

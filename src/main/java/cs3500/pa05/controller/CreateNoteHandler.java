@@ -9,6 +9,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Handles the creation of notes
+ *
+ */
 public class CreateNoteHandler implements EventHandler<ActionEvent> {
   private Controller controller;
   private Model model;

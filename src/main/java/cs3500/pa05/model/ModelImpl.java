@@ -400,13 +400,9 @@ public class ModelImpl implements Model {
    * @param task Name of the task to check
    * @return true if exists, false if it doesn't exist
    */
-  public boolean taskExists(String day, String task) {
-    for (Day curDay : week) {
-      if (curDay.isSameDay(day) && curDay.taskExists(task)) {
-        return true;
-      }
-    }
-    return false;
+  public boolean occasionExists(String day, String occ, boolean isTask) {
+    Day theDay = this.getDayFromRep(day);
+    return theDay.isSameDay(day) && theDay.occasionExists(occ, isTask);
   }
 
   /**
@@ -417,14 +413,9 @@ public class ModelImpl implements Model {
    * @return true if the task is not complete
    */
   public boolean taskAlreadyComplete(String day, String task) {
-    for (Day theDay : week) {
-      if (theDay.isSameDay(day) && !theDay.taskComplete(task)) {
-        return true;
-      }
-    }
-    return false;
+    Day theDay = this.getDayFromRep(day);
+    return theDay.isSameDay(day) && !theDay.taskComplete(task);
   }
-
 
   /**
    * Updates the completion of the task
@@ -433,11 +424,20 @@ public class ModelImpl implements Model {
    * @param task Name of the task
    */
   public void updateCompletion(String day, String task) {
-    for (Day theDay : week) {
-      if (theDay.isSameDay(day)) {
-        theDay.updateCompletion(task);
-      }
-    }
+    Day theDay = this.getDayFromRep(day);
+    theDay.updateCompletion(task);
+  }
+
+  /**
+   * Deletes a given occasion from the list
+   *
+   * @param day day the occasion takes place
+   * @param name name of the occasion
+   * @param isTask whether or not the occasion is a task
+   */
+  public void deleteOccasion(String day, String name, boolean isTask) {
+    Day theDay = this.getDayFromRep(day);
+      theDay.deleteOccasionFromList(name, isTask);
   }
 
 

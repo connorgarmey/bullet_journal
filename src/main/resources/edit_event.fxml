@@ -52,7 +52,7 @@
                      </font>
                   </TextField>
                   <Separator prefHeight="30.0" prefWidth="200.0" />
-                  <Button fx:id="editEvent" layoutX="85.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Edit Event" />
+                  <Button fx:id="editEventDetails" layoutX="85.0" layoutY="265.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Edit Event" />
                </children>
             </VBox>
          </children>

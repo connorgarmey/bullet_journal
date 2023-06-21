@@ -42,5 +42,7 @@ public interface Model {
   boolean taskAlreadyComplete(String day, String task);
   void updateCompletion(String day, String task);
 
+  void deleteOccasion(String day, String name, boolean isTask);
+
   //everything above is good
 }

@@ -5,12 +5,6 @@
       "events": [
       ],
       "tasks": [
-        {
-      "name": "Cry",
-      "description": "",
-      "day-of-week": "Monday",
-      "completed": true
-    }
       ]
     },
     {
@@ -81,6 +75,6 @@
     "maxEvents": 5,
     "maxTasks": 5,
     "notes": "- Note 1  - Note 2  - The cat jumped over the moon into a puddle  - Note 3  ",
-    "percent": 33.33333333333333
+    "percent": 0.0
   }
 }

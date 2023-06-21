@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
+/**
+ * Handles the changing of themes
+ *
+ */
 public class ChangeTheme {
   private CustomTheme theme;
   private Parent node;
@@ -30,6 +34,7 @@ public class ChangeTheme {
 
   /**
    * Modifies the look of the headers and content
+   *
    */
   public void modifyLabels() {
     ClassLoader classLoader = getClass().getClassLoader();

@@ -12,6 +12,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Creates a custom theme for the program
+ *
+ */
 public class CreateCustomTheme implements EventHandler<ActionEvent> {
   Model model;
 

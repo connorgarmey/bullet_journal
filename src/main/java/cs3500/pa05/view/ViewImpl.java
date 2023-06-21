@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 
 /**
  * Implementation of the view that extends the Abstract View
+ *
  */
 public class ViewImpl extends AbstractView {
 
