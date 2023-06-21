@@ -16,13 +16,12 @@ import org.junit.jupiter.api.Test;
  * Testing for the Day class
  */
 class DayTest {
-  public Day monday;
-  public Day monday2;
-  public Day tuesday;
-  public Day wednesday;
-  public ArrayList<Occasion> listOfTasks;
-  public ArrayList<Occasion> listOfEvents;
-  public TaskJson taskJson1;
+  Day monday;
+  Day monday2;
+  Day tuesday;
+  Day wednesday;
+  ArrayList<Occasion> listOfTasks;
+  ArrayList<Occasion> listOfEvents;
   EventTest eventTest = new EventTest();
   TaskTest taskTest = new TaskTest();
 

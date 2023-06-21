@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
  * Testing for the Model
  */
 class ModelTest {
-  public Model modelWithData;
-  public Model emptyModel;
+  Model modelWithData;
+  Model emptyModel;
   String jsonString;
 
   /**

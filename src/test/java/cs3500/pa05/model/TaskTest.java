@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class TaskTest {
   public Occasion task1;
   public Occasion task2;
-  public TaskJson taskJson1;
+  TaskJson taskJson1;
 
   @BeforeEach
   public void setup() {

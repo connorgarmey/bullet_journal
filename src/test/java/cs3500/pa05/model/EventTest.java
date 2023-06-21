@@ -15,8 +15,8 @@ class EventTest {
   public Occasion event2;
   public Occasion event3;
   public Occasion event4;
-  public Occasion event5;
-  public EventJson eventJson1;
+  Occasion event5;
+  EventJson eventJson1;
 
   @BeforeEach
   public void setup() {
