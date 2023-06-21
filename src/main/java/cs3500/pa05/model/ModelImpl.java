@@ -99,7 +99,6 @@ public class ModelImpl implements Model {
    *
    * @param isTask is the occasion a task
    * @param dayRep the day of the week
-   *
    * @return whether it can be add
    */
   public boolean canAdd(Boolean isTask, String dayRep) {
@@ -145,9 +144,9 @@ public class ModelImpl implements Model {
   /**
    * Creates a new task given inputted task details
    *
-   * @param n name of the task
+   * @param n   name of the task
    * @param des description of the task
-   * @param d day the task takes place
+   * @param d   day the task takes place
    */
   @Override
   public void addTask(String n, String des, String d) {
@@ -163,12 +162,12 @@ public class ModelImpl implements Model {
   /**
    * Adds an event given inputted event details
    *
-   * @param n name of the event
-   * @param des description of the event
-   * @param d day the event takes place
-   * @param hour hour of the day the event starts
+   * @param n      name of the event
+   * @param des    description of the event
+   * @param d      day the event takes place
+   * @param hour   hour of the day the event starts
    * @param minute minute of the hour that it starts
-   * @param dur duration of the event
+   * @param dur    duration of the event
    */
   @Override
   public void addEvent(String n, String des, String d, int hour, int minute, int dur) {
@@ -266,7 +265,7 @@ public class ModelImpl implements Model {
   /**
    * Updates the max allowed number of events or tasks
    *
-   * @param max the new max to set
+   * @param max   the new max to set
    * @param which which occasion to set the max for (event or task)
    */
   public void updateMax(int max, String which) {
@@ -281,7 +280,6 @@ public class ModelImpl implements Model {
    * Gets the events and tasks for a day
    *
    * @param day the day of the week
-   *
    * @return a String representation of the day's agenda
    */
   @Override
@@ -311,8 +309,13 @@ public class ModelImpl implements Model {
       completionPercent = (double) completed / total * 100;
     }
 
-    return "Events: " + numEvents + ",   Tasks: " + numTasks
-        + "   " + completionPercent +"% completed";
+    return "Events: "
+        + numEvents
+        + ",   Tasks: "
+        + numTasks
+        + "   "
+        + completionPercent
+        + "% completed";
   }
 
 
@@ -351,13 +354,16 @@ public class ModelImpl implements Model {
           day.sortListTasks(new SortByName());
         }
       }
+      default -> {
+      }
     }
   }
 
   /**
    * Gets the title of the file
    *
-   * @return the .bujo file path name to String
+   * @return the
+   * .bujo file path name to String
    */
   @Override
   public String getTitle() {
@@ -408,7 +414,7 @@ public class ModelImpl implements Model {
   /**
    * Returns whether or not the task is completed
    *
-   * @param day day of the week
+   * @param day  day of the week
    * @param task name of the task
    * @return true if the task is not complete
    */
@@ -420,7 +426,7 @@ public class ModelImpl implements Model {
   /**
    * Updates the completion of the task
    *
-   * @param day Day the task takes place
+   * @param day  Day the task takes place
    * @param task Name of the task
    */
   public void updateCompletion(String day, String task) {
@@ -431,13 +437,13 @@ public class ModelImpl implements Model {
   /**
    * Deletes a given occasion from the list
    *
-   * @param day day the occasion takes place
-   * @param name name of the occasion
+   * @param day    day the occasion takes place
+   * @param name   name of the occasion
    * @param isTask whether or not the occasion is a task
    */
   public void deleteOccasion(String day, String name, boolean isTask) {
     Day theDay = this.getDayFromRep(day);
-      theDay.deleteOccasionFromList(name, isTask);
+    theDay.deleteOccasionFromList(name, isTask);
   }
 
 

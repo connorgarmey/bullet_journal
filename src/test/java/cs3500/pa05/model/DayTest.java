@@ -1,6 +1,8 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cs3500.pa05.model.json.DayJson;
 import cs3500.pa05.model.json.EventJson;
@@ -34,13 +36,13 @@ class DayTest {
     listOfEvents.add(eventTest.event1);
     listOfTasks.add(taskTest.task1);
 
-    wednesday = new Day("Wednesday", listOfEvents, listOfTasks);
+    wednesday = new Day("Wednesday", listOfTasks, listOfEvents);
   }
 
   @Test
   public void testDayConstructor() {
     // Use the constructor to construct a new day
-    Day newDay = new Day("Wednesday", listOfEvents, listOfTasks);
+    Day newDay = new Day("Wednesday", listOfTasks, listOfEvents);
 
     // Check
     int numEvents = newDay.getNumEvents();
@@ -98,16 +100,6 @@ class DayTest {
   }
 
   @Test
-  public void testSortListEvents() {
-
-  }
-
-  @Test
-  public void testSortListTasks() {
-
-  }
-
-  @Test
   public void testToString() {
     //
     String output = wednesday.toString();
@@ -155,6 +147,30 @@ class DayTest {
     assertEquals("Wednesday", wednesdayJson.day());
    // assertEquals(1, wednesdayJson.events().size());
    // assertEquals(1, wednesdayJson.tasks().size());
+  }
+
+  @Test
+  public void testTaskComplete() {
+    assertFalse(wednesday.taskComplete("PA01"));
+    assertFalse(wednesday.taskComplete("hi"));
+    wednesday.updateCompletion("PA01");
+    assertTrue(wednesday.taskComplete("PA01"));
+  }
+
+  @Test
+  public void testDeleteOccasionFromList() {
+    wednesday.deleteOccasionFromList("Haircut", false);
+    assertEquals(wednesday.getNumEvents(), 0);
+    wednesday.deleteOccasionFromList("PA01", true);
+    assertEquals(wednesday.getNumTasks(), 0);
+  }
+
+  @Test
+  public void testOccasionExists() {
+    assertTrue(wednesday.occasionExists("Haircut", false));
+    assertFalse(wednesday.occasionExists("Cry", false));
+    assertTrue(wednesday.occasionExists("PA01", true));
+    assertFalse(wednesday.occasionExists("Sleep", true));
   }
 
 

@@ -65,6 +65,7 @@ public class CustomTheme {
       case "Blue" -> this.fontColor = Color.DARKSLATEBLUE;
       case "Pink" -> this.fontColor = Color.DEEPPINK;
       case "Green" -> this.fontColor = Color.DARKGREEN;
+      default -> { }
     }
   }
 
@@ -78,6 +79,7 @@ public class CustomTheme {
       case "Dark Grey" -> this.backgroundColor = "#A9A9A9";
       case "Blue" -> this.backgroundColor = "#6495ED";
       case "White" -> this.backgroundColor = "#FFFFFF";
+      default -> { }
     }
   }
 
@@ -94,6 +96,7 @@ public class CustomTheme {
       case "Chocolate" -> this.image = "5.png";
       case "Checkers Board" -> this.image = "6.png";
       case "Flower Painting" -> this.image = "7.png";
+      default -> { }
     }
   }
 

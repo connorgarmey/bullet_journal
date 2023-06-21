@@ -32,7 +32,6 @@ public class ModelTest {
     model.addEvent("Lunch", "Pre-scheduled haircut", "Monday", 12, 30, 60);
     model.addEvent("Dinner", "Pre-scheduled haircut", "Monday", 20, 0, 90);
     model.addTask("PA01", "Need to finish testing PA01", "Monday");
-
     // Create the weekJson written in string format
     jsonString = "{\n" +
         "  \"days\": [\n" +

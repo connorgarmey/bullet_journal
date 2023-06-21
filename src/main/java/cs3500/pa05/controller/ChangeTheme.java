@@ -1,7 +1,7 @@
 package cs3500.pa05.controller;
 
-import cs3500.pa05.view.CustomTheme;
 import cs3500.pa05.model.Theme;
+import cs3500.pa05.view.CustomTheme;
 import java.util.List;
 import java.util.Objects;
 import javafx.scene.Parent;
@@ -12,7 +12,6 @@ import javafx.scene.layout.Region;
 
 /**
  * Handles the changing of themes
- *
  */
 public class ChangeTheme {
   private CustomTheme theme;
@@ -23,8 +22,8 @@ public class ChangeTheme {
   /**
    * Instantiates a new ChangeTheme
    *
-   * @param theme a CustomTheme
-   * @param node the parent node
+   * @param theme      a CustomTheme
+   * @param node       the parent node
    * @param controller the controller
    */
   public ChangeTheme(CustomTheme theme, Parent node, Controller controller) {
@@ -37,8 +36,8 @@ public class ChangeTheme {
   /**
    * Instantiates a new ChangeTheme
    *
-   * @param theme a base theme
-   * @param node parent node
+   * @param theme      a base theme
+   * @param node       parent node
    * @param controller the controller
    */
   public ChangeTheme(Theme theme, Parent node, Controller controller) {
@@ -49,11 +48,11 @@ public class ChangeTheme {
 
   /**
    * Modifies the look of the headers and content
-   *
    */
   public void modifyLabels() {
     ClassLoader classLoader = getClass().getClassLoader();
-    Image image = new Image(Objects.requireNonNull(classLoader.getResource(theme.getImage())).toExternalForm());
+    Image image = new Image(Objects.requireNonNull(
+        classLoader.getResource(theme.getImage())).toExternalForm());
     for (Label label : labels) {
       if (label.getId().endsWith("Header")) {
         label.setFont(theme.getHeaderFont());
@@ -67,8 +66,7 @@ public class ChangeTheme {
         imageView.setFitHeight(70); // Adjust the height as needed
         imageView.setPreserveRatio(true);
         label.setGraphic(imageView);
-      }
-      else {
+      } else {
         label.setFont(theme.getOtherFont());
         label.setTextFill(theme.getFontColor());
       }
@@ -77,7 +75,6 @@ public class ChangeTheme {
 
   /**
    * Modifies the background color
-   *
    */
   public void modifyBackground() {
     if (node instanceof Region region) {

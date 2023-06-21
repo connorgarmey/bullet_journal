@@ -6,12 +6,12 @@ import cs3500.pa05.model.Event;
 /**
  * JSON record for an Event
  *
- * @param name the event's name
+ * @param name        the event's name
  * @param description the description
- * @param dayOfWeek the day of week
- * @param hour the hour it starts
- * @param minutes the minutes of the hour it starts
- * @param duration the length of the event
+ * @param dayOfWeek   the day of week
+ * @param hour        the hour it starts
+ * @param minutes     the minutes of the hour it starts
+ * @param duration    the length of the event
  */
 public record EventJson(
     @JsonProperty("name") String name,
@@ -19,8 +19,7 @@ public record EventJson(
     @JsonProperty("day-of-week") String dayOfWeek,
     @JsonProperty("start-hour") int hour,
     @JsonProperty("start-minute") int minutes,
-    @JsonProperty("duration") int duration)
-{
+    @JsonProperty("duration") int duration) {
 
   /**
    * Constructs a new event

@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 /**
  * Controller for the central page of the journal
- *
  */
 public class MainPageHandler implements EventHandler<ActionEvent> {
   Controller controller;
@@ -25,8 +24,8 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
    * Instantiates a new MainPageHandler
    *
    * @param controller the controller to be used
-   * @param scene the Scene to load
-   * @param model the Model being used
+   * @param scene      the Scene to load
+   * @param model      the Model being used
    */
   MainPageHandler(Controller controller, Scene scene, Model model) {
     this.controller = controller;
@@ -100,6 +99,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
           model.sortEvents(3);
           controller.refreshData();
         }
+        default -> { }
       }
     }
   }
@@ -109,23 +109,23 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
    *
    * @param url the .fxml file name
    */
-    @FXML
-    private void openPopup(String url) {
-      try {
+  @FXML
+  private void openPopup(String url) {
+    try {
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setController(controller);
-        fxmlLoader.setLocation(getClass().getClassLoader().getResource(url));
-        Scene popupScene = fxmlLoader.load();
+      FXMLLoader fxmlLoader = new FXMLLoader();
+      fxmlLoader.setController(controller);
+      fxmlLoader.setLocation(getClass().getClassLoader().getResource(url));
+      Scene popupScene = fxmlLoader.load();
 
-        Stage popupStage = new Stage();
-        popupStage.setScene(popupScene);
+      Stage popupStage = new Stage();
+      popupStage.setScene(popupScene);
 
-        popupStage.show();
-        controller.popupHandler(url, popupStage, scene);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      popupStage.show();
+      controller.popupHandler(url, popupStage, scene);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 }

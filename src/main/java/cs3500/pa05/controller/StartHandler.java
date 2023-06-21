@@ -32,7 +32,8 @@ public class StartHandler implements EventHandler<ActionEvent> {
    * @param inputFileLoad the text field user types to if they want to load a file
    * @param inputFileCreate the text field user types to if they want to create a file
    */
-  public StartHandler(Model model, Controller controller, TextField inputFileLoad, TextField inputFileCreate) {
+  public StartHandler(Model model, Controller controller, TextField inputFileLoad,
+                      TextField inputFileCreate) {
     this.model = model;
     this.controller = controller;
     this.inputFileLoad = inputFileLoad;

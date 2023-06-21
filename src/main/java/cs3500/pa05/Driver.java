@@ -4,8 +4,8 @@ import cs3500.pa05.controller.Controller;
 import cs3500.pa05.controller.JournalController;
 import cs3500.pa05.model.Model;
 import cs3500.pa05.model.ModelImpl;
-import cs3500.pa05.view.ViewImpl;
 import cs3500.pa05.view.View;
+import cs3500.pa05.view.ViewImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -27,10 +27,12 @@ public class Driver extends Application {
   /**
    * Starts the JavaFX application
    *
-   * @param primaryStage the primary stage for this application, onto which
-   * the application scene can be set.
-   * Applications may create other stages, if needed, but they will not be
-   * primary stages.
+   * @param primaryStage the primary stage for
+   *                     this application, onto which
+   *                     the application scene can be set.
+   *                     Applications may create other stages, if needed,
+   *                     but they will not be
+   *                     primary stages.
    */
   @Override
   public void start(Stage primaryStage) {

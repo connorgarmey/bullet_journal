@@ -29,7 +29,7 @@ public class WriteFile {
     try {
       File file;
       if (!Files.exists(path)) {
-        file = new File(path.toString());//Files.createFile(path).toFile();
+        file = new File(path.toString());
         file.createNewFile();
       } else {
         file = path.toFile();

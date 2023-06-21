@@ -31,7 +31,8 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
    * @param model the model
    * @param popup the popup stage
    */
-  public ChangeCompletionHandler(TextField task, ChoiceBox<String> day, Controller controller, Model model, Stage popup) {
+  public ChangeCompletionHandler(TextField task, ChoiceBox<String> day, Controller controller,
+                                 Model model, Stage popup) {
     this.taskToChange = task;
     this.dayOfTheTask = day;
     this.controller = controller;
@@ -51,7 +52,7 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
     String day = dayOfTheTask.getValue();
     if (badData(task, day)) {
       showAlert("Error", "Null Values", "Day and Task cannot be empty");
-    } else if (!taskExists(task ,day)) {
+    } else if (!taskExists(task, day)) {
       showAlert("Error", "No Task", "You do not have task with this name");
       taskToChange.clear();
     } else if (!alreadyComplete(task, day)) {

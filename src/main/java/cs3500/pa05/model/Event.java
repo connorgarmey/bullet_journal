@@ -1,8 +1,5 @@
 package cs3500.pa05.model;
 
-import java.security.Timestamp;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import cs3500.pa05.model.json.EventJson;
 
 

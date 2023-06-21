@@ -2,8 +2,8 @@ package cs3500.pa05.controller;
 
 import static cs3500.pa05.controller.ShowAlert.showAlert;
 
-import cs3500.pa05.view.CustomTheme;
 import cs3500.pa05.model.Model;
+import cs3500.pa05.view.CustomTheme;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
@@ -65,7 +65,7 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
   public void handle(ActionEvent event) {
     if (anyBlank()) {
       showAlert("Error", "Null Values", "You must choose an option for all fields");
-    } else if (isNameEmpty()){
+    } else if (isNameEmpty()) {
       showAlert("Error", "Null Values", "You must choose a name");
     } else {
       String font = chooseFont.getValue();

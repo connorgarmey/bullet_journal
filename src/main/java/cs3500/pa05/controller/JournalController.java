@@ -171,6 +171,8 @@ public class JournalController implements Controller {
   private MenuItem event;
 
   private MainPageHandler mainPageHandler;
+
+
   /**
    * Controller constructor
    *
@@ -254,35 +256,44 @@ public class JournalController implements Controller {
    * @param url the popup's url
    * @param popupStage the new Stage object
    */
-  @Override @FXML
+  @Override
+  @FXML
   public void popupHandler(String url, Stage popupStage, Scene scene) {
     switch (url) {
       case "create_event.fxml" -> createEventButton.setOnAction(
           new CreateEventHandler(model, inputEventName, inputEventDescription, startHours,
               startMinutes, duration, eventDayDropDown, popupStage, this));
       case "create_task.fxml" ->
-          createTaskButton.setOnAction(new CreateTaskHandler(this, model, inputTaskName,
+          createTaskButton.setOnAction(new CreateTaskHandler(this, model,
+              inputTaskName,
               inputTaskDescription, taskDayDropDown, popupStage));
       case "max_tasks_stage.fxml" ->
-          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, numMaxTasks, maxTasks, popupStage));
+          buttonMaxTasks.setOnAction(new SetMaxHandler(this, model, numMaxTasks,
+              maxTasks, popupStage));
       case "max_events_stage.fxml" ->
-          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents, maxEvents, popupStage));
+          buttonMaxEvents.setOnAction(new SetMaxHandler(this, model, numMaxEvents,
+              maxEvents, popupStage));
       case "add_note.fxml" ->
-          buttonNotes.setOnAction(new CreateNoteHandler(this, model, notesText, popupStage));
+          buttonNotes.setOnAction(new CreateNoteHandler(this, model, notesText,
+              popupStage));
       case "custom_theme.fxml" ->
-          createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
+          createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,
+              chooseFontColor, chooseBackground,
               chooseIcon, customThemeName, model, popupStage, this, scene));
       case "edit_task.fxml" -> {
         changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
             this, model, popupStage));
-        editTaskDetails.setOnAction(new EditOccasionHandler(taskToChange, dayOfTheTask, this,
+        editTaskDetails.setOnAction(new EditOccasionHandler(taskToChange, dayOfTheTask,
+            this,
             model, true, popupStage, task));
       }
       case "edit_event.fxml" ->
-        editEventDetails.setOnAction(new EditOccasionHandler(eventToChange, dayOfTheEvent, this,
+        editEventDetails.setOnAction(new EditOccasionHandler(eventToChange, dayOfTheEvent,
+            this,
             model, false, popupStage, event));
       case "welcome.fxml" ->
           loadScene("welcome.fxml");
+      default -> { }
     }
   }
 
@@ -317,6 +328,7 @@ public class JournalController implements Controller {
                 case "fridayStuff" -> label.setText(model.getDaysAgenda(4));
                 case "saturdayStuff" -> label.setText(model.getDaysAgenda(5));
                 case "sundayStuff" -> label.setText(model.getDaysAgenda(6));
+                default -> { }
               }
             }
           }
