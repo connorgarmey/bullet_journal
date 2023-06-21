@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Testing for the Model
  */
-public class ModelTest {
+class ModelTest {
   public Model modelWithData;
   public Model emptyModel;
   String jsonString;
