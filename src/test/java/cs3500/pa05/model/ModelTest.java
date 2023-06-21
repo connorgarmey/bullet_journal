@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * Testing for the Model
  */
 public class ModelTest {
-  public Model model;
+  public Model modelWithData;
   public Model emptyModel;
   String jsonString;
 
@@ -28,16 +28,16 @@ public class ModelTest {
   @BeforeEach
   public void setup() {
     // Initialize the model
-    model = new ModelImpl();
+    modelWithData = new ModelImpl();
     emptyModel = new ModelImpl();
 
     // Add occasions to day
-    model.addEvent("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
-    model.addEvent("Meeting", "Group meeting", "Monday", 11, 30, 90);
-    model.addEvent("Wake up", "Pre-scheduled haircut", "Monday", 6, 30, 5);
-    model.addEvent("Lunch", "Pre-scheduled haircut", "Monday", 12, 30, 60);
-    model.addEvent("Dinner", "Pre-scheduled haircut", "Monday", 20, 0, 90);
-    model.addTask("PA01", "Need to finish testing PA01", "Monday");
+    modelWithData.addEvent("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
+    modelWithData.addEvent("Meeting", "Group meeting", "Monday", 11, 30, 90);
+    modelWithData.addEvent("Wake up", "Pre-scheduled haircut", "Monday", 6, 30, 5);
+    modelWithData.addEvent("Lunch", "Pre-scheduled haircut", "Monday", 12, 30, 60);
+    modelWithData.addEvent("Dinner", "Pre-scheduled haircut", "Monday", 20, 0, 90);
+    modelWithData.addTask("PA01", "Need to finish testing PA01", "Monday");
     // Create the weekJson written in string format
     jsonString = "{\n"
         + "  \"days\": [\n"
@@ -177,18 +177,18 @@ public class ModelTest {
   @Test
   public void testCanAdd() {
     // Check if you can add a task on Monday
-    boolean output = model.canAdd(true, "Monday");
+    boolean output = modelWithData.canAdd(true, "Monday");
     assertEquals(true, output);
 
     // Check if you can add an event on Monday
-    boolean output2 = model.canAdd(false, "Monday");
+    boolean output2 = modelWithData.canAdd(false, "Monday");
     assertEquals(false, output2);
   }
 
   @Test
   public void testNewWeek() {
     // Use method to create actual outputted WeekJson
-    WeekJson week = model.newWeek();
+    WeekJson week = modelWithData.newWeek();
 
     // Check the initialized value of theme is set to LIGHT
     CustomTheme expectedTheme = new CustomTheme("Georgia", "Pink", "Light Pink", "Light", "LIGHT");
@@ -204,8 +204,8 @@ public class ModelTest {
     Path testFilePath = Paths.get("test.bujo");
 
     // Update the file and save the data
-    model.updateBujoFile(testFilePath);
-    model.saveData();
+    modelWithData.updateBujoFile(testFilePath);
+    modelWithData.saveData();
 
     // Check that the file exists
     assertTrue(Files.exists(testFilePath));
@@ -217,32 +217,32 @@ public class ModelTest {
   @Test
   public void testUpdateMax() {
     // Check that you cannot add before updating
-    boolean eventFalse = model.canAdd(false, "Monday");
+    boolean eventFalse = modelWithData.canAdd(false, "Monday");
     assertFalse(eventFalse);
 
     // Use the method to update the max
-    model.updateMax(6, "events");
+    modelWithData.updateMax(6, "events");
 
     // Check that you can now add after increasing the max Events
-    boolean eventTrue = model.canAdd(false, "Monday");
+    boolean eventTrue = modelWithData.canAdd(false, "Monday");
     assertTrue(eventTrue);
 
     // Check that you can add a task with the current max
-    boolean taskTrue = model.canAdd(true, "Monday");
+    boolean taskTrue = modelWithData.canAdd(true, "Monday");
     assertTrue(taskTrue);
 
     // Use the method to update the max
-    model.updateMax(1, "tasks");
+    modelWithData.updateMax(1, "tasks");
 
     // Check that you can no longer add after setting the max to 1
-    boolean taskFalse = model.canAdd(true, "Monday");
+    boolean taskFalse = modelWithData.canAdd(true, "Monday");
     assertFalse(taskFalse);
   }
 
   @Test
   public void testGetCurrentStats() {
     // Find the expected stats output
-    String currentStats = model.getCurrentStats();
+    String currentStats = modelWithData.getCurrentStats();
 
     // Store the expected value
     String expectedStats = "Events: 5,   Tasks: 1   0.0% completed";
@@ -263,10 +263,10 @@ public class ModelTest {
   @Test
   public void testSortEvents() {
     // Sort Events by duration
-    model.sortEvents(1);
+    modelWithData.sortEvents(1);
 
     // Get the expected and actual outputs of the agenda
-    String sortedString = model.getDaysAgenda(0);
+    String sortedString = modelWithData.getDaysAgenda(0);
     String expectedSort = "Tasks: \n"
         + "\n"
         + "What: PA01\n"
@@ -305,7 +305,7 @@ public class ModelTest {
     assertEquals(expectedSort, sortedString);
 
     // Test sorting Events by name
-    model.sortEvents(2);
+    modelWithData.sortEvents(2);
     String expectedSort2 = "Tasks: \n"
         + "\n"
         + "What: PA01\n"
@@ -339,14 +339,14 @@ public class ModelTest {
         + "Start Time: 6:30\n"
         + "Duration: 5 minutes\n"
         + "\n";
-    String sortedString2 = model.getDaysAgenda(0);
+    String sortedString2 = modelWithData.getDaysAgenda(0);
 
     // Assert they are equal
     assertEquals(expectedSort2, sortedString2);
 
     // Test sorting Tasks by name
-    model.addTask("Clean my room", "Fold laundry, Make bed, etc.", "Monday");
-    model.sortEvents(3);
+    modelWithData.addTask("Clean my room", "Fold laundry, Make bed, etc.", "Monday");
+    modelWithData.sortEvents(3);
     String expectedSort3 = "Tasks: \n"
         + "\n"
         + "What: Clean my room\n"
@@ -385,7 +385,7 @@ public class ModelTest {
         + "Duration: 5 minutes\n"
         + "\n";
 
-    String sortedString3 = model.getDaysAgenda(0);
+    String sortedString3 = modelWithData.getDaysAgenda(0);
     assertEquals(expectedSort3, sortedString3);
   }
 
@@ -395,10 +395,10 @@ public class ModelTest {
     Path testFilePath = Paths.get("test.bujo");
 
     // Update the file and save the data
-    model.updateBujoFile(testFilePath);
+    modelWithData.updateBujoFile(testFilePath);
 
     // Get the name and expected name
-    String name = model.getTitle();
+    String name = modelWithData.getTitle();
     String expectedName = "test";
 
     // Assert they are equal
@@ -411,7 +411,7 @@ public class ModelTest {
   @Test
   public void testGetTheme() {
     // Get the expected theme and actual theme
-    CustomTheme currentTheme = model.getTheme();
+    CustomTheme currentTheme = modelWithData.getTheme();
     CustomTheme expectedTheme = new CustomTheme("Georgia", "Pink", "Light Pink", "Light", "LIGHT");
 
     // Assert they are equal
