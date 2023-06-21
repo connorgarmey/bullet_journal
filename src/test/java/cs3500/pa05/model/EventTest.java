@@ -7,6 +7,9 @@ import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the Event class
+ */
 class EventTest {
   public Occasion event1;
   public Occasion event2;

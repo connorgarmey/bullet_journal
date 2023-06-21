@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the Task class
+ */
 class TaskTest {
   public Occasion task1;
   public Occasion task2;

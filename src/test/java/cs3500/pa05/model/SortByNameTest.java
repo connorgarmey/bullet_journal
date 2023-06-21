@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the SortByName class
+ */
 class SortByNameTest {
   EventTest eventTest = new EventTest();
   TaskTest taskTest = new TaskTest();

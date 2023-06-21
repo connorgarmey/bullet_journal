@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the SortByDuration class
+ */
 class SortByDurationTest {
   EventTest eventTest = new EventTest();
   TaskTest taskTest = new TaskTest();

@@ -14,11 +14,17 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the Model
+ */
 public class ModelTest {
   public Model model;
   public Model emptyModel;
   String jsonString;
 
+  /**
+   * Sets up the testing enviornment by initializing the test objects
+   */
   @BeforeEach
   public void setup() {
     // Initialize the model
@@ -33,120 +39,120 @@ public class ModelTest {
     model.addEvent("Dinner", "Pre-scheduled haircut", "Monday", 20, 0, 90);
     model.addTask("PA01", "Need to finish testing PA01", "Monday");
     // Create the weekJson written in string format
-    jsonString = "{\n" +
-        "  \"days\": [\n" +
-        "    {\n" +
-        "      \"day\": \"Monday\",\n" +
-        "      \"events\": [\n" +
-        "        {\n" +
-        "      \"name\": \"Haircut\",\n" +
-        "      \"description\": \"Pre-scheduled haircut\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"start-hour\": 10,\n" +
-        "      \"start-minute\": 30,\n" +
-        "      \"duration\": 30\n" +
-        "    },\n" +
-        "        {\n" +
-        "      \"name\": \"Meeting\",\n" +
-        "      \"description\": \"Group meeting\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"start-hour\": 11,\n" +
-        "      \"start-minute\": 30,\n" +
-        "      \"duration\": 90\n" +
-        "    },\n" +
-        "        {\n" +
-        "      \"name\": \"Wake up\",\n" +
-        "      \"description\": \"Pre-scheduled haircut\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"start-hour\": 6,\n" +
-        "      \"start-minute\": 30,\n" +
-        "      \"duration\": 5\n" +
-        "    },\n" +
-        "        {\n" +
-        "      \"name\": \"Lunch\",\n" +
-        "      \"description\": \"Pre-scheduled haircut\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"start-hour\": 12,\n" +
-        "      \"start-minute\": 30,\n" +
-        "      \"duration\": 60\n" +
-        "    },\n" +
-        "        {\n" +
-        "      \"name\": \"Dinner\",\n" +
-        "      \"description\": \"Pre-scheduled haircut\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"start-hour\": 20,\n" +
-        "      \"start-minute\": 0,\n" +
-        "      \"duration\": 90\n" +
-        "    }\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "        {\n" +
-        "      \"name\": \"PA01\",\n" +
-        "      \"description\": \"Need to finish testing PA01\",\n" +
-        "      \"day-of-week\": \"Monday\",\n" +
-        "      \"completed\": false\n" +
-        "    }\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Tuesday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Wednesday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Thursday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Friday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Saturday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    },\n" +
-        "    {\n" +
-        "      \"day\": \"Sunday\",\n" +
-        "      \"events\": [\n" +
-        "      ],\n" +
-        "      \"tasks\": [\n" +
-        "      ]\n" +
-        "    }\n" +
-        "  ],\n" +
-        "  \"theme\": {\n" +
-        "    \"font\": \"Georgia\",\n" +
-        "    \"fontColor\": \"Pink\",\n" +
-        "    \"background\": \"Light Pink\",\n" +
-        "    \"icon\": \"Light\",\n" +
-        "    \"name\": \"LIGHT\"\n" +
-        "  },\n" +
-        "  \"stats\": {\n" +
-        "    \"eventsCount\": 0,\n" +
-        "    \"taskCount\": 0,\n" +
-        "    \"maxEvents\": 5,\n" +
-        "    \"maxTasks\": 5,\n" +
-        "    \"notes\": \"\",\n" +
-        "    \"percent\": 0.0\n" +
-        "  }\n" +
-        "}";
+    jsonString = "{\n"
+        + "  \"days\": [\n"
+        + "    {\n"
+        + "      \"day\": \"Monday\",\n"
+        + "      \"events\": [\n"
+        + "        {\n"
+        + "      \"name\": \"Haircut\",\n"
+        + "      \"description\": \"Pre-scheduled haircut\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"start-hour\": 10,\n"
+        + "      \"start-minute\": 30,\n"
+        + "      \"duration\": 30\n"
+        + "    },\n"
+        + "        {\n"
+        + "      \"name\": \"Meeting\",\n"
+        + "      \"description\": \"Group meeting\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"start-hour\": 11,\n"
+        + "      \"start-minute\": 30,\n"
+        + "      \"duration\": 90\n"
+        + "    },\n"
+        + "        {\n"
+        + "      \"name\": \"Wake up\",\n"
+        + "      \"description\": \"Pre-scheduled haircut\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"start-hour\": 6,\n"
+        + "      \"start-minute\": 30,\n"
+        + "      \"duration\": 5\n"
+        + "    },\n"
+        + "        {\n"
+        + "      \"name\": \"Lunch\",\n"
+        + "      \"description\": \"Pre-scheduled haircut\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"start-hour\": 12,\n"
+        + "      \"start-minute\": 30,\n"
+        + "      \"duration\": 60\n"
+        + "    },\n"
+        + "        {\n"
+        + "      \"name\": \"Dinner\",\n"
+        + "      \"description\": \"Pre-scheduled haircut\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"start-hour\": 20,\n"
+        + "      \"start-minute\": 0,\n"
+        + "      \"duration\": 90\n"
+        + "    }\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "        {\n"
+        + "      \"name\": \"PA01\",\n"
+        + "      \"description\": \"Need to finish testing PA01\",\n"
+        + "      \"day-of-week\": \"Monday\",\n"
+        + "      \"completed\": false\n"
+        + "    }\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Tuesday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Wednesday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Thursday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Friday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Saturday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    },\n"
+        + "    {\n"
+        + "      \"day\": \"Sunday\",\n"
+        + "      \"events\": [\n"
+        + "      ],\n"
+        + "      \"tasks\": [\n"
+        + "      ]\n"
+        + "    }\n"
+        + "  ],\n"
+        + "  \"theme\": {\n"
+        + "    \"font\": \"Georgia\",\n"
+        + "    \"fontColor\": \"Pink\",\n"
+        + "    \"background\": \"Light Pink\",\n"
+        + "    \"icon\": \"Light\",\n"
+        + "    \"name\": \"LIGHT\"\n"
+        + "  },\n"
+        + "  \"stats\": {\n"
+        + "    \"eventsCount\": 0,\n"
+        + "    \"taskCount\": 0,\n"
+        + "    \"maxEvents\": 5,\n"
+        + "    \"maxTasks\": 5,\n"
+        + "    \"notes\": \"\",\n"
+        + "    \"percent\": 0.0\n"
+        + "  }\n"
+        + "}";
   }
 
   @Test
@@ -261,78 +267,78 @@ public class ModelTest {
 
     // Get the expected and actual outputs of the agenda
     String sortedString = model.getDaysAgenda(0);
-    String expectedSort = "Tasks: \n" +
-        "\n" +
-        "What: PA01\n" +
-        "Description: Need to finish testing PA01\n" +
-        "Completed: No\n" +
-        "\n" +
-        "Events: \n" +
-        "\n" +
-        "What: Wake up\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 6:30\n" +
-        "Duration: 5 minutes\n" +
-        "\n" +
-        "What: Haircut\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 10:30\n" +
-        "Duration: 30 minutes\n" +
-        "\n" +
-        "What: Lunch\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 12:30\n" +
-        "Duration: 1 hour\n" +
-        "\n" +
-        "What: Meeting\n" +
-        "Description: Group meeting\n" +
-        "Start Time: 11:30\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n" +
-        "What: Dinner\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 20:00\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n";
+    String expectedSort = "Tasks: \n"
+        + "\n"
+        + "What: PA01\n"
+        + "Description: Need to finish testing PA01\n"
+        + "Completed: No\n"
+        + "\n"
+        + "Events: \n"
+        + "\n"
+        + "What: Wake up\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 6:30\n"
+        + "Duration: 5 minutes\n"
+        + "\n"
+        + "What: Haircut\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 10:30\n"
+        + "Duration: 30 minutes\n"
+        + "\n"
+        + "What: Lunch\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 12:30\n"
+        + "Duration: 1 hour\n"
+        + "\n"
+        + "What: Meeting\n"
+        + "Description: Group meeting\n"
+        + "Start Time: 11:30\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n"
+        + "What: Dinner\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 20:00\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n";
 
     // Assert it changed how we expected
     assertEquals(expectedSort, sortedString);
 
     // Test sorting Events by name
     model.sortEvents(2);
-    String expectedSort2 = "Tasks: \n" +
-        "\n" +
-        "What: PA01\n" +
-        "Description: Need to finish testing PA01\n" +
-        "Completed: No\n" +
-        "\n" +
-        "Events: \n" +
-        "\n" +
-        "What: Dinner\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 20:00\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n" +
-        "What: Haircut\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 10:30\n" +
-        "Duration: 30 minutes\n" +
-        "\n" +
-        "What: Lunch\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 12:30\n" +
-        "Duration: 1 hour\n" +
-        "\n" +
-        "What: Meeting\n" +
-        "Description: Group meeting\n" +
-        "Start Time: 11:30\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n" +
-        "What: Wake up\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 6:30\n" +
-        "Duration: 5 minutes\n" +
-        "\n";
+    String expectedSort2 = "Tasks: \n"
+        + "\n"
+        + "What: PA01\n"
+        + "Description: Need to finish testing PA01\n"
+        + "Completed: No\n"
+        + "\n"
+        + "Events: \n"
+        + "\n"
+        + "What: Dinner\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 20:00\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n"
+        + "What: Haircut\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 10:30\n"
+        + "Duration: 30 minutes\n"
+        + "\n"
+        + "What: Lunch\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 12:30\n"
+        + "Duration: 1 hour\n"
+        + "\n"
+        + "What: Meeting\n"
+        + "Description: Group meeting\n"
+        + "Start Time: 11:30\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n"
+        + "What: Wake up\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 6:30\n"
+        + "Duration: 5 minutes\n"
+        + "\n";
     String sortedString2 = model.getDaysAgenda(0);
 
     // Assert they are equal
@@ -341,43 +347,44 @@ public class ModelTest {
     // Test sorting Tasks by name
     model.addTask("Clean my room", "Fold laundry, Make bed, etc.", "Monday");
     model.sortEvents(3);
-    String expectedSort3 = "Tasks: \n" +
-        "\n" +
-        "What: Clean my room\n" +
-        "Description: Fold laundry, Make bed, etc.\n" +
-        "Completed: No\n" +
-        "\n" +
-        "What: PA01\n" +
-        "Description: Need to finish testing PA01\n" +
-        "Completed: No\n" +
-        "\n" +
-        "Events: \n" +
-        "\n" +
-        "What: Dinner\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 20:00\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n" +
-        "What: Haircut\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 10:30\n" +
-        "Duration: 30 minutes\n" +
-        "\n" +
-        "What: Lunch\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 12:30\n" +
-        "Duration: 1 hour\n" +
-        "\n" +
-        "What: Meeting\n" +
-        "Description: Group meeting\n" +
-        "Start Time: 11:30\n" +
-        "Duration: 1 hour 30 minutes\n" +
-        "\n" +
-        "What: Wake up\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 6:30\n" +
-        "Duration: 5 minutes\n" +
-        "\n";
+    String expectedSort3 = "Tasks: \n"
+        + "\n"
+        + "What: Clean my room\n"
+        + "Description: Fold laundry, Make bed, etc.\n"
+        + "Completed: No\n"
+        + "\n"
+        + "What: PA01\n"
+        + "Description: Need to finish testing PA01\n"
+        + "Completed: No\n"
+        + "\n"
+        + "Events: \n"
+        + "\n"
+        + "What: Dinner\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 20:00\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n"
+        + "What: Haircut\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 10:30\n"
+        + "Duration: 30 minutes\n"
+        + "\n"
+        + "What: Lunch\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 12:30\n"
+        + "Duration: 1 hour\n"
+        + "\n"
+        + "What: Meeting\n"
+        + "Description: Group meeting\n"
+        + "Start Time: 11:30\n"
+        + "Duration: 1 hour 30 minutes\n"
+        + "\n"
+        + "What: Wake up\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 6:30\n"
+        + "Duration: 5 minutes\n"
+        + "\n";
+
     String sortedString3 = model.getDaysAgenda(0);
     assertEquals(expectedSort3, sortedString3);
   }

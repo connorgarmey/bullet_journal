@@ -40,7 +40,7 @@ public interface Model {
   /**
    * Creates a new, default WeekJson
    *
-   * @return
+   * @return a WeekJson representing the new week
    */
   WeekJson newWeek();
 
@@ -158,6 +158,13 @@ public interface Model {
    */
   void updateCompletion(String day, String task);
 
+  /**
+   * Deletes the occasion
+   *
+   * @param day the day of the week the occasion is on
+   * @param name the name of the occasion
+   * @param isTask if it is a task
+   */
   void deleteOccasion(String day, String name, boolean isTask);
 
 }

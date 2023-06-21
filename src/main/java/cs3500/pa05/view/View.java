@@ -4,6 +4,9 @@ import cs3500.pa05.controller.Controller;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
+/**
+ * Represents the methods to be implemented by the View Implementation
+ */
 public interface View {
 
   /**

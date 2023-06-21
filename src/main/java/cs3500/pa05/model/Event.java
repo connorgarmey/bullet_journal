@@ -31,7 +31,7 @@ public class Event extends Occasion {
   /**
    * Instantiates a new Event given the EventJson representation
    *
-   * @param eventJson
+   * @param eventJson an EventJson to translate to an Event
    */
   public Event(EventJson eventJson) {
     super(eventJson.name(), eventJson.description(), eventJson.dayOfWeek());
@@ -97,7 +97,7 @@ public class Event extends Occasion {
     } else if (duration % 60 == 0) {
       int hours = duration / 60;
       return hours + " hours";
-    } else if (duration > 60 && duration < 120){
+    } else if (duration > 60 && duration < 120) {
       int minutes = duration - 60;
       return "1 hour " + minutes + " minutes";
     } else {

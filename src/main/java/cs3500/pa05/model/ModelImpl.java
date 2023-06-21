@@ -194,14 +194,14 @@ public class ModelImpl implements Model {
   /**
    * Creates a new, default WeekJson
    *
-   * @return
+   * @return a WeekJson representing the new week
    */
   @Override
   public WeekJson newWeek() {
     List<String> dayString = makeDaysOfWeek(new ArrayList<>());
     List<DayJson> days = new ArrayList<>();
     for (String s : dayString) {
-      DayJson day = new DayJson(s,new ArrayList<>(),new ArrayList<>());
+      DayJson day = new DayJson(s, new ArrayList<>(), new ArrayList<>());
       days.add(day);
     }
     ThemeJson theme = new ThemeJson("Georgia", "Pink", "Light Pink", "Light", "LIGHT");
@@ -367,8 +367,7 @@ public class ModelImpl implements Model {
    */
   @Override
   public String getTitle() {
-    return bujoFile.getFileName().toString().replaceAll("_", " ").
-        replaceAll(".bujo", "");
+    return bujoFile.getFileName().toString().replaceAll("_", " ").replaceAll(".bujo", "");
   }
 
   /**

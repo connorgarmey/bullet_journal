@@ -29,9 +29,9 @@ public class Day {
   /**
    * Constructor to use when reading from a file
    *
-   * @param day
-   * @param tasks
-   * @param events
+   * @param day the day of the week as string
+   * @param tasks lists of tasks
+   * @param events list of events
    */
   public Day(String day, List<Occasion> tasks, List<Occasion> events) {
     this.dayOfWeek = day;
@@ -70,8 +70,8 @@ public class Day {
   /**
    * Overrides the equals method to compare if the days are equal
    *
-   * @param o
-   * @return
+   * @param o an object to compare
+   * @return true if they are equal
    */
   @Override
   public boolean equals(Object o) {
@@ -113,7 +113,7 @@ public class Day {
   /**
    * Overriding the toString method to write out the daily occasions as String
    *
-   * @return
+   * @return the day represented as a string
    */
   @Override
   public String toString() {
@@ -271,6 +271,13 @@ public class Day {
     }
   }
 
+  /**
+   * Helper finding if an occasion exists
+   *
+   * @param occasion the name of the occasion
+   * @param occasions the list of that occasion type
+   * @return true if it exists
+   */
   private boolean occasionExistsHelper(String occasion, List<Occasion> occasions) {
     boolean exists = false;
     for (Occasion occ : occasions) {
@@ -316,6 +323,12 @@ public class Day {
     }
   }
 
+  /**
+   * Deletes the occasion from the list by assigning which occasion type it is deleting
+   *
+   * @param name name of the occasion
+   * @param isTask if it is a task
+   */
   public void deleteOccasionFromList(String name, boolean isTask) {
     if (isTask) {
       deleteOccasion(name, tasks);
@@ -324,6 +337,12 @@ public class Day {
     }
   }
 
+  /**
+   * Deletes an occasion
+   *
+   * @param name the name of the occasion
+   * @param occasions the list to remove it from
+   */
   private void deleteOccasion(String name, List<Occasion> occasions) {
     for (int i = 0; i < occasions.size(); i++) {
       Occasion curOcc = occasions.get(i);

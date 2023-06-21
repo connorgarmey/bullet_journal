@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- *
+ * Handles the user editing the occasion
  */
 public class EditOccasionHandler implements EventHandler<ActionEvent> {
   private TextField eventToChange;
@@ -25,6 +25,17 @@ public class EditOccasionHandler implements EventHandler<ActionEvent> {
   private Stage popup;
   private MenuItem newOccasion;
 
+  /**
+   * Instantiates a new EditOccasionHandler
+   *
+   * @param event textfield holding the event
+   * @param day choicebox of which day of the week the event is on
+   * @param controller the controller
+   * @param model the model
+   * @param isTask whether or not the occasion is a task
+   * @param popup the popup to load
+   * @param button the button to select
+   */
   public EditOccasionHandler(TextField event, ChoiceBox<String> day, Controller controller,
                              Model model, boolean isTask, Stage popup, MenuItem button) {
     this.eventToChange = event;
@@ -36,6 +47,11 @@ public class EditOccasionHandler implements EventHandler<ActionEvent> {
     this.newOccasion = button;
   }
 
+  /**
+   * Overrides the handle method to handle user interactions when trying to update the occasion
+   *
+   * @param event the event which occurred
+   */
   @Override
   public void handle(ActionEvent event) {
     String occasion = eventToChange.getText();
@@ -53,10 +69,24 @@ public class EditOccasionHandler implements EventHandler<ActionEvent> {
 
   }
 
+  /**
+   * Returns if the inputted day or occasion name is invalid
+   *
+   * @param occasion name of the occasion
+   * @param day day it is on
+   * @return true if the input is invalid
+   */
   private boolean badData(String occasion, String day) {
     return day == null || occasion.isBlank();
   }
 
+  /**
+   * Returns if the event already exists
+   *
+   * @param occasion name of the occasion
+   * @param day day it is on
+   * @return true of the occasion already exists
+   */
   private boolean eventExists(String occasion, String day) {
     return model.occasionExists(day, occasion, isTask);
   }

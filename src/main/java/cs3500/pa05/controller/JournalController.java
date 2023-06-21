@@ -206,8 +206,7 @@ public class JournalController implements Controller {
       StartHandler startHandler = new StartHandler(model, this, inputFileLoad, inputFileCreate);
       loadFile.setOnAction(startHandler);
       createFile.setOnAction(startHandler);
-    }
-    else if (url.equals("main_page.fxml")) {
+    } else if (url.equals("main_page.fxml")) {
       view.setControllerHelper(this);
       view.loadScene(url);
       Scene scene = view.changeStage();

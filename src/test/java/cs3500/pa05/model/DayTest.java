@@ -12,6 +12,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing for the Day class
+ */
 class DayTest {
   public Day monday;
   public Day monday2;
@@ -101,23 +104,23 @@ class DayTest {
 
   @Test
   public void testToString() {
-    //
+    // Store the actual output of toString
     String output = wednesday.toString();
 
-    //
-    String expected = "Events: \n" +
-        "What: PA01\n" +
-        "Description: Need to finish testing PA01\n" +
-        "Completed: No\n" +
-        "\n" +
-        "Tasks: \n" +
-        "What: Haircut\n" +
-        "Description: Pre-scheduled haircut\n" +
-        "Start Time: 10:30\n" +
-        "Duration: 30 minutes\n" +
-        "\n";
+    // Store the expected output of toString
+    String expected = "Events: \n"
+        + "What: Haircut\n"
+        + "Description: Pre-scheduled haircut\n"
+        + "Start Time: 10:30\n"
+        + "Duration: 30 minutes\n"
+        + "\n"
+        + "Tasks: \n"
+        + "What: PA01\n"
+        + "Description: Need to finish testing PA01\n"
+        + "Completed: No\n"
+        + "\n";
 
-    // Assert
+    // Assert they are equal
     assertEquals(expected, output);
   }
 
@@ -131,10 +134,6 @@ class DayTest {
 
     //
     //task1.updateCompletion();
-    // for getNumCompletedTasks to work, the list of tasks must be of type Task (not occasion)
-    // but for toString to work on the day, it requires it must be type Occasion (not task / event)
-      // might be because stringOccasions requests a type occasion (can we make two separate ones for each type?)
-
 
   }
 
@@ -145,8 +144,8 @@ class DayTest {
 
     // Assert each value of the JSON
     assertEquals("Wednesday", wednesdayJson.day());
-   // assertEquals(1, wednesdayJson.events().size());
-   // assertEquals(1, wednesdayJson.tasks().size());
+    // assertEquals(1, wednesdayJson.events().size());
+    // assertEquals(1, wednesdayJson.tasks().size());
   }
 
   @Test
