@@ -8,6 +8,7 @@ import cs3500.pa05.model.json.DayJson;
 import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.TaskJson;
 import java.util.ArrayList;
+import javafx.scene.text.Font;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,6 +44,8 @@ class DayTest {
 
   @Test
   public void testDayConstructor() {
+    assertEquals(new ArrayList<>() {
+    }, Font.getFontNames());
     // Use the constructor to construct a new day
     Day newDay = new Day("Wednesday", listOfTasks, listOfEvents);
 

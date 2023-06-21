@@ -31,6 +31,7 @@ class ModelTest {
    */
   @BeforeEach
   public void setup() {
+
     // Initialize the model
     modelWithData = new ModelImpl();
     emptyModel = new ModelImpl();
@@ -161,9 +162,6 @@ class ModelTest {
 
   @Test
   public void testMakeWeek() {
-    System.out.println(Font.getFontNames());
-    assertEquals(new ArrayList<>() {
-    }, Font.getFontNames());
     // Check agenda before
     String initOutput = emptyModel.getCurrentStats();
     String expectedInitStats = "Events: 0,   Tasks: 0   100.0% completed";
