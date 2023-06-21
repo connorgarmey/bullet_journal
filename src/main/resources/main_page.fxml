@@ -33,6 +33,7 @@
                         <items>
                            <MenuItem fx:id="setMaxTasks" mnemonicParsing="false" text=" Set Max. Tasks" />
                            <MenuItem fx:id="setMaxEvents" mnemonicParsing="false" text=" Set Max Events" />
+                           <MenuItem fx:id="changeCompletionMenu" mnemonicParsing="false" text="Mark as Complete" />
                         </items>
                      </Menu>
                      <Menu fx:id="newMenu" mnemonicParsing="false" text="New">

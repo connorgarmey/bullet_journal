@@ -38,5 +38,9 @@ public interface Model {
 
   String getNotes();
 
+  boolean taskExists(String day, String task);
+  boolean taskAlreadyComplete(String day, String task);
+  void updateCompletion(String day, String task);
+
   //everything above is good
 }

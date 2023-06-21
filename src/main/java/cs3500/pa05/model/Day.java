@@ -200,6 +200,40 @@ public class Day {
     }
   }
 
+  public boolean taskExists(String task) {
+    boolean exists = false;
+    for (Occasion occ : tasks) {
+      if (occ.sameOccasion(task)) {
+        exists = true;
+      }
+    }
+    return exists;
+  }
+
+  public boolean taskComplete(String task) {
+    boolean complete = false;
+    for (Occasion occ : tasks) {
+      if (occ.sameOccasion(task)) {
+        if (occ instanceof Task) {
+          Task theTask = (Task) occ;
+          complete = theTask.getCompletion();
+        }
+      }
+    }
+    return complete;
+  }
+
+  public void updateCompletion(String task) {
+    for (Occasion occ : tasks) {
+      if (occ.sameOccasion(task)) {
+        if (occ instanceof Task) {
+          Task theTask = (Task) occ;
+          theTask.updateCompletion();
+        }
+      }
+    }
+  }
+
 
 
 }

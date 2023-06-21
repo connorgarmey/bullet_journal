@@ -299,4 +299,33 @@ public class ModelImpl implements Model {
     }
     return sb.toString();
   }
+
+  public boolean taskExists(String day, String task) {
+    for (Day curDay : week) {
+      if (curDay.isSameDay(day) && curDay.taskExists(task)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean taskAlreadyComplete(String day, String task) {
+    for (Day theDay : week) {
+      if (theDay.isSameDay(day) && !theDay.taskComplete(task)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  public void updateCompletion(String day, String task) {
+    for (Day theDay : week) {
+      if (theDay.isSameDay(day)) {
+        theDay.updateCompletion(task);
+      }
+    }
+  }
+
+
 }

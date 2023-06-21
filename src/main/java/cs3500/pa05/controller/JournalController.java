@@ -144,6 +144,14 @@ public class JournalController implements Controller {
   @FXML
   private TextField customThemeName;
 
+  //fields for changing task completion
+  @FXML
+  private Button changeCompletion;
+  @FXML
+  private TextField taskToChange;
+  @FXML
+  private ChoiceBox<String> dayOfTheTask;
+
 
 
 
@@ -246,6 +254,9 @@ public class JournalController implements Controller {
       case "custom_theme.fxml" ->
         createCustomTheme.setOnAction(new CreateCustomTheme(chooseFont,  chooseFontColor, chooseBackground,
             chooseIcon, customThemeName, model, popupStage, this, scene));
+      case "task_completion.fxml" ->
+        changeCompletion.setOnAction(new ChangeCompletionHandler(taskToChange, dayOfTheTask,
+            this, model, popupStage));
     }
   }
 

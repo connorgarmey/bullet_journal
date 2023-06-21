@@ -40,4 +40,8 @@ public abstract class Occasion {
     }
   }
 
+  public boolean sameOccasion(String otherName) {
+    return this.name.equalsIgnoreCase(otherName);
+  }
+
 }

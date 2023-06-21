@@ -58,6 +58,7 @@ public class MainPageHandler implements EventHandler<ActionEvent> {
         case "save" -> model.saveData();
         case "setMaxTasks" -> openPopup("max_tasks_stage.fxml");
         case "setMaxEvents" -> openPopup("max_events_stage.fxml");
+        case "changeCompletionMenu" -> openPopup("task_completion.fxml");
         case "task" -> openPopup("create_task.fxml");
         case "event" -> openPopup("create_event.fxml");
         case "note" -> openPopup("add_note.fxml");

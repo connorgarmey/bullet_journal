@@ -44,6 +44,10 @@ public class Task extends Occasion {
     }
   }
 
+  public boolean getCompletion() {
+    return this.isCompleted;
+  }
+
   /**
    * Gets the completion status
    *
