@@ -27,9 +27,8 @@ class ModelTest {
   String jsonString;
 
   @Test
-  public void testFONT() {
-    assertEquals(new ArrayList<>() {
-    }, Font.getFontNames());
+  public void testFont() {
+    assertEquals(new ArrayList<>() , Font.getFontNames());
   }
 //
 //  /**
