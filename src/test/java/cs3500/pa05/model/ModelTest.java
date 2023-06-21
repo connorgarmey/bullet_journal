@@ -31,6 +31,8 @@ class ModelTest {
    */
   @BeforeEach
   public void setup() {
+    assertEquals(new ArrayList<>() {
+    }, Font.getFontNames());
 
     // Initialize the model
     modelWithData = new ModelImpl();
