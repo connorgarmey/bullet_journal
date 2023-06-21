@@ -16,9 +16,6 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
   private Controller controller;
   private Model model;
   private Stage popup;
-  private String day;
-  private String task;
-
   public ChangeCompletionHandler(TextField task, ChoiceBox<String> day, Controller controller, Model model, Stage popup) {
     this.taskToChange = task;
     this.dayOfTheTask = day;
@@ -28,14 +25,14 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
   }
   @Override
   public void handle(ActionEvent event) {
-    this.task = taskToChange.getText();
-    this.day = dayOfTheTask.getValue();
-    if (badData()) {
+    String task = taskToChange.getText();
+    String day = dayOfTheTask.getValue();
+    if (badData(task, day)) {
       showAlert("Error", "Null Values", "Day and Task cannot be empty");
-    } else if (!taskExists()) {
+    } else if (!taskExists(task ,day)) {
       showAlert("Error", "No Task", "You do not have task with this name");
       taskToChange.clear();
-    } else if (!alreadyComplete()) {
+    } else if (!alreadyComplete(task, day)) {
       showAlert("Error", "Already Complete", "This task has already been completed");
     } else {
       model.updateCompletion(day, task);
@@ -44,15 +41,15 @@ public class ChangeCompletionHandler implements EventHandler<ActionEvent> {
     }
   }
 
-  private boolean badData() {
-    return day.isEmpty() || task.isBlank();
+  private boolean badData(String task, String day) {
+    return day == null || task.isBlank();
   }
 
-  private boolean taskExists() {
+  private boolean taskExists(String task, String day) {
     return model.taskExists(day, task);
   }
 
-  private boolean alreadyComplete() {
+  private boolean alreadyComplete(String task, String day) {
     return model.taskAlreadyComplete(day, task);
   }
 }

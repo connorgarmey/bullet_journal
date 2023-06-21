@@ -33,7 +33,7 @@ public class CreateTaskHandler implements EventHandler<ActionEvent> {
     String description = inputTaskDescription.getText();
     String day = taskDayDropDown.getValue();
 
-    if (task.isBlank() || day.isEmpty()) {
+    if (task.isBlank() || day == null) {
       showAlert("Error", "Null Values", "Task and Day cannot be null");
     } else if (!model.canAdd(true, taskDayDropDown.getValue())) {
       showAlert("Error", "No More Tasks", "You have hit your maximum number of events");

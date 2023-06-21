@@ -68,8 +68,8 @@ public class CreateCustomTheme implements EventHandler<ActionEvent> {
     String fontColor = chooseFontColor.getValue();
     String background = chooseBackground.getValue();
     String icon = chooseIcon.getValue();
-    return font.isEmpty() || fontColor.isEmpty()
-        || background.isEmpty() || icon.isEmpty();
+    return font == null || fontColor == null
+        || background == null || icon == null;
   }
 
   private boolean isNameEmpty() {

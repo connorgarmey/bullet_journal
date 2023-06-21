@@ -5,6 +5,12 @@
       "events": [
       ],
       "tasks": [
+        {
+      "name": "Cry",
+      "description": "",
+      "day-of-week": "Monday",
+      "completed": true
+    }
       ]
     },
     {
@@ -12,6 +18,12 @@
       "events": [
       ],
       "tasks": [
+        {
+      "name": "Sleep",
+      "description": "",
+      "day-of-week": "Tuesday",
+      "completed": false
+    }
       ]
     },
     {
@@ -33,6 +45,12 @@
       "events": [
       ],
       "tasks": [
+        {
+      "name": "Sweep",
+      "description": "the floor is so gross",
+      "day-of-week": "Friday",
+      "completed": false
+    }
       ]
     },
     {
@@ -51,22 +69,18 @@
     }
   ],
   "theme": {
-    "font": "Georgia",
+    "font": "Times New Roman",
     "fontColor": "Pink",
-    "background": "Light Pink",
-    "icon": "Light",
-    "name": "LIGHT"
+    "background": "Blue",
+    "icon": "Flower Painting",
+    "name": "Cute"
   },
   "stats": {
     "eventsCount": 0,
-    "taskCount": 0,
+    "taskCount": 3,
     "maxEvents": 5,
     "maxTasks": 5,
-    "notes": "- Note 1
-  - Note 2
-  - The cat jumped over the moon into a puddle
-  - Note 3
-  ",
-    "percent": 100.0
+    "notes": "- Note 1  - Note 2  - The cat jumped over the moon into a puddle  - Note 3  ",
+    "percent": 33.33333333333333
   }
 }

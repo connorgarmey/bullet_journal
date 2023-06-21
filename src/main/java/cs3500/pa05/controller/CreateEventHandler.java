@@ -72,13 +72,13 @@ public class CreateEventHandler implements EventHandler<ActionEvent> {
   private boolean badData() {
     String name = inputEventName.getText();
     String day = eventDayDropDown.getValue();
-    return name.isBlank() || day.isEmpty();
+    return name.isBlank() || day == null;
   }
 
   private boolean badTime() {
     String hour = startHours.getValue();
     String minute = startMinutes.getValue();
-    return hour.isEmpty() || minute.isEmpty();
+    return hour == null || minute == null;
   }
 
   private boolean badDuration() {
