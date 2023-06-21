@@ -8,6 +8,13 @@ import cs3500.pa05.model.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JSON record for a Day
+ *
+ * @param day the day of the week
+ * @param events the day's events
+ * @param tasks the day's tasks
+ */
 public record DayJson(
     @JsonProperty("day")
     String day,
@@ -17,6 +24,11 @@ public record DayJson(
     List<TaskJson> tasks) {
 
 
+    /**
+     * Overriding toString for a DayJSON
+     *
+     * @return the String representation
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -5,23 +5,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TaskTest {
-  static Task task1;
-  static Task task2;
-  static TaskJson taskJson1;
+  public Occasion task1;
+  public Occasion task2;
+  public TaskJson taskJson1;
 
-  @BeforeAll
-  public static void setup() {
+  @BeforeEach
+  public void setup() {
     task1 = new Task("PA01", "Need to finish testing PA01", "Monday");
     task2 = new Task("PA02", "", "Friday");
-    taskJson1 = new TaskJson("PA01", "Need to finish testing PA01", "Monday", false);
-  }
-
-  @AfterEach
-  public void restoreInitialValues() {
-    task1 = new Task("PA01", "Need to finish testing PA01", "Monday");
     taskJson1 = new TaskJson("PA01", "Need to finish testing PA01", "Monday", false);
   }
 
@@ -45,7 +40,10 @@ class TaskTest {
 
   @Test
   public void testMakeJson() {
-    TaskJson taskJson = task1.makeJson();
+    TaskJson taskJson = null;
+    if (task1 instanceof Task t) {
+      taskJson = t.makeJson();
+    }
     assertEquals(taskJson1, taskJson);
   }
 
@@ -68,15 +66,15 @@ class TaskTest {
 
   @Test
   public void testGetCompletionStatus() {
-    // Check that it is not completed
-    boolean isCompleted = task1.getCompletionStatus();
+    boolean isCompleted = true;
+    boolean isCompleted2 = false;
+    if (task1 instanceof Task t) {
+      isCompleted = t.getCompletionStatus();
+      t.updateCompletion();
+      isCompleted2 = t.getCompletionStatus();
+    }
     assertFalse(isCompleted);
-
-    // Set it to completed
-    task1.updateCompletion();
-    boolean isCompleted2 = task1.getCompletionStatus();
     assertTrue(isCompleted2);
-
     // Check that completion now says "Yes"
     String expected = "What: "
         + "PA01"

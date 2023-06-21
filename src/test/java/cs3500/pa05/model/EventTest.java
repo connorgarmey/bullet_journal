@@ -7,28 +7,19 @@ import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class EventTest {
-  static Event event1;
-  static Event event2;
-  static Event event3;
-  static Event event4;
-  static Event event5;
-  static EventJson eventJson1;
+  public Occasion event1;
+  public Occasion event2;
+  public Occasion event3;
+  public Occasion event4;
+  public Occasion event5;
+  public EventJson eventJson1;
 
-  @BeforeAll
-  public static void setup() {
-    event1 = new Event("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
-    event2 = new Event("Meditation", "Hour long meditation session", "Tuesday", 8, 0, 60);
-    event3 = new Event("Basketball game", "Club basketball game", "Wednesday", 12, 15, 120);
-    event4 = new Event("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
-    event5 = new Event("Godfather marathon", "Watch all Godfather movies", "Saturday", 10, 0, 599);
-    eventJson1 = new EventJson("OOD Exam", "Exam 2 for OOD Summer 1", "Thursday", 11, 40, 100);
-  }
-
-  @AfterAll
-  public static void restoreInitialValues() {
+  @BeforeEach
+  public void setup() {
     event1 = new Event("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
     event2 = new Event("Meditation", "Hour long meditation session", "Tuesday", 8, 0, 60);
     event3 = new Event("Basketball game", "Club basketball game", "Wednesday", 12, 15, 120);
@@ -151,13 +142,19 @@ class EventTest {
 
   @Test
   public void testMakeJson() {
-    EventJson expected = event4.makeJson();
+    EventJson expected = null;
+    if (event4 instanceof Event e) {
+      expected = e.makeJson();
+    }
     assertEquals(expected, eventJson1);
   }
 
   @Test
   public void testGetDuration() {
-    int duration = event1.getDuration();
+    int duration = 0;
+    if (event1 instanceof Event e) {
+      duration = e.getDuration();
+    }
     assertEquals(30, duration);
   }
 

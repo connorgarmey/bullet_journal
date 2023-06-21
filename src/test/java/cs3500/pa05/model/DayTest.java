@@ -7,44 +7,32 @@ import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.TaskJson;
 import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DayTest {
-  static Day monday;
-  static Day monday2;
-  static Day tuesday;
-  static Day wednesday;
-  static Occasion event1;
-  static Occasion event2;
-  static Occasion event3;
-  static Occasion event4;
-  static Occasion event5;
-  static Occasion event6;
-  static Occasion task1;
-  static ArrayList<Occasion> listOfTasks;
-  static ArrayList<Occasion> listOfEvents;
-  static TaskJson taskJson1;
+  public Day monday;
+  public Day monday2;
+  public Day tuesday;
+  public Day wednesday;
+  public ArrayList<Occasion> listOfTasks;
+  public ArrayList<Occasion> listOfEvents;
+  public TaskJson taskJson1;
+  EventTest eventTest = new EventTest();
+  TaskTest taskTest = new TaskTest();
 
-  @BeforeAll
-  public static void setup() {
+  @BeforeEach
+  public void setup() {
+    eventTest.setup();
+    taskTest.setup();
     monday = new Day("Monday");
     monday2 = new Day("Monday");
     tuesday = new Day("Tuesday");
-
-    event1 = new Event("Haircut", "Pre-scheduled haircut", "Monday", 10, 30, 30);
-    event2 = new Event("Meeting", "Group meeting", "Monday", 11, 30, 90);
-    event3 = new Event("Wake up", "Pre-scheduled haircut", "Monday", 6, 30, 5);
-    event4 = new Event("Lunch", "Pre-scheduled haircut", "Monday", 12, 30, 60);
-    event5 = new Event("Dinner", "Pre-scheduled haircut", "Monday", 20, 0, 90);
-    event6 = new Event("Sleep", "Pre-scheduled haircut", "Monday", 22, 30, 5);
-
-    task1 = new Task("PA01", "Need to finish testing PA01", "Monday");
-
     listOfEvents = new ArrayList<>();
     listOfTasks = new ArrayList<>();
 
-    listOfEvents.add(event1);
-    listOfTasks.add(task1);
+    listOfEvents.add(eventTest.event1);
+    listOfTasks.add(taskTest.task1);
 
     wednesday = new Day("Wednesday", listOfEvents, listOfTasks);
   }
@@ -69,7 +57,7 @@ class DayTest {
     assertEquals(0, countEvents1);
 
     // Add an event and check that the number of events increased
-    monday.addEvent(EventTest.event1);
+    monday.addEvent(eventTest.event1);
     int countEvents2 = monday.getNumEvents();
     assertEquals(1, countEvents2);
   }
@@ -81,7 +69,7 @@ class DayTest {
     assertEquals(0, countTasks1);
 
     // Add a task and check that the count of tasks increased
-    monday.addTask(TaskTest.task1);
+    monday.addTask(taskTest.task1);
     int countTasks2 = monday.getNumTasks();
     assertEquals(1, countTasks2);
   }
@@ -97,6 +85,7 @@ class DayTest {
     // Check that if the object is not a day, it returns false
     String string = "";
     assertFalse(monday.equals(string));
+    assertFalse(monday.equals(1));
   }
 
   @Test

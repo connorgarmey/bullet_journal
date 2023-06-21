@@ -15,8 +15,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ModelTest {
-  static Model model;
-  static Model emptyModel;
+  public Model model;
+  public Model emptyModel;
   String jsonString;
 
   @BeforeEach
