@@ -36,8 +36,7 @@ public class Task extends Occasion {
    * @return TaskJson representation of the Task
    */
   public TaskJson makeJson() {
-    TaskJson json = new TaskJson(this.name, this.description, this.day, this.isCompleted);
-    return json;
+    return new TaskJson(this.name, this.description, this.day, this.isCompleted);
   }
 
   /**
@@ -54,14 +53,13 @@ public class Task extends Occasion {
    */
   @Override
   public String toString() {
-    String string = "What: "
+    return "What: "
         + name
         + System.lineSeparator()
         + makeDescription()
         + "Completed: "
         + completion()
         + System.lineSeparator();
-    return string;
   }
 
   /**

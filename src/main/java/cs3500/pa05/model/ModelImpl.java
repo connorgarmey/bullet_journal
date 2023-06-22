@@ -48,6 +48,7 @@ public class ModelImpl implements Model {
    * Makes the default week given the default Model fields
    *
    * @param week an entire week written out as a String
+   * @return
    */
   @Override
   public void makeWeek(String week) {
@@ -64,7 +65,6 @@ public class ModelImpl implements Model {
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
-
   }
 
   /**
@@ -104,9 +104,9 @@ public class ModelImpl implements Model {
   public boolean canAdd(Boolean isTask, String dayRep) {
     Day day = getDayFromRep(dayRep);
     if (isTask) {
-      return day.canAdd(isTask, maxTasks);
+      return day.canAdd(true, maxTasks);
     } else {
-      return day.canAdd(isTask, maxEvents);
+      return day.canAdd(false, maxEvents);
     }
   }
 
@@ -233,7 +233,6 @@ public class ModelImpl implements Model {
    */
   private WeekJson currentData() {
     List<DayJson> dayJsons = new ArrayList<>();
-    System.out.println(week);
     for (Day day : week) {
       DayJson dayJson = day.makeDayJson();
       dayJsons.add(dayJson);
@@ -241,7 +240,6 @@ public class ModelImpl implements Model {
     StatsJson statsJson = new StatsJson(this.numEvents, this.numTasks, this.maxEvents,
         this.maxTasks, this.notes, this.completionPercent);
     ThemeJson themeJson = this.theme.createJson();
-    System.out.println(this.theme);
     return new WeekJson(dayJsons, themeJson, statsJson);
   }
 
@@ -411,7 +409,7 @@ public class ModelImpl implements Model {
   }
 
   /**
-   * Returns whether or not the task is completed
+   * Returns whether the task is completed
    *
    * @param day  day of the week
    * @param task name of the task
@@ -438,11 +436,12 @@ public class ModelImpl implements Model {
    *
    * @param day    day the occasion takes place
    * @param name   name of the occasion
-   * @param isTask whether or not the occasion is a task
+   * @param isTask whether the occasion is a task
    */
   public void deleteOccasion(String day, String name, boolean isTask) {
     Day theDay = this.getDayFromRep(day);
     theDay.deleteOccasionFromList(name, isTask);
+
   }
 
 

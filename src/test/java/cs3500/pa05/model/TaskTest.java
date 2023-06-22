@@ -105,6 +105,7 @@ class TaskTest {
   public void testMakeDescription() {
     String taskDescription = task2.makeDescription();
     assertEquals("", taskDescription);
+
   }
 }
 

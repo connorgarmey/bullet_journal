@@ -2,14 +2,11 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cs3500.pa05.model.json.DayJson;
-import cs3500.pa05.model.json.EventJson;
-import cs3500.pa05.model.json.TaskJson;
 import java.util.ArrayList;
-import javafx.scene.text.Font;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,8 +41,6 @@ class DayTest {
 
   @Test
   public void testDayConstructor() {
-    assertEquals(new ArrayList<>() {
-    }, Font.getFontNames());
     // Use the constructor to construct a new day
     Day newDay = new Day("Wednesday", listOfTasks, listOfEvents);
 
@@ -128,26 +123,51 @@ class DayTest {
 
   @Test
   public void testGetNumCompletedTasks() {
-    // Find the actual number of completed tasks
-    int actual = wednesday.getNumCompletedTasks();
 
-    // Assert there are no completed tasks at the beginning
-    assertEquals(0, actual);
-
-    //
-    //task1.updateCompletion();
-
+    assertEquals(0, wednesday.getNumCompletedTasks());
+    wednesday.addTask(eventTest.event1);
+    Day d = new Day("Monday", listOfEvents, listOfTasks);
+    d.makeDayJson();
+    d.taskComplete("Haircut");
+    assertEquals(0, wednesday.getNumCompletedTasks());
+    wednesday.addTask(taskTest.task1);
+    d.updateCompletion("Haircut");
+    d.updateCompletion("PA01");
+    assertEquals(0, wednesday.getNumCompletedTasks());
+    d.updateCompletion("Haircut");
+    Task t = (Task) taskTest.task1;
+    t.updateCompletion();
+    assertEquals(2, wednesday.getNumCompletedTasks());
   }
 
   @Test
   public void testMakeDayJson() {
-    // Create the Day Json with
     DayJson wednesdayJson = wednesday.makeDayJson();
 
-    // Assert each value of the JSON
     assertEquals("Wednesday", wednesdayJson.day());
-    // assertEquals(1, wednesdayJson.events().size());
-    // assertEquals(1, wednesdayJson.tasks().size());
+
+    assertEquals("{\n" +
+        "  \"day\": \"Wednesday\",\n" +
+        "  \"events\": [\n" +
+        "    {\n" +
+        "  \"name\": \"Haircut\",\n" +
+        "  \"description\": \"Pre-scheduled haircut\",\n" +
+        "  \"day-of-week\": \"Monday\",\n" +
+        "  \"start-hour\": 10,\n" +
+        "  \"start-minute\": 30,\n" +
+        "  \"duration\": 30\n" +
+        "}\n" +
+        "  ],\n" +
+        "  \"tasks\": [\n" +
+        "    {\n" +
+        "  \"name\": \"PA01\",\n" +
+        "  \"description\": \"Need to finish testing PA01\",\n" +
+        "  \"day-of-week\": \"Monday\",\n" +
+        "  \"completed\": false\n" +
+        "}\n" +
+        "  ]\n" +
+        "}", wednesday.makeDayJson().toString());
+
   }
 
   @Test
@@ -172,7 +192,13 @@ class DayTest {
     assertFalse(wednesday.occasionExists("Cry", false));
     assertTrue(wednesday.occasionExists("PA01", true));
     assertFalse(wednesday.occasionExists("Sleep", true));
+    listOfTasks.add(taskTest.task2);
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> listOfTasks.sort(new SortByDuration()));
   }
+
+
 
 
 
