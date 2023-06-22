@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class Driver extends Application {
 
   /**
-   * Main method
+   * Main method.
    *
    * @param args the arguments
    */
