@@ -16,9 +16,14 @@
 
 
 ## Section 3: Power Ups
+- Quotes and Notes
+- Weekly Overview
+- Sort by Name and Duration
 
 
 ## Section 4: Quality of Life
-
+- Mind Changes
+- Custom Themes
 
 ## Section 5: Extra Credit
+- Visual Flourish
