@@ -3,6 +3,8 @@
 
 [PA Write Up](https://markefontenot.notion.site/PA-05-8263d28a81a7473d8372c6579abd6481)
 
+NOTE: we had an issue with importing the fonts to work on github however everything works locally both programatically and tesing wise
+
 - [ ]  A pitch for your program describing each of its features (pretend you’re writing an App Store description);
 - Our bullet journal is meant for those who love to create unique designs by keep the information simple to read. By implementing the feature of creating custom themes it allows users to have more individuality for their bullet journal. We also knew that things change as time moves on so we wanted user to be able to edit old items, change the completion and see their process of a week. Finally a week is made even more interesting with the addition of personal notes and quotes that again allow a user to fully personalize their journal 
 - [ ]  At least one screenshot showcasing your GUI and its features;

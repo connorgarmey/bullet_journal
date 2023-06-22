@@ -35,5 +35,9 @@ class SortByDurationTest {
   public void testIllegalArgument() {
     assertThrows(IllegalArgumentException.class,
         () -> duration.compare(taskTest.task1, taskTest.task2));
+    assertThrows(IllegalArgumentException.class,
+        () -> duration.compare(taskTest.task1, eventTest.event1));
+    assertThrows(IllegalArgumentException.class,
+        () -> duration.compare(eventTest.event1, taskTest.task1));
   }
 }
