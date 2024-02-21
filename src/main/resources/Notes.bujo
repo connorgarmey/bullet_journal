@@ -3,8 +3,28 @@
     {
       "day": "Monday",
       "events": [
+        {
+      "name": "isdjbo",
+      "description": "",
+      "day-of-week": "Monday",
+      "start-hour": 1,
+      "start-minute": 5,
+      "duration": 60
+    }
       ],
       "tasks": [
+        {
+      "name": "Get graded",
+      "description": "",
+      "day-of-week": "Monday",
+      "completed": false
+    },
+        {
+      "name": "Task",
+      "description": "",
+      "day-of-week": "Monday",
+      "completed": false
+    }
       ]
     },
     {
@@ -17,12 +37,50 @@
       "description": "",
       "day-of-week": "Tuesday",
       "completed": false
+    },
+        {
+      "name": "Eat a muffin",
+      "description": "yeah",
+      "day-of-week": "Tuesday",
+      "completed": false
     }
       ]
     },
     {
       "day": "Wednesday",
       "events": [
+        {
+      "name": "Zoo",
+      "description": "",
+      "day-of-week": "Wednesday",
+      "start-hour": 21,
+      "start-minute": 45,
+      "duration": 30
+    },
+        {
+      "name": "Aperol Spritz",
+      "description": "idk",
+      "day-of-week": "Wednesday",
+      "start-hour": 16,
+      "start-minute": 20,
+      "duration": 100
+    },
+        {
+      "name": "Lab",
+      "description": "OOD",
+      "day-of-week": "Wednesday",
+      "start-hour": 10,
+      "start-minute": 0,
+      "duration": 120
+    },
+        {
+      "name": "Parade",
+      "description": "Pride",
+      "day-of-week": "Wednesday",
+      "start-hour": 12,
+      "start-minute": 10,
+      "duration": 200
+    }
       ],
       "tasks": [
       ]
@@ -63,17 +121,17 @@
     }
   ],
   "theme": {
-    "font": "Times New Roman",
+    "font": "Georgia",
     "fontColor": "Pink",
-    "background": "Blue",
-    "icon": "Flower Painting",
-    "name": "Cute"
+    "background": "Light Pink",
+    "icon": "Light",
+    "name": "LIGHT"
   },
   "stats": {
-    "eventsCount": 0,
-    "taskCount": 3,
+    "eventsCount": 5,
+    "taskCount": 5,
     "maxEvents": 5,
-    "maxTasks": 5,
+    "maxTasks": 2,
     "notes": "- Note 1  - Note 2  - The cat jumped over the moon into a puddle  - Note 3  ",
     "percent": 0.0
   }
